@@ -1,17 +1,18 @@
 #include "fenetreprincipale.h"
 #include "ui_fenetreprincipale.h"
-#include "connexionbdd.h"
 
 // Constructeur de la classe Fenetre Principale
 FenetrePrincipale::FenetrePrincipale(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::FenetrePrincipale)
 {
-    bdd.ouvrirLaBase();
     ui->setupUi(this);
-    QIcon iconeFenetre("Assets\\icons8-school-80.png");
-    QApplication::setWindowIcon(iconeFenetre);
     ui->stackedWidget->setCurrentIndex(0);
+    this->ctrl.autoLog();
+    ui->tl_Lister->setEnabled(true);
+    ui->tl_Insertion->setEnabled(true);
+    ui->tl_Modification->setEnabled(true);
+    ui->tl_Suppression->setEnabled(true);
 }
 
 FenetrePrincipale::~FenetrePrincipale()
@@ -19,17 +20,33 @@ FenetrePrincipale::~FenetrePrincipale()
     delete ui;
 }
 
+/** ------------- Boutons de navigation (sidebar) ------------- **/
+
 void FenetrePrincipale::on_tl_SeConnecter_clicked()
 {
-    //bdd.autoLogOn();
-    if(!bdd.isConnected()){
-        ui->sc_Message->setText("Authentifiez vous pour accéder à l'application");
-    }
-    else{
-        if(bdd.isConnected())
-            ui->sc_Message->setText("Vous êtes connecté");
-    }
     ui->stackedWidget->setCurrentWidget(ui->Connexion);
+}
+
+void FenetrePrincipale::on_tl_Lister_clicked()
+{
+    ui->stackedWidget->setCurrentWidget(ui->ConsulterInfos);
+    remplirLstEt();
+}
+
+void FenetrePrincipale::on_tl_Insertion_clicked()
+{
+    ui->stackedWidget->setCurrentWidget(ui->Insertion);
+    remplirToutM();
+}
+
+void FenetrePrincipale::on_tl_Modification_clicked()
+{
+    ui->stackedWidget->setCurrentWidget(ui->Modifications);
+}
+
+void FenetrePrincipale::on_tl_Suppression_clicked()
+{
+    ui->stackedWidget->setCurrentWidget(ui->Suppression);
 }
 
 void FenetrePrincipale::on_tl_Quitter_clicked()
@@ -37,436 +54,303 @@ void FenetrePrincipale::on_tl_Quitter_clicked()
     exit(EXIT_SUCCESS);
 }
 
-void FenetrePrincipale::on_tl_Insertion_clicked()
+/** ------------- ------------------------------- ------------- **/
+
+void FenetrePrincipale::on_inscEt_mentionComboBox_currentIndexChanged()
 {
-    if(!bdd.isConnected())
-    {
-        ui->stackedWidget->setCurrentWidget(ui->Bienvenue);
-    }
-    // Tous les combo box de "insertion" sont remplies ici
-    else{
-        ui->stackedWidget->setCurrentWidget(ui->Insertion);
-        classeDansCBox(ui->inscE_mentionComboBox);
-        classeDansCBox(ui->inscM_classeMatiereCombobox);
-        classeDansCBox(ui->inscAchat_niveauComboBox);
-        // numElevesSelonCLasseDansCBox(ui->inscN_numeroEleveComboBox);
-        // matiereDansCBoxSelonClasse(ui->inscN_matiereComboBox, );
-    }
+    autoNvPrc(ui->inscEt_mentionComboBox, ui->inscEt_niveauComboBox, ui->inscEt_parcoursComboBox);
 }
 
-void FenetrePrincipale::on_tl_Lister_clicked()
-{
-    if(!bdd.isConnected())
-    {
-        ui->stackedWidget->setCurrentWidget(ui->Bienvenue);
-    }
-    else{
-        ui->stackedWidget->setCurrentWidget(ui->ConsulterInfos);
-        classeDansCBox(ui->lstEt_mentionComboBox);
-        //this->afficherEleves();
-    }
-}
+/** ------------- ------------------------------- ------------- **/
+
+
+/** ------------- Section sc (Se connecter)       ------------- **/
 
 void FenetrePrincipale::on_sc_Connexion_clicked()
 {
-    QString user = ui->sc_utilisateurLineEdit->text();
-    QString mdp = ui->keySequenceEdit->text();
-    if(this->bdd.login(user,mdp)){
-        ui->sc_Message->setText("Vous êtes connecté");
-        effacerInfosDeLogin();
+    QString username (ui->sc_utilisateurLineEdit->text());
+    QString password (ui->sc_motDePasseLineEdit->text());
+    if(this->ctrl.login(username, password)){
+        ui->sc_utilisateurLineEdit->setText("");
+        ui->sc_motDePasseLineEdit->setText("");
+
+        ui->tl_Lister->setEnabled(true);
+        ui->tl_Insertion->setEnabled(true);
+        ui->tl_Modification->setEnabled(true);
+        ui->tl_Suppression->setEnabled(true);
+
+        ui->sc_Message->setText("Vous êtes désormais connecté !");
     }
-    else
+    else{
         ui->sc_Message->setText("Les informations d'identifications sont incorrects !");
+    }
 }
 
 void FenetrePrincipale::on_sc_Deconnexion_clicked()
 {
-    if(!bdd.isConnected())
-    {
-        ui->sc_Message->setText("Vous n'êtes pas encore connecté !");
-    }
-    else{
-        if(this->bdd.logOut() == 0){
-            ui->sc_Message->setText("Vous vous êtes déconnecté avec succès");
-            effacerInfosDeLogin();
-        }
-        else if(this->bdd.logOut() == 1){
-            qDebug() << bdd.logOut();
-            ui->sc_Message->setText("Une erreur est survenue lors de la déconnexion...");
-        }
+    if(this->ctrl.logOut()){
+        ui->tl_Lister->setEnabled(false);
+        ui->tl_Insertion->setEnabled(false);
+        ui->tl_Modification->setEnabled(false);
+        ui->tl_Suppression->setEnabled(false);
+        ui->sc_Message->setText("Vous vous êtes déconnecté avec succès");
     }
 }
 
-void FenetrePrincipale::effacerInfosDeLogin(){
-    ui->sc_utilisateurLineEdit->setText("");
-    ui->keySequenceEdit->setText("");
-}
+/** ------------- ------------------------------- ------------- **/
 
-void FenetrePrincipale::on_inscE_Enregistrer_clicked()
+/** ------------- Section Enredistremeent d'étudiant  ------------- **/
+
+void FenetrePrincipale::on_inscEt_Enregistrer_clicked()
 {
     // Récupération les valeurs des champs de formulaire
-    QString nom = ui->inscE_nomLineEdit->text();
-    QString prenom = ui->inscE_prenomLineEdit->text();
-    QDate dateDeNaissance = ui->inscE_dateDeNaissanceDateEdit->date();
-    QString pere = ui->inscE_pereLineEdit->text();
-    QString mere = ui->inscE_mereLineEdit->text();
-    QString classeAssigne = ui->inscE_mentionComboBox->currentText();
-
-    qDebug() << "Valeur de la date de naissance : " << dateDeNaissance;
-    // Utilise la fonction d'insertion d'élèves pour insérer les données dans la base de données
-    if (bdd.isConnected()) {
-        if (bdd.insertionEleves(nom, prenom, dateDeNaissance, pere, mere, classeAssigne)) {
-            // L'insertion a réussi
-            qDebug() << "L'insertion a réussi !";
-            ui->inscEt_Message->setText("L'insertion a été un succès !");
-        } else {
-            // L'insertion a échoué
-            qDebug() << "L'insertion a échoué.";
-            ui->inscEt_Message->setText("Erreur lors de l'insertion.");
-        }
-    } else {
-        // La base de données n'est pas connectée
-        qDebug() << "La base de données n'est pas connectée.";
-        ui->inscEt_Message->setText("La base de données n'est pas connectée.");
+    QString nom = ui->inscEt_nomLineEdit->text();
+    QString prenom = ui->inscEt_prenomLineEdit->text();
+    QString genre = ui->inscEt_genreComboBox->currentText();
+    QDate dateDeNaissance = ui->inscEt_dateDeNaissanceDateEdit->date();
+    QString mention = ui->inscEt_mentionComboBox->currentText();
+    QString niveau = ui->inscEt_niveauComboBox->currentText();
+    QString parcours = ui->inscEt_parcoursComboBox->currentText();
+    QString codage = ui->inscEt_codageSpinBox->text();
+    QString telephone = ui->inscEt_telephoneLineEdit->text();
+    QString adresse = ui->inscEt_adresseTextEdit->toPlainText();
+    bool passant = ui->inscEt_estPassantCheckBox->isChecked();
+    if(this->ctrl.rqtInscEt(nom, prenom, genre, dateDeNaissance, mention,
+                            niveau, parcours, codage, passant, telephone, adresse)){
+        ui->inscEt_Message->setText("Les informations ont été sauvegardés avec succes !");
+        ui->inscEt_nomLineEdit->setText("");
+        ui->inscEt_prenomLineEdit->setText("");
+        ui->inscEt_codageSpinBox->setValue(0);
+        ui->inscEt_telephoneLineEdit->setText("");
+        ui->inscEt_adresseTextEdit->clear();
+        ui->inscEt_estPassantCheckBox->setChecked(false);
+    }
+    else{
+        ui->inscEt_Message->setText("Vérifiez les informations entrés. Potentielle doublure");
     }
 }
 
+/** ------------- ------------------------------- ------------- **/
 
-void FenetrePrincipale::on_ongletInsertion_currentChanged(/*int index*/)
+/* Section d'enregistrement d'un achat */
+void FenetrePrincipale::on_inscAchat_identifiantComboBox_currentIndexChanged(int index)
 {
-//    bdd.recupererClasses();
-//    classeDansCBox(ui->lstE_classeAfficherComboBox);
+    index++;
+    qDebug() << "index = " << index;
+    ui->inscAchat_nomEtudiantLineEdit->setText(this->ctrl.nomsEtByid(index));
+
+    ui->inscAchat_AjService->setEnabled(true);
+    ui->inscAchat_AjFormation->setEnabled(true);
+}
+/* ----- Section actualisant le prix d'une formation et d'un service selon la formation ou le service choisit -----*/
+
+void FenetrePrincipale::on_lstEt_idEtudiantComboBox_currentIndexChanged(int index)
+{
+    index++;
+    qDebug() << "index = " << index;
+    ui->lstEt_nomEtudiantLineEdit->setText(this->ctrl.nomsEtByid(index));
 }
 
-//void FenetrePrincipale::afficherEleves(const QString& classeAssigne, int choix){
-//    QVector<QVector<QString>> donneesEleves;
-//    if(choix == 1){
-//        donneesEleves = bdd.recupElevesSelonClasse(classeAssigne);
-//    }
-//    else if(choix == 2){
-//        donneesEleves = bdd.recupNoteElevesSelonMatiere(classeAssigne);
-//    }
-//    else{
-//        donneesEleves = QVector<QVector<QString>>();
-//    }
+// Méthode déclenché lors de la modification de la formation choisie
+void FenetrePrincipale::on_inscAchat_formationsComboBox_currentIndexChanged()
+{
+    on_inscAchat_qtFormSpinBox_valueChanged(ui->inscAchat_qtFormSpinBox->value());
+//    ui->inscAchat_prixFormSpinBox->setValue(prixFormation);
+}
 
-//    ui->lstE_listeEleves->setRowCount(donneesEleves.size()); // Définir le nombre de lignes
-//    int ligne = 0;
-//    for (const QVector<QString>& eleveInfo : donneesEleves) {
-//        for (int col = 0; col < eleveInfo.size(); ++col) {
-//            QTableWidgetItem* item = new QTableWidgetItem(eleveInfo[col]);
-//            ui->lstE_listeEleves->setItem(ligne, col, item);
-//        }
-//        ligne++;
-//    }
-//}
+// Méthode déclenché lors de la modification du service choisie
+void FenetrePrincipale::on_inscAchat_servicesComboBox_currentIndexChanged()
+{
+    on_inscAchat_qtServiceSpinBox_valueChanged(ui->inscAchat_qtServiceSpinBox->value());
+//    ui->inscAchat_prixServiceSpinBox->setValue(prixService);
+}
 
-void FenetrePrincipale::afficherEleves(const QString& classeAssigne){
-    QVector<QVector<QString>> donneesEleves = bdd.recupElevesSelonClasse(classeAssigne);
-    ui->lstE_listeEleves->setRowCount(donneesEleves.size()); // Définir le nombre de lignes
+void FenetrePrincipale::on_inscAchat_qtServiceSpinBox_valueChanged(int arg1)
+{
+    int prixService(this->ctrl.getPrixU(ui->inscAchat_servicesComboBox->currentText(), "Multi_Services"));
+    ui->inscAchat_prixServiceSpinBox->setValue(prixService * arg1);
+}
+
+void FenetrePrincipale::on_inscAchat_qtFormSpinBox_valueChanged(int arg1)
+{
+    int prixFormation(this->ctrl.getPrixU(ui->inscAchat_formationsComboBox->currentText(), "Formations"));
+    ui->inscAchat_prixFormSpinBox->setValue(prixFormation * arg1);
+}
+
+void FenetrePrincipale::on_inscP_identifiantComboBox_currentIndexChanged(int index)
+{
+    index++;
+    qDebug() << "index = " << index;
+    ui->inscAchat_nomEtudiantLineEdit->setText(this->ctrl.nomsEtByid(index));
+}
+
+
+/*** ------------- ------------------------------------------------------------------------------------------- ------------- **/
+
+
+/** ------------- -----      Méthodes utilisés      ----- ------------- **/
+
+// Remplit plusieurs combo box à la fois
+void FenetrePrincipale::remplirToutM(){
+    QVector<QString> mentions = this->ctrl.getColumn("Mention", 1);
+    QVector<QString> formations = this->ctrl.getColumn("Formations", 1);
+    QVector<QString> services = this->ctrl.getColumn("Multi_Services", 1);
+    QVector<QString> idEtudiants = this->ctrl.getColumn("Etudiants", 0);
+    qDebug() << "Contenu de idEtudiants :";
+
+    for (const QString& element : idEtudiants) {
+        qDebug() << element;
+    }
+    remplirComboBox(ui->inscAchat_identifiantComboBox, idEtudiants);
+    remplirComboBox(ui->inscEt_mentionComboBox, mentions);
+//    remplirComboBox(ui->inscAchat_mentionComboBox, mentions);
+    remplirComboBox(ui->inscP_identifiantComboBox, idEtudiants);
+    remplirComboBox(ui->inscPrc_mentionComboBox, mentions);
+    remplirComboBox(ui->inscNv_mentionComboBox, mentions);
+    remplirComboBox(ui->inscAchat_formationsComboBox, formations);
+    remplirComboBox(ui->inscAchat_servicesComboBox, services);
+    qDebug() << "Contenu de formation :";
+
+    for (const QString& element : formations) {
+        qDebug() << element;
+    }
+    qDebug() << "Contenu de service :";
+    for (const QString& element : services) {
+        qDebug() << element;
+    }
+}
+
+void FenetrePrincipale::remplirLstEt(){
+    QVector<QString> mentions = this->ctrl.getColumn("Mention", 1);
+    QVector<QString> niveaux = this->ctrl.getColumn("Niveau", 2);
+    QVector<QString> parcours = this->ctrl.getColumn("Parcours", 2);
+    QVector<QString> idEtudiants = this->ctrl.getColumn("Etudiants", 0);
+
+    remplirComboBox(ui->lstEt_idEtudiantComboBox, idEtudiants);
+    remplirComboBox(ui->lstEt_mentionComboBox, mentions);
+    remplirComboBox(ui->lstEt_niveauComboBox, niveaux);
+    remplirComboBox(ui->lstEt_parcoursComboBox, parcours);
+
+}
+
+// Cette méthode définit automatiquement le niveau et le parcours selon la mention choisit
+void FenetrePrincipale::autoNvPrc(QComboBox*& mentionCB, QComboBox*& niveauCB, QComboBox*& parcoursCB,
+                                  QString mode){
+    qDebug() << "Index du combo box relié à auto" << mentionCB->currentIndex();
+    int idMention(this->ctrl.getId(mentionCB->currentText(),"Mention"));
+    QVector<QString> niveaux;
+    QVector<QString> parcours;
+    if(mode == "All"){
+        niveaux = this->ctrl.getAllSelonMention("Niveau", idMention);
+        parcours = this->ctrl.getAllSelonMention("Parcours", idMention);
+        remplirComboBox(niveauCB, niveaux);
+        remplirComboBox(parcoursCB, parcours);
+    }
+    if(mode == "Nv"){
+        niveaux = this->ctrl.getAllSelonMention("Niveau", idMention);
+        remplirComboBox(niveauCB, niveaux);
+    }
+    if(mode == "Prc"){
+        parcours = this->ctrl.getAllSelonMention("Parcours", idMention);
+        remplirComboBox(parcoursCB, parcours);
+    }
+    qDebug() << "Contenu de niveau :";
+    for (const QString& element : niveaux) {
+        qDebug() << element;
+    }
+    qDebug() << "Contenu de parcours :";
+    for (const QString& element : parcours) {
+        qDebug() << element;
+    }
+}
+
+// Remplit un élément QComboBox avec des éléments QVector<QString>
+void FenetrePrincipale::remplirComboBox(QComboBox* comboBox, const QVector<QString>& elements) {
+    // int index = comboBox->count();
+    // int i;
+    // for(i = 1 ; i < index ; i++)
+    // {
+    //     comboBox->removeItem(i);
+    // }
+    comboBox->clear();
+    // Ajouter les éléments du QVector au combo box
+    comboBox->addItems(elements);
+}
+
+void FenetrePrincipale::remplirTable(QTableWidget* maTable, QVector<QVector<QString>>& donnees){
+    donnees = donnees;
+    ui->lstE_listeEtudiant->setRowCount(donnees.size()); // Définir le nombre de lignes
     int row = 0;
-    for (const QVector<QString>& eleveInfo : donneesEleves) {
+    for (const QVector<QString>& eleveInfo : donnees) {
         for (int col = 0; col < eleveInfo.size(); ++col) {
             QTableWidgetItem* item = new QTableWidgetItem(eleveInfo[col]);
-            ui->lstE_listeEleves->setItem(row, col, item);
+            maTable->setItem(row, col, item);
         }
         row++;
     }
 }
 
 
-void FenetrePrincipale::on_lstE_chercher_clicked()
+
+
+
+
+
+
+void FenetrePrincipale::on_lstEt_niveauCheckBox_stateChanged()
 {
-    QString classeAssigne = ui->lstEt_mentionComboBox->currentText();
-    afficherEleves(classeAssigne);
+    bool active(ui->lstEt_niveauCheckBox->isChecked());
+    ui->lstEt_niveauComboBox->setEnabled(active);
 }
 
-//void FenetrePrincipale::remplissageComboBox(QComboBox *comboBox){
-//    comboBox->clear();
-//    int i;
-//    if(choix == "Matière"){
-//        comboBox->clear();
-//        comboBox->addItem("Sélectionnez une matière :");
-//        QVector<QVector<QString>> matieres = bdd.recupererMatieres();
-//        qDebug() << "Contenu de 'matieres' : " << matieres;
-
-//        for (const QVector<QString>& matiereInfo : matieres) {
-//            if (matiereInfo.size() >= 3) {
-//                QString nomMatiere = matiereInfo[2]; // Le nom de la matière est à l'index 2 du sous-vecteur
-//                comboBox->addItem(nomMatiere);
-//            }
-//        }
-//    }
-//    else if(choix == "Classe"){
-//        QVector<QString> classe;
-//        comboBox->addItem("Renseignez la classe a afficher :");
-//        classe = bdd.recupererClasses();
-//        for (i = 0; i < classe.size() ; i++) {
-//            comboBox->addItem(classe[i]);
-//        }
-//    }
-//    else{
-//        comboBox->addItem("Un erreur est survenu...");
-//    }
-//    qDebug() << "Contenue de 'classes' : " << classes;
-//}
-
-void FenetrePrincipale::numElevesSelonCLasseDansCBox(QComboBox *comboBoxEleve, int &idClasse){
-    int nbEleves = bdd.compterEntreesSelonClasse("ELEVE", idClasse);
-    int i;
-    comboBoxEleve->clear();
-    for(i=0; i<nbEleves; i++)
-        comboBoxEleve->addItem(QString::number(i+1));
-}
-
-void FenetrePrincipale::classeDansCBox(QComboBox *comboBoxClasse){
-    comboBoxClasse->clear();
-    // comboBoxClasse->addItem("Renseignez la classe à afficher :");
-        QVector<QString> classes = bdd.recupererClasses();
-    qDebug() << "Contenue de 'classes' : " << classes;
-
-    for (const QString& classe : classes) {
-        comboBoxClasse->addItem(classe);
-    }
-}
-
-void FenetrePrincipale::matiereDansCBoxSelonClasse(QComboBox *comboBox,int &idClasse){
-    comboBox->clear();
-    QVector<QVector<QString>> matieres = bdd.recupererMatieresSelonClasse(idClasse);
-    qDebug() << "Contenu de 'matieres' : " << matieres;
-    for (const QVector<QString>& matiereInfo : matieres) {
-        if (matiereInfo.size() >= 3) {
-            QString nomMatiere = matiereInfo[2]; // Le nom de la matière est à l'index 2 du sous-vecteur
-            comboBox->addItem(nomMatiere);
-        }
-    }
-}
-
-//void FenetrePrincipale::classeDansCBox(QComboBox *comboBoxEleve){
-//    int nbEleves = bdd.compterEntrees("ELEVE");
-//    int i;
-//    comboBoxEleve->clear();
-//    for(i=0; i<nbEleves; i++)
-//        comboBoxEleve->addItem(QString::number(i+1));
-//}
-
-void FenetrePrincipale::on_inscC_Enregistrer_clicked()
+void FenetrePrincipale::on_lstEt_mentionCheckBox_stateChanged()
 {
-    QString nomClasse = ui->inscMNP_nomMentionLineEdit->text();
-
-    if (bdd.isConnected()) {
-        if (bdd.enregistrerClasse(nomClasse)) {
-            // L'insertion a réussi
-            qDebug() << "L'insertion d'une nouvelle classe a réussi !";
-            ui->inscC_Message->setText("L'insertion d'une nouvelle classe a été un succès !");
-        } else {
-            // L'insertion a échoué
-            qDebug() << "Un erreur est survenu lors de l'insertion de la classe";
-            ui->inscC_Message->setText("Un erreur est survenu lors de l'insertion de la classe");
-        }
-    } else {
-        // La base de données n'est pas connectée
-        qDebug() << "La base de données n'est pas connectée.";
-        ui->inscEt_Message->setText("La base de données n'est pas connectée.");
-    }
+    bool active(ui->lstEt_mentionCheckBox->isChecked());
+    ui->lstEt_mentionComboBox->setEnabled(active);
 }
 
-
-void FenetrePrincipale::on_inscM_Enregistrer_clicked()
+void FenetrePrincipale::on_lstEt_parcoursCheckBox_stateChanged()
 {
-    QString classeDelaMatière(ui->inscM_classeMatiereCombobox->currentText());
-    QString nomDelaMatière(ui->inscM_nomDuMatiReLineEdit->text());
-    QString coefficientTxt(ui->inscM_coefficientLineEdit->text());
-    double coefficient = coefficientTxt.toDouble();
-
-    if (bdd.isConnected()) {
-        if (bdd.enregistrerMatiere(classeDelaMatière, nomDelaMatière, coefficient)) {
-            // L'insertion a réussi
-            qDebug() << "L'insertion a réussi !";
-            ui->inscM_Message->setText("L'insertion a été un succès !");
-        } else {
-            // L'insertion a échoué
-            qDebug() << "L'insertion a échoué.";
-            ui->inscM_Message->setText("Erreur lors de l'insertion.");
-        }
-    } else {
-        // La base de données n'est pas connectée
-        qDebug() << "La base de données n'est pas connectée.";
-        ui->inscM_Message->setText("La base de données n'est pas connectée.");
-    }
+    bool active(ui->lstEt_parcoursCheckBox->isChecked());
+    ui->lstEt_parcoursComboBox->setEnabled(active);
 }
 
-// Slot activé lors de l'enregistrement des notes
-void FenetrePrincipale::on_inscN_Enregistrer_clicked()
+void FenetrePrincipale::on_lstEt_idEtudiantCheckBox_stateChanged()
 {
-    int idEleve = ui->inscAchat_mentionComboBox->currentText().toInt();
-    QString classeEleve = ui->inscAchat_niveauComboBox->currentText();
-    QString matiere = ui->inscAchat_parcoursComboBox->currentText();
-    double note = ui->inscN_noteLineEdit->text().toDouble();
-
-    bdd.enregistrerNote(idEleve, matiere, classeEleve, note);
+    bool active(ui->lstEt_idEtudiantCheckBox->isChecked());
+    ui->lstEt_idEtudiantComboBox->setEnabled(active);
 }
 
-void FenetrePrincipale::on_inscN_classeEleveComboBox_currentTextChanged(const QString &arg1)
+void FenetrePrincipale::on_lstEt_nomEtudiantCheckBox_stateChanged()
 {
-    QString nomClasse = ui->inscAchat_niveauComboBox->currentText();
-    int idClasse = bdd.recupererIdClasse(nomClasse);
-    numElevesSelonCLasseDansCBox(ui->inscAchat_mentionComboBox, idClasse);
-    matiereDansCBoxSelonClasse(ui->inscAchat_parcoursComboBox, idClasse);
+    bool active(ui->lstEt_nomEtudiantCheckBox->isChecked());
+    ui->lstEt_nomEtudiantLineEdit->setEnabled(active);
 }
 
-void FenetrePrincipale::on_inscN_afficherEleves_clicked()
+void FenetrePrincipale::on_lstEt_Rechercher_clicked()
 {
-    afficherElevesV2();
-}
-
-void FenetrePrincipale::afficherElevesV2() {
-    QString nomMatiere = ui->inscAchat_parcoursComboBox->currentText();
-    QString nomClasse = ui->inscAchat_niveauComboBox->currentText();
-    //QString matiereAfficheM = "";
-    ui->inscN_matiereAffiche->setText("Notes pour la matiere " + nomMatiere);
-    QVector<QVector<QString>> eleveData = bdd.recupNoteElevesSelonMatiereEtClasse(nomMatiere, nomClasse); // Remplacez "classeAssigne" par la valeur appropriée
-    // Le QTableWidget doit contenir au moins une ligne pour l'en-tête
-    int numRows = eleveData.size();
-    if (numRows <= 0) {
-        return; // Pas de données à afficher
-    }
-
-    // Définis le nombre de lignes dans le QTableWidget
-    ui->inscN_noteMatiereClasse->setRowCount(numRows);
-
-    // Remplis le QTableWidget avec les données des élèves
-    for (int row = 0; row < numRows; ++row) {
-        for (int col = 0; col < eleveData[row].size(); ++col) {
-            QTableWidgetItem* item = new QTableWidgetItem(eleveData[row][col]);
-            ui->inscN_noteMatiereClasse->setItem(row, col, item);
-        }
-    }
-}
-
-// Slot activé lors de l'enregistrement d'un admin
-void FenetrePrincipale::on_inscA_enregistrer_clicked()
-{
-    QString nomAdmin = ui->inscA_nomDeLAdminLineEdit->text();
-    QString mdpAdmin = ui->inscA_motDePasseLineEdit->text();
-    bool reussite = bdd.enregistrerAdmin(nomAdmin, mdpAdmin);
-
-    if(reussite){
-        ui->inscA_Message->setText("L'admin a été ajouté avec succès !");
-    }
-    else{
-        ui->inscA_Message->setText("L'ajout d'un nouveau admin a échoué");
-    }
-}
-
-void FenetrePrincipale::on_tl_Modification_clicked()
-{
-    if(!bdd.isConnected())
-    {
-        ui->stackedWidget->setCurrentWidget(ui->Bienvenue);
-    }
-    // Tous les combo box de "insertion" sont remplies ici
-    else{
-        ui->stackedWidget->setCurrentWidget(ui->Modifications);
-        classeDansCBox(ui->modE_classeEleveComboBox);
-        ui->modE_nomLineEdit->setText("");
-        ui->modE_prenomLineEdit->setText("");
-        //ui->modE_dateDeNaissanceDateEdit->setDate("");
-        ui->modE_pereLineEdit->setText("");
-        ui->modE_mereLineEdit->setText("");
-        //ui->modE_classeAssigneComboBox->setText();
-        // numElevesSelonCLasseDansCBox(ui->inscN_numeroEleveComboBox);
-        // matiereDansCBoxSelonClasse(ui->inscN_matiereComboBox, );
-    }
-}
-
-void FenetrePrincipale::on_modE_classeEleveComboBox_currentTextChanged(const QString &arg1)
-{
-    QString nomClasse = ui->modE_classeEleveComboBox->currentText();
-    int idClasse = bdd.recupererIdClasse(nomClasse);
-    numElevesSelonCLasseDansCBox(ui->modE_numeroComboBox, idClasse);
-}
-
-void FenetrePrincipale::on_modE_chercher_clicked()
-{
-    classeDansCBox(ui->modE_classeAssigneComboBox);
-    QString nomClasse = ui->modE_classeAssigneComboBox->currentText();
-    int idEleve = ui->modE_numeroComboBox->currentText().toInt();
-
-    ui->modE_nomLineEdit->clear();
-    ui->modE_prenomLineEdit->clear();
-    ui->modE_dateDeNaissanceDateEdit->clear();
-    ui->modE_pereLineEdit->clear();
-    ui->modE_mereLineEdit->clear();
-    //ui->modE_classeAssigneComboBox->setText();
-
-    QVector<QString> infoEleve = bdd.recupEleveParClasseEtID(nomClasse, idEleve);
-
-    if (!infoEleve.isEmpty()) {
-        ui->modE_Message2->setText("L'élève a été trouvé avec succès");
-        // Supposons que vous souhaitez remplir les champs avec les données du premier élève de la liste
-        // QVector<QString> infoEleve = elevesData[0];
-
-        // Remplis les champs de l'interface utilisateur avec les informations de l'élève
-        this->idEleveTemp = infoEleve[0].toInt();
-        ui->modE_nomLineEdit->setText(infoEleve[1]); // Nom de l'élève
-        ui->modE_prenomLineEdit->setText(infoEleve[2]); // Prénom de l'élève
-        ui->modE_dateDeNaissanceDateEdit->setDate(QDate::fromString(infoEleve[3], "yyyy-MM-dd")); // Date de naissance
-        ui->modE_pereLineEdit->setText(infoEleve[4]); // Nom du père
-        ui->modE_mereLineEdit->setText(infoEleve[5]); // Nom de la mère
-    } else {
-        ui->modE_Message2->setText("Un erreur s'est produit lors de la récupération des informations sur l'élève");
-    }
-}
-
-void FenetrePrincipale::on_modE_Enregistrer_clicked()
-{
-    QString nom = ui->inscE_nomLineEdit->text();
-    QString prenom = ui->inscE_prenomLineEdit->text();
-    QDate dateDeNaissance = ui->inscE_dateDeNaissanceDateEdit->date();
-    QString pere = ui->inscE_pereLineEdit->text();
-    QString mere = ui->inscE_mereLineEdit->text();
-    QString classeAssigne = ui->inscE_mentionComboBox->currentText();
-
-    if (bdd.isConnected()) {
-        if (bdd.mettreAJourEleve(this->idEleveTemp ,nom, prenom, dateDeNaissance, pere, mere, classeAssigne)) {
-            // L'insertion a réussi
-            qDebug() << "L'insertion a réussi !";
-            ui->modE_Message2->setText("L'insertion a été un succès !");
-        } else {
-            // L'insertion a échoué
-            qDebug() << "L'insertion a échoué.";
-            ui->modE_Message2->setText("Erreur lors de l'insertion.");
-        }
-    } else {
-        // La base de données n'est pas connectée
-        qDebug() << "La base de données n'est pas connectée.";
-        ui->inscEt_Message->setText("La base de données n'est pas connectée.");
-    }
-}
-
-
-void FenetrePrincipale::on_tl_Suppression_clicked()
-{
-    if(!bdd.isConnected())
-    {
-        ui->stackedWidget->setCurrentWidget(ui->Bienvenue);
-    }
-    // Tous les combo box de "Suppréssion" sont remplies ici
-    else{
-        ui->stackedWidget->setCurrentWidget(ui->Suppression);
-        classeDansCBox(ui->supM_classeMatiereComboBox);
-        int idClasse = bdd.recupererIdClasse(ui->supM_classeMatiereComboBox->currentText());
-        matiereDansCBoxSelonClasse(ui->supM_nomMatiereComboBox, idClasse);
-        // ui->modE_classeAssigneComboBox->setText();
-        // numElevesSelonCLasseDansCBox(ui->inscN_numeroEleveComboBox);
-        // matiereDansCBoxSelonClasse(ui->inscN_matiereComboBox, );
-    }
-}
-
-
-void FenetrePrincipale::on_supM_Supprimer_clicked()
-{
-
+    qDebug() << "---- action d'enregistrement commencé ----";
+    QString mention;
+    QString niveau;
+    int idEtudiant;
+    QString parcours;
+    if(ui->lstEt_mentionCheckBox->isChecked())
+        mention = ui->lstEt_mentionComboBox->currentText();
+    else
+        mention = "nc";
+    if(ui->lstEt_niveauCheckBox->isChecked())
+        niveau = ui->lstEt_niveauComboBox->currentText();
+    else
+        niveau = "nc";
+    if(ui->lstEt_parcoursCheckBox->isChecked())
+        parcours = ui->lstEt_parcoursComboBox->currentText();
+    else
+        parcours = "nc";
+    if(ui->lstEt_idEtudiantCheckBox->isChecked())
+        idEtudiant = ui->lstEt_idEtudiantComboBox->currentIndex()+1;
+    else
+        idEtudiant = -1;
+    QVector<QVector<QString>> informations(this->ctrl.getStudent(mention, niveau, parcours, idEtudiant));
+    this->remplirTable(ui->lstE_listeEtudiant, informations);
 }
 

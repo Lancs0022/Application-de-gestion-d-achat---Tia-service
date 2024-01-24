@@ -14,36 +14,35 @@ public:
 
     bool ouvrirLaBase();
     bool isConnected();
-    bool login(QString& username, QString& password);
+    QSqlQuery recupInfoLogin(QString& username, QString& password);
+    QSqlQuery recupererToutDe1(const QString& nomTable);
+    QSqlQuery recupererToutDe2(const QString& nomTable, const QString& champNom);
+    QSqlQuery recupererId(const QString& nom, const QString& type);
+    QSqlQuery recupererNiveauxSelonMention(const int& idMention);
+    QSqlQuery recupNomParId(const QString& id, const QString& type);
+    int compterEntrees(const QString& nomTable);
+    bool inscrireEtudiant(int& nbEtudiants, QString& nom, QString& prenom, QString& genre,
+                          QDate& dateDeNaissance, int& idMention,
+                          int& idNiveau, int& idParcours, int& codage,
+                          bool& passant, int& telephone, QString& adresse);
+    QSqlQuery recupererToutNPSelonMt(const QString& nomTable, const QString& idMention);
+    QSqlQuery recupPrixDuChoix(int& idChoix, const QString& nomTable);
+    QSqlQuery aUnDouble(QString& nom, QString& prenom, QString& genre,
+                                 QDate& dateDeNaissance, int& idMention,
+                                 int& idNiveau, int& idParcours, int& codage);
+    QSqlQuery recupEtudiants(int& idMention, int& idParcours, int& idNiveau, int& idEtudiant);
+    bool mettreAJourEleve(int& idEtudiant, int& idMention, int& idNiveau, int& idParcours,
+                          QString& nom, QString& prenom, QDate& dateNaissance,
+                          int& codage, bool& estPassant, int& numero, QString& adresse);
     bool logOut();
     bool autoLogOn();
 
-    QVector<QString> recupererClasses();
-    int recupererIdClasse(const QString& nomClasse);
-    int compterEntrees(const QString& nomTable);
-    int compterEntreesSelonClasse(const QString& nomTable, int &idClasse);
-    bool insertionEleves(QString& nom, QString& prenom, QDate& dateDeNaissance, QString& pere, QString& mere, QString& classeAssigne);
-
-    QVector<QVector<QString>> recupererMatieresSelonClasse(int &idClasse);
-    QVector<QVector<QString>> recupElevesSelonClasse(const QString& classeAssigne);
-    QVector<QString> recupEleveParClasseEtID(const QString& classeAssigne, int idEleve);
-    bool mettreAJourEleve(int idEleve, QString& nom, QString& prenom, QDate& dateNaissance, QString& nomPere, QString& nomMere, QString& classeAssigne);
-    QVector<QVector<QString>> recupNoteElevesSelonMatiereEtClasse(const QString& matiere, const QString& nomClasse);
-
-    //Méthode pour enregistrer une classe
-    bool enregistrerClasse(const QString& nomClasse);
-    bool enregistrerMatiere(const QString& nomClasse, const QString& nomMatiere, double coefficient);
-    bool enregistrerAdmin(const QString& nom, const QString& motDePasse);
-    QVector<QVector<QString>> recupererMatieres();
-    int recupererIdMatiere(const QString& nomMatiere);
-    bool enregistrerNote(int idEleve, const QString& nomMatiere, QString nomClasse, double note);
+    bool isLoggedOn;
 
     void fermerLaBase();
 
 private:
     QSqlDatabase db;
-    bool isLoggedOn;
-    QString path;
 };
 
 #endif // CONNEXIONBDD_H

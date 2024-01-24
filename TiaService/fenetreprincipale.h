@@ -3,7 +3,9 @@
 
 #include <QMainWindow>
 #include <QAbstractButton>
+#include <QTableWidget>
 #include <connexionbdd.h>
+#include "controleur.h"
 
 namespace Ui {
 class FenetrePrincipale;
@@ -16,64 +18,66 @@ class FenetrePrincipale : public QMainWindow
 public:
     explicit FenetrePrincipale(QWidget *parent = 0);
 
-    void afficherEleves(const QString& classeAssigne);
-    void afficherElevesV2();
-    // void remplissageComboBox(QComboBox *comboBox, QString choix);
-    void numElevesSelonCLasseDansCBox(QComboBox *comboBoxEleve, int &idClasse);
-    void matiereDansCBoxSelonClasse(QComboBox *comboBoxEleve, int &idClasse);
-    void classeDansCBox(QComboBox *comboBoxClasse);
+    void remplirComboBox(QComboBox* comboBox, const QVector<QString>& elements);
+    void remplirToutM();
+    void autoNvPrc(QComboBox*& mentionCB, QComboBox*& niveauCB, QComboBox*& parcoursCB,
+                   QString mode = "All");
+    void remplirTable(QTableWidget* maTable, QVector<QVector<QString>>& donnees);
+    void remplirLstEt();
 
     ~FenetrePrincipale();
 
 private slots:
+
     void on_tl_SeConnecter_clicked();
 
+    void on_sc_Connexion_clicked();
+
     void on_tl_Quitter_clicked();
+
+    void on_sc_Deconnexion_clicked();
 
     void on_tl_Insertion_clicked();
 
     void on_tl_Lister_clicked();
 
-    void on_sc_Connexion_clicked();
-
-    void on_sc_Deconnexion_clicked();
-
-    void on_inscE_Enregistrer_clicked();
-
-    void on_ongletInsertion_currentChanged(/*int index*/);
-
-    void on_lstE_chercher_clicked();
-
-    void on_inscC_Enregistrer_clicked();
-
-    void on_inscM_Enregistrer_clicked();
-
-    void on_inscN_Enregistrer_clicked();
-
-    void on_inscN_classeEleveComboBox_currentTextChanged(const QString &arg1);
-
-    void on_inscN_afficherEleves_clicked();
-
-    void on_inscA_enregistrer_clicked();
-
-    void on_modE_classeEleveComboBox_currentTextChanged(const QString &arg1);
-
-    void on_modE_chercher_clicked();
-
-    void on_modE_Enregistrer_clicked();
-
     void on_tl_Modification_clicked();
 
     void on_tl_Suppression_clicked();
 
-    void on_supM_Supprimer_clicked();
+    void on_inscEt_Enregistrer_clicked();
+
+    void on_inscEt_mentionComboBox_currentIndexChanged();
+
+    void on_inscAchat_formationsComboBox_currentIndexChanged();
+
+    void on_inscAchat_servicesComboBox_currentIndexChanged();
+
+    void on_inscAchat_qtFormSpinBox_valueChanged(int arg1);
+
+    void on_inscAchat_qtServiceSpinBox_valueChanged(int arg1);
+
+    void on_inscAchat_identifiantComboBox_currentIndexChanged(int index);
+
+    void on_inscP_identifiantComboBox_currentIndexChanged(int index);
+
+    void on_lstEt_idEtudiantComboBox_currentIndexChanged(int index);
+
+    void on_lstEt_niveauCheckBox_stateChanged();
+
+    void on_lstEt_mentionCheckBox_stateChanged();
+
+    void on_lstEt_parcoursCheckBox_stateChanged();
+
+    void on_lstEt_idEtudiantCheckBox_stateChanged();
+
+    void on_lstEt_nomEtudiantCheckBox_stateChanged();
+
+    void on_lstEt_Rechercher_clicked();
 
 private:
-    void effacerInfosDeLogin();
     Ui::FenetrePrincipale *ui;
-    ConnexionDDB bdd;
-    QVector<QString> classes;
-    int idEleveTemp;
+    Controleur ctrl;
 };
 
 #endif // FENETREPRINCIPALE_H

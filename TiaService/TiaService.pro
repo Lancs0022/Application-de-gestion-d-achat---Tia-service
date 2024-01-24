@@ -14,11 +14,13 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
+        controleur.cpp \
         fenetreprincipale.cpp \
         connexionbdd.cpp
 
 HEADERS  += fenetreprincipale.h \
-        connexionbdd.h
+        connexionbdd.h \
+        controleur.h
 
 FORMS    += fenetreprincipale.ui
 
