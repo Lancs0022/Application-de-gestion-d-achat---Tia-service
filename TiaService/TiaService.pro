@@ -5,7 +5,9 @@
 #-------------------------------------------------
 
 QT       +=   core gui    \
-sql
+              sql \
+              widgets \
+              printsupport
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -15,14 +17,18 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         controleur.cpp \
+    fenetrefacture.cpp \
         fenetreprincipale.cpp \
-        connexionbdd.cpp
+        connexionbdd.cpp \
 
 HEADERS  += fenetreprincipale.h \
         connexionbdd.h \
-        controleur.h
+        controleur.h \
+    fenetrefacture.h
 
-FORMS    += fenetreprincipale.ui
+FORMS    += fenetreprincipale.ui \
+    facture.ui \
+    factureV2.ui
 
 DISTFILES += \
     TIA SERVICE.MDB

@@ -57,58 +57,63 @@ QSqlQuery ConnexionDDB::recupInfoLogin(QString& username,QString& password) {
     return query;
 }
 
-// Récupère l'id de la variable const QString& nom selon const QString& type
-QSqlQuery ConnexionDDB::recupererId(const QString& nom, const QString& type) {
+// Récupère l'id de la variable const QString& nom selon const QString& nomTable
+QSqlQuery ConnexionDDB::recupererId(const QString& nom, const QString& nomTable) {
     QSqlQuery query;
-    if(type == "Mention"){
+    if(nomTable == "Mention"){
         query.prepare("SELECT mt_id FROM mention WHERE mt_nom = :nom");
     }
-    else if(type == "Niveau"){
+    else if(nomTable == "Niveau"){
         query.prepare("SELECT nv_id FROM niveau WHERE nv_nom = :nom");
     }
-    else if(type == "Parcours"){
-        query.prepare("SELECT prc_id FROM parcours WHERE prc_nom = :nom");
+    else if(nomTable == "Faculte"){
+        query.prepare("SELECT fc_id FROM Faculte WHERE fc_nom = :nom");
     }
-    else if(type == "Formations"){
-        query.prepare("SELECT form_id FROM formations WHERE form_nom = :nom");
+    else if(nomTable == "Formations"){
+        query.prepare("SELECT form_id FROM Formations WHERE form_nom = :nom");
     }
-    else if(type == "Multi_Services"){
-        query.prepare("SELECT msrv_id FROM multi_services WHERE msrv_nom = :nom");
+    else if(nomTable == "Services"){
+        query.prepare("SELECT srv_id FROM services WHERE srv_nom = :nom");
+    }
+    else if(nomTable == "Etudiants"){
+        query.prepare("SELECT et_id FROM ETUDIANTS WHERE et_nom = :nom");
     }
     else{
-        qDebug() << "Le type de niveau en paramètre est inconnu : " << query.lastError();
+        qDebug() << "Le nomTable de niveau en paramètre est inconnu : " << query.lastError();
+        qDebug() << "Requête SQL: " << query.lastQuery();  // Affiche la requête SQL
+        qDebug() << "Le nom du truc : " << nom << "La table consulté : " << nomTable;
         return QSqlQuery();
     }
     query.bindValue(":nom", nom);
     return query;
 }
 
-// Récupère le nom selon la variable const QString& type
-QSqlQuery ConnexionDDB::recupNomParId(const QString& id, const QString& type){
+// Récupère le nom selon la variable const QString& nomTable
+QSqlQuery ConnexionDDB::recupNomParId(const QString& id, const QString& nomTable){
     QSqlQuery query;
-    if(type == "Mention"){
+    if(nomTable == "Mention"){
         query.prepare("SELECT mt_nom FROM mention WHERE mt_id = :id");
     }
-    else if(type == "Niveau"){
+    else if(nomTable == "Niveau"){
         query.prepare("SELECT nv_nom FROM niveau WHERE nv_id = :id");
     }
-    else if(type == "parcours"){
-        query.prepare("SELECT prc_nom FROM parcours WHERE prc_id = :id");
+    else if(nomTable == "Faculte"){
+        query.prepare("SELECT fc_nom FROM Faculte WHERE fc_id = :id");
     }
-    else if(type == "Formations"){
+    else if(nomTable == "Formations"){
         query.prepare("SELECT form_nom FROM formations WHERE form_id = :id");
     }
-    else if(type == "Multi_Services"){
-        query.prepare("SELECT msrv_nom FROM multi_services WHERE msrv_id = :id");
+    else if(nomTable == "Services"){
+        query.prepare("SELECT srv_nom FROM services WHERE srv_id = :id");
     }
-    else if(type == "EtudiantNom"){
+    else if(nomTable == "EtudiantNom"){
         query.prepare("SELECT et_nom FROM etudiants WHERE et_id = :id");
     }
-    else if(type == "EtudiantPrenom"){
+    else if(nomTable == "EtudiantPrenom"){
         query.prepare("SELECT et_prenom FROM etudiants WHERE et_id = :id");
     }
     else{
-        qDebug() << "Le type de niveau en paramètre est inconnu : " << query.lastError();
+        qDebug() << "Le nomTable de niveau en paramètre est inconnu : " << query.lastError();
         return QSqlQuery();
     }
     query.bindValue(":id", id);
@@ -150,6 +155,27 @@ QSqlQuery ConnexionDDB::recupererToutDe2(const QString& nomTable, const QString&
     return query;
 }
 
+QSqlQuery ConnexionDDB::recupSpecialTableLiee(const QString& nomTable, const int& id) {
+    QSqlQuery query;
+    if(nomTable == "Mention"){
+        query.prepare("SELECT mt_nom FROM MENTION WHERE fc_id = :id");
+    }
+    else if(nomTable == "Niveau"){
+        query.prepare("SELECT nv_nom FROM Niveau WHERE mt_id = :id");
+    }
+    else if(nomTable == "Transaction"){
+        query.prepare("SELECT trans_id FROM TRANSACTION WHERE et_id = :id");
+    }
+    else if(nomTable == "Achat"){
+        query.prepare("SELECT * FROM ACHAT WHERE trans_id = :id");
+    }
+    else{
+        return QSqlQuery();
+    }
+    query.bindValue(":id", id);
+    return query;
+}
+
 int ConnexionDDB::compterEntrees(const QString& nomTable) {
     QSqlQuery query;
 
@@ -166,15 +192,22 @@ int ConnexionDDB::compterEntrees(const QString& nomTable) {
     }
 }
 
-//
+QSqlQuery ConnexionDDB::obtenirDernierId(const QString& nomTable, const QString& nomColonneId) {
+    qDebug() << "----- Début de la récupération de l'id la plus haute -----";
+    QSqlQuery query;
+    QString requete = "SELECT MAX(" + nomColonneId + ") FROM " + nomTable;
+    query.prepare(requete);
+    return query;
+}
+
 bool ConnexionDDB::inscrireEtudiant(int& nbEtudiants, QString& nom, QString& prenom, QString& genre,
-                                    QDate& dateDeNaissance, int& idMention,
-                                    int& idNiveau, int& idParcours, int& codage,
-                                    bool& passant, int& telephone, QString& adresse){
+                                    QDate& dateDeNaissance, int& idFaculte, int& idMention,
+                                    int& idNiveau, int& codage,
+                                    bool& passant, int& telephone, QString& adresse, QDate& dateInscription){
     QSqlQuery query;
     // Construction de la requête d'insertion
-    query.prepare("INSERT INTO etudiants (et_id, mt_id, prc_id, nv_id, et_nom, et_prenom, et_genre, et_dateDeNaissance, et_codage, et_estpassant, et_numerotel, et_adresse) "
-                  "VALUES (:idEtudiant, :idMention, :idParcours, :idNiveau, :nom, :prenom, :genre, :dateDeNaissance, :codage, :passant, :telephone, :adresse)");
+    query.prepare("INSERT INTO etudiants (et_id, fc_id, mt_id, nv_id, et_nom, et_prenom, et_genre, et_dateDeNaissance, et_codage, et_estpassant, et_numerotel, et_adresse, et_dateInscription) "
+                  "VALUES (:idEtudiant, :idFaculte, :idMention, :idNiveau, :nom, :prenom, :genre, :dateDeNaissance, :codage, :passant, :telephone, :adresse, :dateInsciption)");
 
     // Binding des valeurs
     query.bindValue(":idEtudiant", nbEtudiants+1);
@@ -184,11 +217,12 @@ bool ConnexionDDB::inscrireEtudiant(int& nbEtudiants, QString& nom, QString& pre
     query.bindValue(":dateDeNaissance", dateDeNaissance);
     query.bindValue(":idMention", idMention);
     query.bindValue(":idNiveau", idNiveau);
-    query.bindValue(":idParcours", idParcours);
+    query.bindValue(":idFaculte", idFaculte);
     query.bindValue(":codage", codage);
     query.bindValue(":telephone", telephone);
     query.bindValue(":adresse", adresse);
     query.bindValue(":passant", passant);
+    query.bindValue(":dateInscription", dateInscription);
 
     // Exécution de la requête
     if (query.exec()) {
@@ -200,25 +234,24 @@ bool ConnexionDDB::inscrireEtudiant(int& nbEtudiants, QString& nom, QString& pre
     }
 }
 
-QSqlQuery ConnexionDDB::aUnDouble(QString& nom, QString& prenom, QString& genre,
-                                  QDate& dateDeNaissance, int& idMention,
-                                  int& idNiveau, int& idParcours, int& codage){
+QSqlQuery ConnexionDDB::aUnDouble(QString& nom, QString& prenom, int& idFaculte, int& idMention,
+                                  int& idNiveau){
     QSqlQuery query;
     // Construction de la requête d'insertion
-    query.prepare("SELECT * FROM etudiants WHERE mt_id = :idMention,"
-                  " prc_id = :idParcours, nv_id = :idNiveau, et_nom = :nom,"
-                  " et_prenom = :prenom, et_genre = :genre, "
-                  " et_dateDeNaissance = :dateDeNaissance, et_codage = :codage");
+    query.prepare("SELECT * FROM etudiants WHERE mt_id = :idMention AND"
+                  " fc_id = :idFaculte AND nv_id = :idNiveau AND et_nom = :nom AND"
+                  " et_prenom = :prenom");/* et_genre = :genre, "
+                  " et_dateDeNaissance = :dateDeNaissance, et_codage = :codage");*/
 
     // Binding des valeurs
     query.bindValue(":nom", nom);
     query.bindValue(":prenom", prenom);
-    query.bindValue(":genre", genre);
-    query.bindValue(":dateDeNaissance", dateDeNaissance);
+    query.bindValue(":idFaculte", idFaculte);
     query.bindValue(":idMention", idMention);
     query.bindValue(":idNiveau", idNiveau);
-    query.bindValue(":idParcours", idParcours);
-    query.bindValue(":codage", codage);
+    // query.bindValue(":codage", codage);
+    // query.bindValue(":genre", genre);
+    // query.bindValue(":dateDeNaissance", dateDeNaissance);
     return query;
 }
 
@@ -228,43 +261,40 @@ QSqlQuery ConnexionDDB::recupPrixDuChoix(int& idChoix, const QString& nomTable){
     QString idC = QString::number(idChoix);
     if(nomTable == "Formations")
         query.prepare("SELECT form_prix FROM " + nomTable + " WHERE form_id= " + idC);
-    else if(nomTable == "Multi_Services")
+    else if(nomTable == "Services")
         query.prepare("SELECT msrv_prix FROM " + nomTable + " WHERE msrv_id= " + idC);
     return query;
 }
 
-QSqlQuery ConnexionDDB::recupEtudiants(int& idMention, int& idNiveau, int& idParcours, int& idEtudiant) {
+QSqlQuery ConnexionDDB::recupEtudiants(int& idFaculte, int& idMention, int& idNiveau, int& idEtudiant) {
     QSqlQuery query;
     QString requete = "SELECT * FROM etudiants WHERE";
 
     // Construction de la clause WHERE
     if (idMention != -1) {
         requete += " MT_ID = :idMention";
-        if (idNiveau != -1 || idParcours != -1 || idEtudiant != -1) {
+        if (idNiveau != -1 || idFaculte != -1 || idEtudiant != -1) {
             requete += " AND";
         }
     }
-
     if (idNiveau != -1) {
         requete += " NV_ID = :idNiveau";
-        if (idParcours != -1 || idEtudiant != -1) {
+        if (idFaculte != -1 || idEtudiant != -1) {
             requete += " AND";
         }
     }
-
-    if (idParcours != -1) {
-        requete += " PRC_ID = :idParcours";
+    if (idFaculte != -1) {
+        requete += " FC_ID = :idFaculte";
     }
-
     if (idEtudiant != -1) {
-        if (idMention != -1 || idNiveau != -1 || idParcours != -1) {
+        if (idMention != -1 || idNiveau != -1 || idFaculte != -1) {
             requete += " AND";
         }
         requete += " ET_ID = :idEtudiant";
     }
 
     // Si aucun filtre n'est spécifié, retourner tous les étudiants
-    if (idMention == -1 && idNiveau == -1 && idParcours == -1 && idEtudiant == -1) {
+    if (idMention == -1 && idNiveau == -1 && idFaculte == -1 && idEtudiant == -1) {
         requete = "SELECT * FROM etudiants";
     }
 
@@ -275,17 +305,75 @@ QSqlQuery ConnexionDDB::recupEtudiants(int& idMention, int& idNiveau, int& idPar
         query.bindValue(":idMention", idMention);
         qDebug() << "Bind value en cours pour mention...";
     }
-
     if (idNiveau != -1) {
         query.bindValue(":idNiveau", idNiveau);
         qDebug() << "Bind value en cours pour niveau...";
     }
-
-    if (idParcours != -1) {
-        query.bindValue(":idParcours", idParcours);
-        qDebug() << "Bind value en cours pour parcours...";
+    if (idFaculte != -1) {
+        query.bindValue(":idFaculte", idFaculte);
+        qDebug() << "Bind value en cours pour Faculte...";
+    }
+    if (idEtudiant != -1) {
+        query.bindValue(":idEtudiant", idEtudiant);
+        qDebug() << "Bind value en cours pour etudiant...";
+    }
+    // Afficher les informations de débogage pour les paramètres et les valeurs liées
+    qDebug() << "Nombre de paramètres attendus: " << query.boundValueNames().count();
+    for (const auto& key : query.boundValueNames()) {
+        qDebug() << "Paramètre: " << key << ", Valeur liée: " << query.boundValue(key);
     }
 
+    qDebug() << "Requête SQL: " << query.lastQuery();  // Affiche la requête SQL
+    return query;
+}
+
+QSqlQuery ConnexionDDB::effacerEtudiants(int& idFaculte, int& idMention, int& idNiveau, int& idEtudiant) {
+    QSqlQuery query;
+    QString requete = "DELETE * FROM etudiants WHERE";
+
+    // Construction de la clause WHERE
+    if (idMention != -1) {
+        requete += " MT_ID = :idMention";
+        if (idNiveau != -1 || idFaculte != -1 || idEtudiant != -1) {
+            requete += " AND";
+        }
+    }
+    if (idNiveau != -1) {
+        requete += " NV_ID = :idNiveau";
+        if (idFaculte != -1 || idEtudiant != -1) {
+            requete += " AND";
+        }
+    }
+    if (idFaculte != -1) {
+        requete += " FC_ID = :idFaculte";
+    }
+    if (idEtudiant != -1) {
+        if (idMention != -1 || idNiveau != -1 || idFaculte != -1) {
+            requete += " AND";
+        }
+        requete += " ET_ID = :idEtudiant";
+    }
+
+    // Si aucun filtre n'est spécifié, retourner tous les étudiants
+    if (idMention == -1 && idNiveau == -1 && idFaculte == -1 && idEtudiant == -1) {
+        requete = "SELECT * FROM etudiants";
+    }
+
+    query.prepare(requete);
+
+    // Binding des valeurs des filtres
+    if (idMention != -1) {
+        query.bindValue(":idMention", idMention);
+        qDebug() << "Bind value en cours pour mention...";
+    }
+    if (idNiveau != -1) {
+        query.bindValue(":idNiveau", idNiveau);
+        qDebug() << "Bind value en cours pour niveau...";
+    }
+    if (idFaculte != -1) {
+        query.bindValue(":idFaculte", idFaculte);
+        qDebug() << "Bind value en cours pour Faculte...";
+    }
     if (idEtudiant != -1) {
         query.bindValue(":idEtudiant", idEtudiant);
         qDebug() << "Bind value en cours pour etudiant...";
@@ -301,26 +389,25 @@ QSqlQuery ConnexionDDB::recupEtudiants(int& idMention, int& idNiveau, int& idPar
 }
 
 // Mise à jour de la table élève
-bool ConnexionDDB::mettreAJourEleve(int& idEtudiant, int& idMention, int& idNiveau, int& idParcours,
-                                    QString& nom, QString& prenom, QDate& dateNaissance,
+bool ConnexionDDB::mettreAJourEleve(int& idEtudiant, int& idFaculte, int& idMention, int& idNiveau,
+                                    QString& nom, QString& prenom, QString& genre, QDate& dateNaissance,
                                     int& codage, bool& estPassant, int& numero, QString& adresse) {
 
     QSqlQuery query;
-    query.prepare("UPDATE eleve SET MT_ID = :idMention, NV_ID = :idNiveau, "
-                  "PRC_ID = :idParcours, ET_NOM = :nom, ET_PRENOM = :prenom, "
-                  "ET_DATEDENAISSANCE = :dateNaissance, ET_CODAGE = :codage, ET_ESTPASSANT = :estPassant, "
-                  "ET_NUMERO = :numero, ET_ADRESSE = :adresse"
+    query.prepare("UPDATE Etudiants SET MT_ID = :idMention, NV_ID = :idNiveau, FC_ID = :idFaculte, "
+                  "ET_NOM = :nom, ET_PRENOM = :prenom, ET_GENRE = :genre, ET_DATEDENAISSANCE = :dateNaissance, "
+                  "ET_CODAGE = :codage, ET_NUMERO = :numero, "
+                  "ET_ADRESSE = :adresse "
                   "WHERE ET_ID = :idEtudiant");
-
     query.bindValue(":idEtudiant", idEtudiant);
     query.bindValue(":idMention", idMention);
     query.bindValue(":idNiveau", idNiveau);
-    query.bindValue(":idParcours", idParcours);
+    query.bindValue(":idFaculte", idFaculte);
     query.bindValue(":nom", nom);
     query.bindValue(":prenom", prenom);
+    query.bindValue(":genre", genre);
     query.bindValue(":dateNaissance", dateNaissance);
     query.bindValue(":codage", codage);
-    query.bindValue(":estPassant", estPassant);
     query.bindValue(":numero", numero);
     query.bindValue(":adresse", adresse);
 
@@ -332,6 +419,100 @@ bool ConnexionDDB::mettreAJourEleve(int& idEtudiant, int& idMention, int& idNive
         return false;
     }
 }
+
+QSqlQuery ConnexionDDB::ajouterTransaction(int& idTransaction, int& idEtudiant, QDate& dateTransaction/*, double& montant*/){
+    qDebug() << "----- Début de l'ajout d'un Transaction -----";
+    QSqlQuery query;
+    query.prepare("INSERT INTO TRANSACTION (trans_id, et_id, trans_date) VALUES "
+                  "(:idTransaction, :idEtudiant, :dateTransaction)");/*, :montant*/ /*, fact_montant*/
+
+    query.bindValue(":idTransaction", idTransaction);
+    query.bindValue(":idEtudiant", idEtudiant);
+    query.bindValue(":dateTransaction", dateTransaction);/*
+    query.bindValue(":montant", montant);*/
+
+    qDebug() << "----- Fin de l'ajout d'un Transaction -----";
+    return query;
+}
+
+QSqlQuery ConnexionDDB::ajouterAchat(int& idAchat, int idService, int idFormation, int& nombre,
+                                     int& idTransaction, bool estPayee){
+    qDebug() << "----- Début de l'ajout d'un achat -----";
+    QSqlQuery query;
+    if(idService != -1){
+        query.prepare("INSERT INTO achat (achat_id, msrv_id, trans_id, achat_nombre, achat_estPaye) VALUES "
+                      "(:idAchat, :idService, :idTransaction, :nombre, :estPayee)");
+        query.bindValue(":idService", idService);
+    }
+    if(idFormation != -1){
+        query.prepare("INSERT INTO achat (achat_id, form_id, trans_id, achat_nombre, achat_estPaye) VALUES "
+                      "(:idAchat, :idFormation, :idTransaction, :nombre, :estPayee)");
+        query.bindValue(":idFormation", idFormation);
+    }
+    query.bindValue(":idAchat", idAchat);
+    query.bindValue(":idTransaction", idTransaction);
+    query.bindValue(":nombre", nombre);
+    query.bindValue(":estPayee", estPayee);
+    qDebug() << "----- Fin de l'ajout d'un Transaction -----";
+    return query;
+}
+
+QSqlQuery ConnexionDDB::enregistrerAdmin(const int idPersonnel, const QString& nomPersonnel, const QString& mdpPersonnel) {
+    QSqlQuery query;
+    query.prepare("INSERT INTO PERSONNEL (PERS_ID, PERS_NOM, PERS_MDP) VALUES (:idPersonnel, :nomPersonnel, :mdpPersonnel)");
+    query.bindValue(":idPersonnel", idPersonnel);
+    query.bindValue(":nomPersonnel", nomPersonnel);
+    query.bindValue(":mdpPersonnel", mdpPersonnel);
+    return query;
+}
+
+
+
+
+
+// QSqlQuery ConnexionDDB::ajouterMNP(const int idMention, const int idNP, const QString& nom, const QString nomTable){
+//     QSqlQuery query;
+//     if(nomTable == "Mention"){
+//         query.prepare("INSERT INTO MENTION (MT_ID, MT_NOM) VALUES (:idMention, :nom)");
+//         query.bindValue(":nom", nom);
+//     }
+//     else if(nomTable == "Niveau"){
+//         query.prepare("INSERT INTO NIVEAU (NV_ID, MT_ID, NV_NOM) VALUES (:idNiveau, :idMention, :nom)");
+//         query.bindValue(":idNiveau", idNP);
+//         query.bindValue(":nom", nom);
+//     }
+//     else if(nomTable == "Percours"){
+//         query.prepare("INSERT INTO PARCOURS (PRC_ID, MT_ID, PRC_NOM) VALUES (:idParcours, :idMention, :nom)");
+//         query.bindValue(":idParcours", idNP);
+//         query.bindValue(":nom", nom);
+//     }
+//     else{
+//         qDebug() << "Valeur de nom table non attendu : " << nomTable;
+//         return QSqlQuery();
+//     }
+//     query.bindValue(":idMention", idMention);
+//     return query;
+// }
+
+QSqlQuery ConnexionDDB::ajouterServiceOuFormation(const int idSF, const QString& nomSF, const double prixSF, const QString nomTable, QString& duree){
+    QSqlQuery query;
+    if(nomTable == "Services"){
+        query.prepare("INSERT INTO SERVICES (SRV_ID, SRV_NOM, SRV_PRIX) VALUES (:id, :nom, :prix)");
+    }
+    else if (nomTable == "Formation"){
+        query.prepare("INSERT INTO SERVICES (FORM_ID, FORM_NOM, FORM_PRIX, FORM_DUREE) VALUES (:id, :nom, :prix, :duree)");
+        query.bindValue(":duree", duree);
+    }
+    else {
+        qDebug() << "Valeur de nom table non attendu : " << nomTable;
+        return QSqlQuery();
+    }
+    query.bindValue(":id", idSF);
+    query.bindValue(":nom", nomSF);
+    query.bindValue(":prix", prixSF);
+    return query;
+}
+
 
 // Déconnecter l'utilisateur
 bool ConnexionDDB::logOut(){
@@ -348,6 +529,135 @@ void ConnexionDDB::fermerLaBase(){
 }
 
 
+QSqlQuery ConnexionDDB::ajouterFaculte(const int idFaculte, const QString& nomFaculte) {
+    QSqlQuery query;
+    query.prepare("INSERT INTO FACULTE (FC_ID, FC_NOM) VALUES (:idFaculte, :nomFaculte)");
+    query.bindValue(":idFaculte", idFaculte);
+    query.bindValue(":nomFaculte", nomFaculte);
+    return query;
+}
+
+QSqlQuery ConnexionDDB::ajouterMention(const int idMention, const int idFaculte, const QString& nomMention) {
+    QSqlQuery query;
+    query.prepare("INSERT INTO MENTION (MT_ID, FC_ID, MT_NOM) VALUES (:idMention, :idFaculte, :nomMention)");
+    query.bindValue(":idMention", idMention);
+    query.bindValue(":idFaculte", idFaculte);
+    query.bindValue(":nomMention", nomMention);
+    return query;
+}
+
+QSqlQuery ConnexionDDB::ajouterNiveau(const int idNiveau, const int idMention, const QString& nomNiveau) {
+    QSqlQuery query;
+    query.prepare("INSERT INTO NIVEAU (NV_ID, MT_ID, NV_NOM) VALUES (:idNiveau, :idMention, :nomNiveau)");
+    query.bindValue(":idNiveau", idNiveau);
+    query.bindValue(":idMention", idMention);
+    query.bindValue(":nomNiveau", nomNiveau);
+    return query;
+}
+
+bool ConnexionDDB::supprimerFMN(const int id, QString nomTable) {
+    QSqlQuery query;
+    bool success = true;
+
+    // Suppression en cascade des niveaux, mentions et facultés
+    if (nomTable == "Faculte") {
+        // Récupérer les IDs des mentions liées à la faculté
+        QVector<int> idMentions;
+        query.prepare("SELECT MT_ID FROM Mention WHERE FC_ID = :id");
+        query.bindValue(":id", id);
+        if (query.exec()) {
+            while (query.next()) {
+                idMentions.append(query.value(0).toInt());
+            }
+        } else {
+            qDebug() << "Erreur lors de la récupération des IDs des mentions liées à la faculté :" << query.lastError().text();
+            return false;
+        }
+
+        // Supprimer les niveaux liés aux mentions
+        for (int idMention : idMentions) {
+            query.prepare("DELETE FROM Niveau WHERE MT_ID = :idMention");
+            query.bindValue(":idMention", idMention);
+            if (!query.exec()) {
+                qDebug() << "Erreur lors de la suppression des niveaux liés à la mention :" << query.lastError().text();
+                success = false;
+            }
+        }
+
+        // Supprimer les mentions liées à la faculté
+        query.prepare("DELETE FROM Mention WHERE FC_ID = :id");
+        query.bindValue(":id", id);
+        if (!query.exec()) {
+            qDebug() << "Erreur lors de la suppression des mentions liées à la faculté :" << query.lastError().text();
+            success = false;
+        }
+
+        query.prepare("DELETE FROM Faculte WHERE FC_ID = :id");
+        query.bindValue(":id", id);
+        if (!query.exec()) {
+            qDebug() << "Erreur lors de la suppression du faculté :" << query.lastError().text();
+            success = false;
+        }
+    }
+    else if (nomTable == "Mention") {
+        // Supprimer les niveaux liés à la mention
+        query.prepare("DELETE FROM Niveau WHERE MT_ID = :id");
+        query.bindValue(":id", id);
+        if (!query.exec()) {
+            qDebug() << "Erreur lors de la suppression des niveaux liés à la mention :" << query.lastError().text();
+            return false;
+        }
+        // Supprimer les mentions liées à la faculté
+        query.prepare("DELETE FROM Mention WHERE MT_ID = :id");
+        query.bindValue(":id", id);
+        if (!query.exec()) {
+            qDebug() << "Erreur lors de la suppression du mention :" << query.lastError().text();
+            success = false;
+        }
+    }
+    else if (nomTable == "Niveau"){
+        // Supprimer les mentions liées à la faculté
+        query.prepare("DELETE FROM Niveau WHERE NV_ID = :id");
+        query.bindValue(":id", id);
+        if (!query.exec()) {
+            qDebug() << "Erreur lors de la suppression du niveau :" << query.lastError().text();
+            success = false;
+        }
+    }
+
+    return success;
+}
+
+
+
+QSqlQuery ConnexionDDB::ajouterFormation(int idFormation,QString& nomFormation,
+                                         double& prixFormation, QString& dureeFormation) {
+    QSqlQuery query;
+    query.prepare("INSERT INTO FORMATION (FORM_ID, FORM_NOM, FORM_PRIX, FORM_DUREE)"
+                  "VALUES (:idFormation, :nomFormation, :prixFormation, :dureeFormation)");
+    query.bindValue(":idFormation", idFormation);
+    query.bindValue(":nomFormation", nomFormation);
+    query.bindValue(":prixFormation", prixFormation);
+    query.bindValue(":dureeFormation", dureeFormation);
+    return query;
+}
+
+QSqlQuery ConnexionDDB::ajouterService(const int idService, const QString& nomService, const QString& prixService) {
+    QSqlQuery query;
+    query.prepare("INSERT INTO SERVICES (SRV_ID, SRV_NOM, SRV_PRIX)"
+                  "VALUES (:idService, :nomService, :prixService)");
+    query.bindValue(":idService", idService);
+    query.bindValue(":nomService", nomService);
+    query.bindValue(":prixService", prixService);
+    return query;
+}
+
+QSqlQuery ConnexionDDB::definirSurPaye(int idTransaction){
+    QSqlQuery query;
+    query.prepare("UPDATE ACHAT SET ACHAT_ESTPAYE = true WHERE trans_id = :idTransaction");
+    query.bindValue(":idTransaction", idTransaction);
+    return query;
+}
 
 // QSqlQuery ConnexionDDB::recupEtudiants(int& idMention, int& idParcours, int& idNiveau, int& idEtudiant) {
 
@@ -391,4 +701,49 @@ void ConnexionDDB::fermerLaBase(){
 //     //     qDebug() << "La mention est vide !";
 //     // }
 //     // requete += conditions;
+// }
+
+
+// QSqlQuery ConnexionDDB::ajouterMention(const int idMention, const QString& nomMention) {
+//     QSqlQuery query;
+//     query.prepare("INSERT INTO MENTION (MT_ID, MT_NOM) VALUES (:idMention, :nomMention)");
+//     query.bindValue(":idMention", idMention);
+//     query.bindValue(":nomMention", nomMention);
+//     return query;
+// }
+
+// QSqlQuery ConnexionDDB::ajouterNiveau(const int idNiveau, const QString& nomNiveau) {
+//     QSqlQuery query;
+//     query.prepare("INSERT INTO NIVEAU (NV_ID, MT_ID, NV_NOM) VALUES (:idNiveau, :idMention, :nomNiveau)");
+//     query.bindValue(":idNiveau", idNiveau);
+//     query.bindValue(":idMention", idMention);
+//     query.bindValue(":nomNiveau", nomNiveau);
+//     return query;
+// }
+
+// QSqlQuery ConnexionDDB::ajouterParcours(const int idParcours, const QString& nomParcours) {
+//     QSqlQuery query;
+//     query.prepare("INSERT INTO PARCOURS (PRC_ID, MT_ID, PRC_NOM) VALUES (:idParcours, :idMention, :nomParcours)");
+//     query.bindValue(":idParcours", idParcours);
+//     query.bindValue(":idMention", idMention);
+//     query.bindValue(":nomParcours", nomParcours);
+//     return query;
+// }
+
+// QSqlQuery ConnexionDDB::ajouterFormation(const int idFormation, const QString& nomFormation) {
+//     QSqlQuery query;
+//     query.prepare("INSERT INTO PARCOURS (FORM_ID, MT_NOM) VALUES (:idParcours, :idMention, :nomParcours)");
+//     query.bindValue(":idParcours", idParcours);
+//     query.bindValue(":idMention", idMention);
+//     query.bindValue(":nomParcours", nomParcours);
+//     return query;
+// }
+
+// QSqlQuery ConnexionDDB::ajouterService(const int idService, const QString& nomService) {
+//     QSqlQuery query;
+//     query.prepare("INSERT INTO SERVICES (MT_ID, MT_NOM) VALUES (:idParcours, :idMention, :nomParcours)");
+//     query.bindValue(":idParcours", idParcours);
+//     query.bindValue(":idMention", idMention);
+//     query.bindValue(":nomParcours", nomParcours);
+//     return query;
 // }

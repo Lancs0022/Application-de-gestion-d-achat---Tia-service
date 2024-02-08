@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>FenetrePrincipale</class>
- <widget class="QMainWindow" name="FenetrePrincipale">
+ <class>Fenetre_Principale</class>
+ <widget class="QMainWindow" name="Fenetre_Principale">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -16,7 +16,7 @@
   <property name="autoFillBackground">
    <bool>true</bool>
   </property>
-  <widget class="QWidget" name="centralWidget">
+  <widget class="QWidget" name="ongletCentrale">
    <widget class="QStackedWidget" name="stackedWidget">
     <property name="geometry">
      <rect>
@@ -27,7 +27,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>5</number>
+     <number>6</number>
     </property>
     <widget class="QWidget" name="NonConnecte">
      <widget class="QLabel" name="nc_Message">
@@ -146,14 +146,14 @@ parcourir le programme</string>
         </widget>
        </item>
        <item row="4" column="0">
-        <widget class="QLabel" name="motDePasseLabel">
+        <widget class="QLabel" name="sc_motDePasseLabel">
          <property name="text">
           <string>Mot de passe	: </string>
          </property>
         </widget>
        </item>
        <item row="3" column="0">
-        <widget class="QLabel" name="utilisateurLabel">
+        <widget class="QLabel" name="sc_utilisateurLabel">
          <property name="text">
           <string>Utilisateur	:</string>
          </property>
@@ -271,134 +271,32 @@ parcourir le programme</string>
           <x>130</x>
           <y>20</y>
           <width>461</width>
-          <height>191</height>
+          <height>207</height>
          </rect>
         </property>
         <layout class="QGridLayout" name="gridLayout_4">
-         <item row="0" column="0">
-          <widget class="QLabel" name="lstEt_mentionLabel">
-           <property name="text">
-            <string>Mention de l'étudiant	:</string>
-           </property>
-          </widget>
-         </item>
-         <item row="6" column="2">
-          <widget class="QCheckBox" name="lstEt_nomEtudiantCheckBox">
-           <property name="text">
-            <string/>
-           </property>
-          </widget>
-         </item>
-         <item row="5" column="2">
-          <widget class="QCheckBox" name="lstEt_idEtudiantCheckBox">
-           <property name="text">
-            <string/>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="0">
-          <widget class="QLabel" name="lstEt_niveauLabel">
-           <property name="text">
-            <string>Niveau de l'étudiant	:</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="1">
-          <widget class="QComboBox" name="lstEt_parcoursComboBox">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-           <item>
-            <property name="text">
-             <string>Entrez le parcours de l'étudiant :</string>
-            </property>
-           </item>
-          </widget>
-         </item>
-         <item row="1" column="1">
-          <widget class="QComboBox" name="lstEt_niveauComboBox">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-           <item>
-            <property name="text">
-             <string>Renseignez le niveau de l'étudiant :</string>
-            </property>
-           </item>
-          </widget>
-         </item>
-         <item row="5" column="0">
+         <item row="6" column="0">
           <widget class="QLabel" name="lstEt_idEtudiantLabel">
            <property name="text">
             <string>ID de l'étudiant		:</string>
            </property>
           </widget>
          </item>
-         <item row="5" column="1">
-          <widget class="QComboBox" name="lstEt_idEtudiantComboBox">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-           <property name="currentIndex">
-            <number>0</number>
-           </property>
-           <item>
-            <property name="text">
-             <string>Entrez l'id de l'étudiant :</string>
-            </property>
-           </item>
-          </widget>
-         </item>
-         <item row="6" column="1">
-          <widget class="QLineEdit" name="lstEt_nomEtudiantLineEdit">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="0">
-          <widget class="QLabel" name="lstEt_parcoursLabel">
-           <property name="text">
-            <string>Parcours de l'étudiant	:</string>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="0" colspan="2">
-          <widget class="Line" name="lstEt_line1">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="2">
-          <widget class="QCheckBox" name="lstEt_niveauCheckBox">
+         <item row="6" column="2">
+          <widget class="QCheckBox" name="lstEt_idEtudiantCheckBox">
            <property name="text">
             <string/>
            </property>
           </widget>
          </item>
-         <item row="0" column="2">
-          <widget class="QCheckBox" name="lstEt_mentionCheckBox">
-           <property name="text">
-            <string/>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="2">
-          <widget class="QCheckBox" name="lstEt_parcoursCheckBox">
-           <property name="text">
-            <string/>
-           </property>
-          </widget>
-         </item>
-         <item row="6" column="0">
+         <item row="7" column="0">
           <widget class="QLabel" name="lstEt_nomEtudiantLabel">
            <property name="text">
             <string>Nom de l'étudiant	:</string>
            </property>
           </widget>
          </item>
-         <item row="0" column="1">
+         <item row="1" column="1">
           <widget class="QComboBox" name="lstEt_mentionComboBox">
            <property name="enabled">
             <bool>false</bool>
@@ -407,129 +305,115 @@ parcourir le programme</string>
             <bool>false</bool>
            </property>
            <property name="currentIndex">
-            <number>0</number>
+            <number>-1</number>
            </property>
-           <item>
-            <property name="text">
-             <string>Entrez la mention de l'étudiant :</string>
-            </property>
-           </item>
+           <property name="placeholderText">
+            <string>Entrez la mention de l'étudiant :</string>
+           </property>
           </widget>
          </item>
-         <item row="7" column="0" colspan="3">
+         <item row="7" column="2">
+          <widget class="QCheckBox" name="lstEt_nomEtudiantCheckBox">
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="lstEt_mentionLabel">
+           <property name="text">
+            <string>Mention de l'étudiant	:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="2">
+          <widget class="QCheckBox" name="lstEt_mentionCheckBox">
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QComboBox" name="lstEt_niveauComboBox">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="placeholderText">
+            <string>Renseignez le niveau de l'étudiant :</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="lstEt_niveauLabel">
+           <property name="text">
+            <string>Niveau de l'étudiant	:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="8" column="0" colspan="3">
           <widget class="QPushButton" name="lstEt_Rechercher">
            <property name="text">
             <string>Rechercher</string>
            </property>
           </widget>
          </item>
-        </layout>
-       </widget>
-      </widget>
-      <widget class="QWidget" name="listeTransaction">
-       <attribute name="title">
-        <string>Page</string>
-       </attribute>
-       <widget class="QTableWidget" name="tableWidget_2">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>240</y>
-          <width>701</width>
-          <height>331</height>
-         </rect>
-        </property>
-       </widget>
-       <widget class="QWidget" name="layoutWidget_5">
-        <property name="geometry">
-         <rect>
-          <x>140</x>
-          <y>40</y>
-          <width>441</width>
-          <height>176</height>
-         </rect>
-        </property>
-        <layout class="QFormLayout" name="formLayout_16">
-         <item row="0" column="0">
-          <widget class="QLabel" name="lstT_mentionLabel">
+         <item row="6" column="1">
+          <widget class="QComboBox" name="lstEt_idEtudiantComboBox">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="currentIndex">
+            <number>-1</number>
+           </property>
+           <property name="placeholderText">
+            <string>Entrez l'id de l'étudiant :</string>
+           </property>
+          </widget>
+         </item>
+         <item row="7" column="1">
+          <widget class="QLineEdit" name="lstEt_nomEtudiantLineEdit">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="2">
+          <widget class="QCheckBox" name="lstEt_niveauCheckBox">
            <property name="text">
-            <string>Mention de l'étudiant	:</string>
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="0" colspan="2">
+          <widget class="Line" name="lstEt_line1">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0">
+          <widget class="QLabel" name="lstEt_faculteLabel">
+           <property name="text">
+            <string>Faculté de l'étudiant	:</string>
            </property>
           </widget>
          </item>
          <item row="0" column="1">
-          <widget class="QComboBox" name="lstT_mentionComboBox">
-           <item>
-            <property name="text">
-             <string>Entrez la mention de l'étudiant :</string>
-            </property>
-           </item>
-          </widget>
-         </item>
-         <item row="1" column="0">
-          <widget class="QLabel" name="lstT_niveauLabel">
-           <property name="text">
-            <string>Niveau de l'étudiant	:</string>
+          <widget class="QComboBox" name="lstEt_faculteComboBox">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="placeholderText">
+            <string>Entrez le parcours de l'étudiant :</string>
            </property>
           </widget>
          </item>
-         <item row="1" column="1">
-          <widget class="QComboBox" name="lstT_niveauComboBox">
-           <item>
-            <property name="text">
-             <string>Renseignez le niveau de l'étudiant :</string>
-            </property>
-           </item>
-          </widget>
-         </item>
-         <item row="2" column="0">
-          <widget class="QLabel" name="lstT_parcoursLabel">
+         <item row="0" column="2">
+          <widget class="QCheckBox" name="lstEt_faculteCheckBox">
            <property name="text">
-            <string>Parcours de l'étudiant	:</string>
+            <string/>
            </property>
           </widget>
-         </item>
-         <item row="2" column="1">
-          <widget class="QComboBox" name="lstT_parcoursComboBox">
-           <item>
-            <property name="text">
-             <string>Entrez le parcours de l'étudiant :</string>
-            </property>
-           </item>
-          </widget>
-         </item>
-         <item row="3" column="0">
-          <widget class="QLabel" name="lstT_codageLabel">
-           <property name="text">
-            <string>Codage de l'étudiant	:</string>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="1">
-          <widget class="QComboBox" name="lstT_codageComboBox">
-           <item>
-            <property name="text">
-             <string>Entrez le codage de l'étudiant :</string>
-            </property>
-           </item>
-          </widget>
-         </item>
-         <item row="5" column="0" colspan="2">
-          <widget class="QPushButton" name="lstT_Enregister">
-           <property name="text">
-            <string>PushButton</string>
-           </property>
-          </widget>
-         </item>
-         <item row="4" column="0">
-          <widget class="QLabel" name="lstT_idFactureLabel">
-           <property name="text">
-            <string>ID de facture		:</string>
-           </property>
-          </widget>
-         </item>
-         <item row="4" column="1">
-          <widget class="QComboBox" name="lstT_idFactureComboBox"/>
          </item>
         </layout>
        </widget>
@@ -538,6 +422,9 @@ parcourir le programme</string>
     </widget>
     <widget class="QWidget" name="Insertion">
      <widget class="QTabWidget" name="ongletInsertion">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>0</x>
@@ -550,7 +437,7 @@ parcourir le programme</string>
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>4</number>
       </property>
       <property name="elideMode">
        <enum>Qt::ElideNone</enum>
@@ -660,34 +547,46 @@ parcourir le programme</string>
           </widget>
          </item>
          <item row="4" column="0">
+          <widget class="QLabel" name="inscEt_faculteLabel">
+           <property name="text">
+            <string>Faculté		 :</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="1">
+          <widget class="QComboBox" name="inscEt_faculteComboBox">
+           <property name="placeholderText">
+            <string>- Non spécifié -</string>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="0">
           <widget class="QLabel" name="inscEt_mentionLabel">
            <property name="text">
             <string>Mention		 :</string>
            </property>
           </widget>
          </item>
-         <item row="4" column="1">
-          <widget class="QComboBox" name="inscEt_mentionComboBox"/>
+         <item row="5" column="1">
+          <widget class="QComboBox" name="inscEt_mentionComboBox">
+           <property name="placeholderText">
+            <string>- Non spécifié -</string>
+           </property>
+          </widget>
          </item>
-         <item row="5" column="0">
+         <item row="6" column="0">
           <widget class="QLabel" name="inscEt_niveauLabel">
            <property name="text">
             <string>Niveau		 :</string>
            </property>
           </widget>
          </item>
-         <item row="5" column="1">
-          <widget class="QComboBox" name="inscEt_niveauComboBox"/>
-         </item>
-         <item row="6" column="0">
-          <widget class="QLabel" name="inscEt_parcoursLabel">
-           <property name="text">
-            <string>Parcours		 :</string>
+         <item row="6" column="1">
+          <widget class="QComboBox" name="inscEt_niveauComboBox">
+           <property name="placeholderText">
+            <string>- Non spécifié -</string>
            </property>
           </widget>
-         </item>
-         <item row="6" column="1">
-          <widget class="QComboBox" name="inscEt_parcoursComboBox"/>
          </item>
          <item row="7" column="0">
           <widget class="QLabel" name="inscEt_codageLabel">
@@ -858,9 +757,14 @@ parcourir le programme</string>
           <x>10</x>
           <y>220</y>
           <width>701</width>
-          <height>351</height>
+          <height>311</height>
          </rect>
         </property>
+        <column>
+         <property name="text">
+          <string>Type</string>
+         </property>
+        </column>
         <column>
          <property name="text">
           <string>Designation</string>
@@ -879,6 +783,11 @@ parcourir le programme</string>
         <column>
          <property name="text">
           <string>Montant</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string/>
          </property>
         </column>
        </widget>
@@ -901,11 +810,9 @@ parcourir le programme</string>
          </item>
          <item row="0" column="1">
           <widget class="QComboBox" name="inscAchat_identifiantComboBox">
-           <item>
-            <property name="text">
-             <string>Entrez l'identifiant de l'étudiant :</string>
-            </property>
-           </item>
+           <property name="placeholderText">
+            <string>Entrez l'identifiant de l'étudiant :</string>
+           </property>
           </widget>
          </item>
          <item row="0" column="2">
@@ -917,48 +824,59 @@ parcourir le programme</string>
          </item>
         </layout>
        </widget>
+       <widget class="QPushButton" name="inscAchat_confirmCmdPushButton">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>540</y>
+          <width>80</width>
+          <height>24</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Confirmer</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="inscAchat_suppCmdPushButton">
+        <property name="geometry">
+         <rect>
+          <x>90</x>
+          <y>540</y>
+          <width>80</width>
+          <height>24</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Effacer</string>
+        </property>
+       </widget>
       </widget>
       <widget class="QWidget" name="insc_payement">
        <attribute name="title">
         <string>Payements</string>
        </attribute>
-       <widget class="QTableWidget" name="tableWidget_3">
-        <property name="geometry">
-         <rect>
-          <x>260</x>
-          <y>210</y>
-          <width>211</width>
-          <height>111</height>
-         </rect>
-        </property>
-        <column>
-         <property name="text">
-          <string>Facture n°</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>Montant</string>
-         </property>
-        </column>
-       </widget>
        <widget class="QWidget" name="gridLayoutWidget_4">
         <property name="geometry">
          <rect>
-          <x>45</x>
-          <y>80</y>
-          <width>581</width>
-          <height>41</height>
+          <x>50</x>
+          <y>20</y>
+          <width>621</width>
+          <height>111</height>
          </rect>
         </property>
         <layout class="QGridLayout" name="gridLayout_3">
-         <item row="0" column="1">
-          <widget class="QComboBox" name="inscP_identifiantComboBox">
-           <item>
-            <property name="text">
-             <string>Entrez l'identifiant de l'étudiant :</string>
-            </property>
-           </item>
+         <item row="0" column="2">
+          <widget class="QLineEdit" name="inscP_nomEtudiantLineEdit">
+           <property name="readOnly">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="inscP_idTransactionLabel">
+           <property name="text">
+            <string>Id de transaction	:</string>
+           </property>
           </widget>
          </item>
          <item row="0" column="0">
@@ -968,68 +886,205 @@ parcourir le programme</string>
            </property>
           </widget>
          </item>
-         <item row="0" column="2">
-          <widget class="QLineEdit" name="inscP_nomEtudiantLineEdit">
-           <property name="readOnly">
+         <item row="1" column="1" colspan="2">
+          <widget class="QComboBox" name="inscP_idTransactionComboBox">
+           <property name="placeholderText">
+            <string>Entrez l'id de la transaction</string>
+           </property>
+           <property name="duplicatesEnabled">
+            <bool>false</bool>
+           </property>
+           <property name="frame">
             <bool>true</bool>
            </property>
           </widget>
          </item>
+         <item row="0" column="1">
+          <widget class="QComboBox" name="inscP_identifiantComboBox">
+           <property name="placeholderText">
+            <string>Entrez l'identifiant de l'étudiant :</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0" colspan="3">
+          <widget class="Line" name="line">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="2">
+          <widget class="QPushButton" name="inscP_vPaiementPushButton">
+           <property name="text">
+            <string>Définir comme étant payé</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="0" colspan="2">
+          <widget class="QPushButton" name="inscP_imprimerFacturePushButton">
+           <property name="text">
+            <string>Imprimer la facture</string>
+           </property>
+          </widget>
+         </item>
         </layout>
+        <zorder>inscP_idTransactionComboBox</zorder>
+        <zorder>inscP_identifiantComboBox</zorder>
+        <zorder>inscP_identifiantLabel</zorder>
+        <zorder>inscP_nomEtudiantLineEdit</zorder>
+        <zorder>inscP_idTransactionLabel</zorder>
+        <zorder>inscP_vPaiementPushButton</zorder>
+        <zorder>line</zorder>
+        <zorder>inscP_imprimerFacturePushButton</zorder>
+       </widget>
+       <widget class="QTableWidget" name="inscP_commandeTableWidget">
+        <property name="geometry">
+         <rect>
+          <x>50</x>
+          <y>150</y>
+          <width>621</width>
+          <height>411</height>
+         </rect>
+        </property>
+        <column>
+         <property name="text">
+          <string>Type</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Designation</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Quantité</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Prix</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Montant</string>
+         </property>
+        </column>
        </widget>
       </widget>
       <widget class="QWidget" name="insc_Form_Msrv">
        <attribute name="title">
         <string>Formations et services</string>
        </attribute>
-       <widget class="QWidget" name="gridLayoutWidget_2">
+       <widget class="QWidget" name="formLayoutWidget_2">
         <property name="geometry">
          <rect>
-          <x>90</x>
-          <y>160</y>
-          <width>551</width>
-          <height>111</height>
+          <x>10</x>
+          <y>90</y>
+          <width>321</width>
+          <height>117</height>
          </rect>
         </property>
-        <layout class="QGridLayout" name="inscFM_gridLayout" columnstretch="1,3,2">
-         <property name="horizontalSpacing">
-          <number>6</number>
-         </property>
-         <item row="0" column="1">
-          <widget class="QLineEdit" name="inscFM_formLineEdit"/>
-         </item>
+        <layout class="QFormLayout" name="formLayout_2">
          <item row="0" column="0">
-          <widget class="QLabel" name="inscFM_formLabel">
+          <widget class="QLabel" name="inscFM_nomFormLabel">
            <property name="text">
-            <string>Nom de la nouvelle formation	:</string>
+            <string>Nom de la formation	:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QLineEdit" name="inscFM_nomFormLineEdit"/>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="inscFM_prixFormLabel">
+           <property name="text">
+            <string>Prix de la formation	:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="inscFM_dureeFormLabel">
+           <property name="text">
+            <string>Durée de la formation	:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QLineEdit" name="inscFM_dureeFormLineEdit"/>
+         </item>
+         <item row="3" column="0" colspan="2">
+          <widget class="QPushButton" name="inscFM_EnregistrerF">
+           <property name="text">
+            <string>Enregistrer</string>
            </property>
           </widget>
          </item>
          <item row="1" column="1">
-          <widget class="QLineEdit" name="inscFM_srvLineEdit"/>
-         </item>
-         <item row="1" column="0">
-          <widget class="QLabel" name="inscFM_srvLabel">
-           <property name="text">
-            <string>Nom du nouveau service		:</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="2">
-          <widget class="QPushButton" name="inscFM_Enregistrer">
-           <property name="text">
-            <string>Enregistrer</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="2">
-          <widget class="QPushButton" name="inscFM_Enregistrer_2">
-           <property name="text">
-            <string>Enregistrer</string>
+          <widget class="QDoubleSpinBox" name="inscFM_prixFormDoubleSpinBox">
+           <property name="maximum">
+            <double>100000000.989999994635582</double>
            </property>
           </widget>
          </item>
         </layout>
+       </widget>
+       <widget class="QWidget" name="formLayoutWidget_3">
+        <property name="geometry">
+         <rect>
+          <x>370</x>
+          <y>100</y>
+          <width>341</width>
+          <height>87</height>
+         </rect>
+        </property>
+        <layout class="QFormLayout" name="formLayout_3">
+         <item row="0" column="0">
+          <widget class="QLabel" name="inscSV_nomSrvLabel">
+           <property name="text">
+            <string>Nom du service	:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QLineEdit" name="inscSV_nomSrvLineEdit"/>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="inscSV_prixSrvLabel">
+           <property name="text">
+            <string>Prix du service	:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0" colspan="2">
+          <widget class="QPushButton" name="inscSV_EnregistrerS">
+           <property name="text">
+            <string>Enregistrer</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QDoubleSpinBox" name="inscSV_prixSrvDoubleSpinBox">
+           <property name="maximum">
+            <double>10000000000.000000000000000</double>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QLabel" name="inscFS_Message">
+        <property name="geometry">
+         <rect>
+          <x>290</x>
+          <y>40</y>
+          <width>49</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
        </widget>
       </widget>
       <widget class="QWidget" name="insc_MentionNvPrc">
@@ -1049,42 +1104,46 @@ parcourir le programme</string>
           <height>91</height>
          </rect>
         </property>
-        <layout class="QFormLayout" name="inscNv">
+        <layout class="QFormLayout" name="inscMt">
          <item row="0" column="0">
-          <widget class="QLabel" name="inscNv_mentionLabel">
+          <widget class="QLabel" name="inscMt_faculteLabel">
            <property name="text">
-            <string>Mention	 :</string>
+            <string>Faculté	:</string>
            </property>
           </widget>
          </item>
          <item row="1" column="0">
-          <widget class="QLabel" name="InscNv_niveauLabel">
+          <widget class="QLabel" name="inscMt_mentionLabel">
            <property name="text">
-            <string>Niveau	:</string>
+            <string>Mention	:</string>
            </property>
           </widget>
          </item>
          <item row="2" column="0" colspan="2">
-          <widget class="QPushButton" name="InscNv_Enregistrer">
+          <widget class="QPushButton" name="inscMt_Enregistrer">
            <property name="text">
             <string>Enregistrer</string>
            </property>
           </widget>
          </item>
          <item row="0" column="1">
-          <widget class="QComboBox" name="inscNv_mentionComboBox"/>
+          <widget class="QComboBox" name="inscMt_faculteComboBox">
+           <property name="placeholderText">
+            <string>- Non spécifié -</string>
+           </property>
+          </widget>
          </item>
          <item row="1" column="1">
-          <widget class="QLineEdit" name="inscNv_niveauLineEdit"/>
+          <widget class="QLineEdit" name="inscMt_mentionLineEdit"/>
          </item>
         </layout>
        </widget>
-       <widget class="QLabel" name="inscNv_Message">
+       <widget class="QLabel" name="inscMt_Message">
         <property name="geometry">
          <rect>
           <x>90</x>
           <y>60</y>
-          <width>171</width>
+          <width>181</width>
           <height>31</height>
          </rect>
         </property>
@@ -1094,7 +1153,7 @@ parcourir le programme</string>
          </font>
         </property>
         <property name="text">
-         <string>Enregistrer un nouveau niveau</string>
+         <string>Enregistrer un nouveau mention</string>
         </property>
        </widget>
        <widget class="QWidget" name="formLayoutWidget_8">
@@ -1103,36 +1162,54 @@ parcourir le programme</string>
           <x>360</x>
           <y>100</y>
           <width>311</width>
-          <height>91</height>
+          <height>116</height>
          </rect>
         </property>
-        <layout class="QFormLayout" name="inscPrc">
-         <item row="0" column="0">
-          <widget class="QLabel" name="inscPrc_mentionLabel">
-           <property name="text">
-            <string>Mention	 :</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="1">
-          <widget class="QComboBox" name="inscPrc_mentionComboBox"/>
-         </item>
+        <layout class="QFormLayout" name="inscNv">
          <item row="1" column="0">
-          <widget class="QLabel" name="inscPrc_parcoursLabel">
+          <widget class="QLabel" name="inscNv_mentionLabel">
            <property name="text">
-            <string>Parcours	:</string>
+            <string>Mention	:</string>
            </property>
           </widget>
          </item>
-         <item row="2" column="0" colspan="2">
-          <widget class="QPushButton" name="inscPrc_Enregistrer">
+         <item row="1" column="1">
+          <widget class="QComboBox" name="inscNv_mentionComboBox">
+           <property name="placeholderText">
+            <string>- Non spécifié -</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="inscNv_niveauLabel">
+           <property name="text">
+            <string>Niveau	:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QLineEdit" name="inscNv_niveauLineEdit"/>
+         </item>
+         <item row="3" column="0" colspan="2">
+          <widget class="QPushButton" name="inscNv_Enregistrer">
            <property name="text">
             <string>Enregistrer</string>
            </property>
           </widget>
          </item>
-         <item row="1" column="1">
-          <widget class="QLineEdit" name="inscPrc_parcoursLineEdit"/>
+         <item row="0" column="0">
+          <widget class="QLabel" name="inscNv_faculteLabel">
+           <property name="text">
+            <string>Faculté	:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QComboBox" name="inscNv_faculteComboBox">
+           <property name="placeholderText">
+            <string>- Non spécifié -</string>
+           </property>
+          </widget>
          </item>
         </layout>
        </widget>
@@ -1145,19 +1222,19 @@ parcourir le programme</string>
           <height>61</height>
          </rect>
         </property>
-        <layout class="QFormLayout" name="InscMt">
+        <layout class="QFormLayout" name="InscFc">
          <item row="0" column="0">
-          <widget class="QLabel" name="InscMt_nomMentionLabel">
+          <widget class="QLabel" name="inscFc_nomFaculteLabel">
            <property name="text">
-            <string>Mention	 :</string>
+            <string>Faculté	 :</string>
            </property>
           </widget>
          </item>
          <item row="0" column="1">
-          <widget class="QLineEdit" name="InscMt_nomMentionLineEdit"/>
+          <widget class="QLineEdit" name="inscFc_nomFaculteLineEdit"/>
          </item>
          <item row="1" column="0" colspan="2">
-          <widget class="QPushButton" name="InscMt_Enregistrer">
+          <widget class="QPushButton" name="inscFc_Enregistrer">
            <property name="text">
             <string>Enregistrer</string>
            </property>
@@ -1165,7 +1242,7 @@ parcourir le programme</string>
          </item>
         </layout>
        </widget>
-       <widget class="QLabel" name="inscPrc_Message">
+       <widget class="QLabel" name="inscNv_Message">
         <property name="geometry">
          <rect>
           <x>430</x>
@@ -1175,10 +1252,10 @@ parcourir le programme</string>
          </rect>
         </property>
         <property name="text">
-         <string>Enregistrer un nouveau parcours</string>
+         <string>Enregistrer un nouveau niveau</string>
         </property>
        </widget>
-       <widget class="QLabel" name="inscMt_Message">
+       <widget class="QLabel" name="inscFc_Message">
         <property name="geometry">
          <rect>
           <x>260</x>
@@ -1188,7 +1265,7 @@ parcourir le programme</string>
          </rect>
         </property>
         <property name="text">
-         <string>Enregistrer une nouvelle mention</string>
+         <string>Enregistrer une nouvelle faculté</string>
         </property>
        </widget>
       </widget>
@@ -1275,6 +1352,9 @@ parcourir le programme</string>
     </widget>
     <widget class="QWidget" name="Modifications">
      <widget class="QTabWidget" name="ongletModification">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>0</x>
@@ -1283,12 +1363,15 @@ parcourir le programme</string>
         <height>621</height>
        </rect>
       </property>
+      <property name="tabShape">
+       <enum>QTabWidget::Rounded</enum>
+      </property>
       <property name="currentIndex">
        <number>0</number>
       </property>
-      <widget class="QWidget" name="mod_eleve">
+      <widget class="QWidget" name="mod_Et">
        <attribute name="title">
-        <string>Modier les information d'un élève</string>
+        <string>Modier les information d'un étudiant</string>
        </attribute>
        <widget class="QLabel" name="modEt_Message">
         <property name="geometry">
@@ -1308,13 +1391,46 @@ parcourir le programme</string>
          <string>Renseignez La classe et l'élève de l'étudiant à chercher</string>
         </property>
        </widget>
+       <widget class="QWidget" name="gridLayoutWidget_6">
+        <property name="geometry">
+         <rect>
+          <x>60</x>
+          <y>40</y>
+          <width>581</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_5">
+         <item row="0" column="0">
+          <widget class="QLabel" name="modEt_identifiantLabel">
+           <property name="text">
+            <string>Identifiant de l'étudiant	:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QComboBox" name="modEt_identifiantComboBox">
+           <property name="placeholderText">
+            <string>Entrez l'identifiant de l'étudiant :</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="2">
+          <widget class="QLineEdit" name="modEt_nomEtudiantLineEdit">
+           <property name="readOnly">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
        <widget class="QWidget" name="formLayoutWidget_12">
         <property name="geometry">
          <rect>
           <x>150</x>
           <y>110</y>
           <width>411</width>
-          <height>424</height>
+          <height>404</height>
          </rect>
         </property>
         <layout class="QFormLayout" name="formLayout_10">
@@ -1345,6 +1461,16 @@ parcourir le programme</string>
            </property>
           </widget>
          </item>
+         <item row="3" column="0">
+          <widget class="QLabel" name="modEt_dateDeNaissanceLabel">
+           <property name="text">
+            <string>Date de naissance	 :</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="1">
+          <widget class="QDateEdit" name="modEt_dateDeNaissanceDateEdit"/>
+         </item>
          <item row="2" column="1">
           <widget class="QComboBox" name="modEt_genreComboBox">
            <item>
@@ -1364,45 +1490,47 @@ parcourir le programme</string>
            </item>
           </widget>
          </item>
-         <item row="3" column="0">
-          <widget class="QLabel" name="modEt_dateDeNaissanceLabel">
+         <item row="4" column="0">
+          <widget class="QLabel" name="modEt_faculteLabel">
            <property name="text">
-            <string>Date de naissance	 :</string>
+            <string>Faculté		 :</string>
            </property>
           </widget>
          </item>
-         <item row="3" column="1">
-          <widget class="QDateEdit" name="modEt_dateDeNaissanceDateEdit"/>
+         <item row="4" column="1">
+          <widget class="QComboBox" name="modEt_faculteComboBox">
+           <property name="placeholderText">
+            <string>- Non spécifié -</string>
+           </property>
+          </widget>
          </item>
-         <item row="4" column="0">
+         <item row="5" column="0">
           <widget class="QLabel" name="modEt_mentionLabel">
            <property name="text">
             <string>Mention		 :</string>
            </property>
           </widget>
          </item>
-         <item row="4" column="1">
-          <widget class="QComboBox" name="modEt_mentionComboBox"/>
+         <item row="5" column="1">
+          <widget class="QComboBox" name="modEt_mentionComboBox">
+           <property name="placeholderText">
+            <string>- Non spécifié -</string>
+           </property>
+          </widget>
          </item>
-         <item row="5" column="0">
+         <item row="6" column="0">
           <widget class="QLabel" name="modEt_niveauLabel">
            <property name="text">
             <string>Niveau		 :</string>
            </property>
           </widget>
          </item>
-         <item row="5" column="1">
-          <widget class="QComboBox" name="modEt_niveauComboBox"/>
-         </item>
-         <item row="6" column="0">
-          <widget class="QLabel" name="modEt_parcoursLabel">
-           <property name="text">
-            <string>Parcours		 :</string>
+         <item row="6" column="1">
+          <widget class="QComboBox" name="modEt_niveauComboBox">
+           <property name="placeholderText">
+            <string>- Non spécifié -</string>
            </property>
           </widget>
-         </item>
-         <item row="6" column="1">
-          <widget class="QComboBox" name="modEt_parcoursLineEdit"/>
          </item>
          <item row="7" column="0">
           <widget class="QLabel" name="modEt_codageLabel">
@@ -1412,7 +1540,7 @@ parcourir le programme</string>
           </widget>
          </item>
          <item row="7" column="1">
-          <widget class="QSpinBox" name="modEt_codageLineEdit"/>
+          <widget class="QSpinBox" name="modEt_codageSpinBox"/>
          </item>
          <item row="8" column="0">
           <widget class="QLabel" name="modEt_telephonePhoneLabel">
@@ -1427,7 +1555,7 @@ parcourir le programme</string>
          <item row="9" column="0">
           <widget class="QLabel" name="modEt_adresseLabel">
            <property name="text">
-            <string>Adresse 		:</string>
+            <string>Adresse 		 :</string>
            </property>
           </widget>
          </item>
@@ -1457,129 +1585,6 @@ parcourir le programme</string>
          </item>
         </layout>
        </widget>
-       <widget class="QWidget" name="gridLayoutWidget_6">
-        <property name="geometry">
-         <rect>
-          <x>60</x>
-          <y>40</y>
-          <width>581</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <layout class="QGridLayout" name="gridLayout_5">
-         <item row="0" column="0">
-          <widget class="QLabel" name="modEt_identifiantLabel">
-           <property name="text">
-            <string>Identifiant de l'étudiant	:</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="1">
-          <widget class="QComboBox" name="modEt_identifiantComboBox">
-           <item>
-            <property name="text">
-             <string>Entrez l'identifiant de l'étudiant :</string>
-            </property>
-           </item>
-          </widget>
-         </item>
-         <item row="0" column="2">
-          <widget class="QLineEdit" name="modEt_nomEtudiantLineEdit">
-           <property name="readOnly">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-      </widget>
-      <widget class="QWidget" name="Mod_note">
-       <attribute name="title">
-        <string>Modifier la note d'un élève</string>
-       </attribute>
-       <widget class="QWidget" name="layoutWidget_7">
-        <property name="geometry">
-         <rect>
-          <x>150</x>
-          <y>50</y>
-          <width>451</width>
-          <height>146</height>
-         </rect>
-        </property>
-        <layout class="QFormLayout" name="formLayout_13">
-         <item row="0" column="0">
-          <widget class="QLabel" name="modE_mentionLabel_2">
-           <property name="text">
-            <string>Mention de l'étudiant	:</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="1">
-          <widget class="QComboBox" name="modE_mentionComboBox_2">
-           <item>
-            <property name="text">
-             <string>Entrez la mention de l'étudiant :</string>
-            </property>
-           </item>
-          </widget>
-         </item>
-         <item row="1" column="0">
-          <widget class="QLabel" name="modE_niveauLabel_2">
-           <property name="text">
-            <string>Niveau de l'étudiant	:</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="1">
-          <widget class="QComboBox" name="modE_niveauComboBox_2">
-           <item>
-            <property name="text">
-             <string>Renseignez le niveau de l'étudiant :</string>
-            </property>
-           </item>
-          </widget>
-         </item>
-         <item row="2" column="0">
-          <widget class="QLabel" name="modE_parcoursLabel_2">
-           <property name="text">
-            <string>Parcours de l'étudiant	:</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="1">
-          <widget class="QComboBox" name="modE_parcoursComboBox_2">
-           <item>
-            <property name="text">
-             <string>Entrez le parcours de l'étudiant :</string>
-            </property>
-           </item>
-          </widget>
-         </item>
-         <item row="3" column="0">
-          <widget class="QLabel" name="modE_codageLabel_2">
-           <property name="text">
-            <string>Codage de l'étudiant	:</string>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="1">
-          <widget class="QComboBox" name="modE_codageComboBox_2">
-           <item>
-            <property name="text">
-             <string>Entrez le codage de l'étudiant :</string>
-            </property>
-           </item>
-          </widget>
-         </item>
-         <item row="4" column="0" colspan="2">
-          <widget class="QPushButton" name="modE_Chercher_2">
-           <property name="text">
-            <string>Chercher</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
       </widget>
      </widget>
     </widget>
@@ -1594,17 +1599,17 @@ parcourir le programme</string>
        </rect>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="sup_Etudiants">
        <attribute name="title">
         <string>Supprimer un élève</string>
        </attribute>
-       <widget class="QLabel" name="label">
+       <widget class="QLabel" name="supEt_Message">
         <property name="geometry">
          <rect>
           <x>210</x>
-          <y>70</y>
+          <y>10</y>
           <width>321</width>
           <height>31</height>
          </rect>
@@ -1618,84 +1623,234 @@ parcourir le programme</string>
          <string>Veuillez renseigner les informations de l'élève a effacer</string>
         </property>
        </widget>
-       <widget class="QWidget" name="layoutWidget_8">
+       <widget class="QWidget" name="gridLayoutWidget_7">
         <property name="geometry">
          <rect>
-          <x>110</x>
-          <y>130</y>
-          <width>451</width>
-          <height>146</height>
+          <x>80</x>
+          <y>50</y>
+          <width>581</width>
+          <height>56</height>
          </rect>
         </property>
-        <layout class="QFormLayout" name="formLayout_17">
-         <item row="0" column="0">
-          <widget class="QLabel" name="SupE_mentionLabel">
-           <property name="text">
-            <string>Mention de l'étudiant	:</string>
+        <layout class="QGridLayout" name="gridLayout_6">
+         <item row="0" column="2">
+          <widget class="QLineEdit" name="supEt_nomEtudiantLineEdit">
+           <property name="readOnly">
+            <bool>true</bool>
            </property>
           </widget>
          </item>
          <item row="0" column="1">
-          <widget class="QComboBox" name="SupE_mentionComboBox">
-           <item>
-            <property name="text">
-             <string>Entrez la mention de l'étudiant :</string>
-            </property>
-           </item>
+          <widget class="QComboBox" name="supEt_identifiantComboBox">
+           <property name="placeholderText">
+            <string>Entrez l'identifiant de l'étudiant :</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0">
+          <widget class="QLabel" name="supEt_identifiantLabel">
+           <property name="text">
+            <string>Identifiant de l'étudiant	:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0" colspan="3">
+          <widget class="QPushButton" name="supEt_Supprimer">
+           <property name="text">
+            <string>Supprimer</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="formLayoutWidget_14">
+        <property name="geometry">
+         <rect>
+          <x>160</x>
+          <y>120</y>
+          <width>411</width>
+          <height>404</height>
+         </rect>
+        </property>
+        <layout class="QFormLayout" name="formLayout_11">
+         <item row="0" column="0">
+          <widget class="QLabel" name="supEt_nomLabel">
+           <property name="text">
+            <string>Nom		 :</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QLineEdit" name="supEt_nomLineEdit">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
           </widget>
          </item>
          <item row="1" column="0">
-          <widget class="QLabel" name="SupE_niveauLabel">
+          <widget class="QLabel" name="supEt_prenomLabel">
            <property name="text">
-            <string>Niveau de l'étudiant	:</string>
+            <string>Prenom		 :</string>
            </property>
           </widget>
          </item>
          <item row="1" column="1">
-          <widget class="QComboBox" name="SupE_niveauComboBox">
-           <item>
-            <property name="text">
-             <string>Renseignez le niveau de l'étudiant :</string>
-            </property>
-           </item>
+          <widget class="QLineEdit" name="supEt_prenomLineEdit">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
           </widget>
          </item>
          <item row="2" column="0">
-          <widget class="QLabel" name="SupE_parcoursLabel">
+          <widget class="QLabel" name="supEt_genreLabel">
            <property name="text">
-            <string>Parcours de l'étudiant	:</string>
+            <string>Genre		 :</string>
            </property>
           </widget>
          </item>
          <item row="2" column="1">
-          <widget class="QComboBox" name="SupE_parcoursComboBox">
+          <widget class="QComboBox" name="supEt_genreComboBox">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
            <item>
             <property name="text">
-             <string>Entrez le parcours de l'étudiant :</string>
+             <string>- Non spécifié -</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Homme</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Femme</string>
             </property>
            </item>
           </widget>
          </item>
          <item row="3" column="0">
-          <widget class="QLabel" name="SupE_codageLabel">
+          <widget class="QLabel" name="supEt_dateDeNaissanceLabel">
            <property name="text">
-            <string>Codage de l'étudiant	:</string>
+            <string>Date de naissance	 :</string>
            </property>
           </widget>
          </item>
          <item row="3" column="1">
-          <widget class="QComboBox" name="SupE_codageComboBox">
-           <item>
-            <property name="text">
-             <string>Entrez le codage de l'étudiant :</string>
-            </property>
-           </item>
+          <widget class="QDateEdit" name="supEt_dateDeNaissanceDateEdit">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
           </widget>
          </item>
-         <item row="4" column="0" colspan="2">
-          <widget class="QPushButton" name="SupE_Chercher">
+         <item row="4" column="0">
+          <widget class="QLabel" name="supEt_faculteLabel">
            <property name="text">
-            <string>Supprimer</string>
+            <string>Faculté		 :</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="1">
+          <widget class="QComboBox" name="supEt_faculteComboBox">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="placeholderText">
+            <string>- Non spécifié -</string>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="0">
+          <widget class="QLabel" name="supEt_mentionLabel">
+           <property name="text">
+            <string>Mention		 :</string>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="1">
+          <widget class="QComboBox" name="supEt_mentionComboBox">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="placeholderText">
+            <string>- Non spécifié -</string>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="0">
+          <widget class="QLabel" name="supEt_niveauLabel">
+           <property name="text">
+            <string>Niveau		 :</string>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="1">
+          <widget class="QComboBox" name="supEt_niveauComboBox">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="placeholderText">
+            <string>- Non spécifié -</string>
+           </property>
+          </widget>
+         </item>
+         <item row="7" column="0">
+          <widget class="QLabel" name="supEt_codageLabel">
+           <property name="text">
+            <string>Codage		 :</string>
+           </property>
+          </widget>
+         </item>
+         <item row="7" column="1">
+          <widget class="QSpinBox" name="supEt_codageSpinBox">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="8" column="0">
+          <widget class="QLabel" name="supEt_telephonePhoneLabel">
+           <property name="text">
+            <string>Téléphone	 :</string>
+           </property>
+          </widget>
+         </item>
+         <item row="8" column="1">
+          <widget class="QLineEdit" name="supEt_telephoneLineEdit">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="9" column="0">
+          <widget class="QLabel" name="supEt_adresseLabel">
+           <property name="text">
+            <string>Adresse 		 :</string>
+           </property>
+          </widget>
+         </item>
+         <item row="9" column="1">
+          <widget class="QTextEdit" name="supEt_adresseTextEdit">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="10" column="0">
+          <widget class="QLabel" name="supEt_estPassantLabel">
+           <property name="text">
+            <string>Est passant	 :</string>
+           </property>
+          </widget>
+         </item>
+         <item row="10" column="1">
+          <widget class="QCheckBox" name="supEt_estPassantCheckBox">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string>Oui cauché / Non par défaut</string>
            </property>
           </widget>
          </item>
@@ -1725,140 +1880,120 @@ parcourir le programme</string>
         Attention la suppréssion est définitive !</string>
         </property>
        </widget>
-       <widget class="QWidget" name="formLayoutWidget_7">
+       <widget class="QWidget" name="formLayoutWidget_10">
         <property name="geometry">
          <rect>
-          <x>170</x>
+          <x>410</x>
           <y>190</y>
           <width>311</width>
           <height>116</height>
          </rect>
         </property>
-        <layout class="QFormLayout" name="formLayout_18">
-         <item row="0" column="0">
-          <widget class="QLabel" name="inscMNP_nomMentionLabel_3">
+        <layout class="QFormLayout" name="supNv">
+         <item row="1" column="0">
+          <widget class="QLabel" name="supNv_mentionLabel">
            <property name="text">
-            <string>Mention	 :</string>
+            <string>Mention	:</string>
            </property>
           </widget>
          </item>
-         <item row="0" column="1">
-          <widget class="QComboBox" name="supM_classeMatiereComboBox"/>
+         <item row="1" column="1">
+          <widget class="QComboBox" name="supNv_mentionComboBox"/>
          </item>
-         <item row="1" column="0">
-          <widget class="QLabel" name="inscMNP_niveauLabel_3">
+         <item row="2" column="0">
+          <widget class="QLabel" name="supNv_niveauLabel">
            <property name="text">
             <string>Niveau	:</string>
            </property>
           </widget>
          </item>
-         <item row="1" column="1">
-          <widget class="QComboBox" name="supM_nomMatiereComboBox"/>
-         </item>
-         <item row="2" column="0">
-          <widget class="QLabel" name="inscMNP_parcoursLabel_3">
-           <property name="text">
-            <string>Parcours	:</string>
-           </property>
-          </widget>
-         </item>
          <item row="3" column="0" colspan="2">
-          <widget class="QPushButton" name="supM_Supprimer">
+          <widget class="QPushButton" name="supNv_Enregistrer">
            <property name="text">
-            <string>Supprimer</string>
+            <string>Enregistrer</string>
            </property>
           </widget>
          </item>
-         <item row="2" column="1">
-          <widget class="QComboBox" name="comboBox"/>
-         </item>
-        </layout>
-       </widget>
-      </widget>
-      <widget class="QWidget" name="sup_Transaction">
-       <attribute name="title">
-        <string>Supprimer des achats</string>
-       </attribute>
-       <widget class="QWidget" name="layoutWidget_9">
-        <property name="geometry">
-         <rect>
-          <x>120</x>
-          <y>50</y>
-          <width>451</width>
-          <height>146</height>
-         </rect>
-        </property>
-        <layout class="QFormLayout" name="formLayout_19">
          <item row="0" column="0">
-          <widget class="QLabel" name="SupE_mentionLabel_2">
+          <widget class="QLabel" name="supNv_faculteLabel">
            <property name="text">
-            <string>Mention de l'étudiant	:</string>
+            <string>Faculté	:</string>
            </property>
           </widget>
          </item>
          <item row="0" column="1">
-          <widget class="QComboBox" name="SupE_mentionComboBox_2">
-           <item>
-            <property name="text">
-             <string>Entrez la mention de l'étudiant :</string>
-            </property>
-           </item>
+          <widget class="QComboBox" name="supNv_faculteComboBox"/>
+         </item>
+         <item row="2" column="1">
+          <widget class="QComboBox" name="supNv_niveauComboBox"/>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="formLayoutWidget_13">
+        <property name="geometry">
+         <rect>
+          <x>200</x>
+          <y>390</y>
+          <width>311</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <layout class="QFormLayout" name="supFc">
+         <item row="0" column="0">
+          <widget class="QLabel" name="supFc_nomFaculteLabel">
+           <property name="text">
+            <string>Faculté	 :</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0" colspan="2">
+          <widget class="QPushButton" name="supFc_Enregistrer">
+           <property name="text">
+            <string>Enregistrer</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QComboBox" name="supFc_nomFaculteComboBox"/>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="formLayoutWidget_7">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>200</y>
+          <width>311</width>
+          <height>91</height>
+         </rect>
+        </property>
+        <layout class="QFormLayout" name="supMt">
+         <item row="0" column="0">
+          <widget class="QLabel" name="supMt_faculteLabel">
+           <property name="text">
+            <string>Faculté	:</string>
+           </property>
           </widget>
          </item>
          <item row="1" column="0">
-          <widget class="QLabel" name="SupE_niveauLabel_2">
+          <widget class="QLabel" name="supMt_mentionLabel">
            <property name="text">
-            <string>Niveau de l'étudiant	:</string>
+            <string>Mention	:</string>
            </property>
           </widget>
+         </item>
+         <item row="2" column="0" colspan="2">
+          <widget class="QPushButton" name="supMt_Enregistrer">
+           <property name="text">
+            <string>Enregistrer</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QComboBox" name="supMt_faculteComboBox"/>
          </item>
          <item row="1" column="1">
-          <widget class="QComboBox" name="SupE_niveauComboBox_2">
-           <item>
-            <property name="text">
-             <string>Renseignez le niveau de l'étudiant :</string>
-            </property>
-           </item>
-          </widget>
-         </item>
-         <item row="2" column="0">
-          <widget class="QLabel" name="SupE_parcoursLabel_2">
-           <property name="text">
-            <string>Parcours de l'étudiant	:</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="1">
-          <widget class="QComboBox" name="SupE_parcoursComboBox_2">
-           <item>
-            <property name="text">
-             <string>Entrez le parcours de l'étudiant :</string>
-            </property>
-           </item>
-          </widget>
-         </item>
-         <item row="3" column="0">
-          <widget class="QLabel" name="SupE_codageLabel_2">
-           <property name="text">
-            <string>Codage de l'étudiant	:</string>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="1">
-          <widget class="QComboBox" name="SupE_codageComboBox_2">
-           <item>
-            <property name="text">
-             <string>Entrez le codage de l'étudiant :</string>
-            </property>
-           </item>
-          </widget>
-         </item>
-         <item row="4" column="0" colspan="2">
-          <widget class="QPushButton" name="SupE_Chercher_2">
-           <property name="text">
-            <string>Supprimer</string>
-           </property>
-          </widget>
+          <widget class="QComboBox" name="supMt_mentionComboBox"/>
          </item>
         </layout>
        </widget>
@@ -1972,25 +2107,7 @@ parcourir le programme</string>
     </layout>
    </widget>
   </widget>
-  <widget class="QToolBar" name="mainToolBar">
-   <attribute name="toolBarArea">
-    <enum>TopToolBarArea</enum>
-   </attribute>
-   <attribute name="toolBarBreak">
-    <bool>false</bool>
-   </attribute>
-  </widget>
   <widget class="QStatusBar" name="statusBar"/>
-  <widget class="QMenuBar" name="menuBar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>956</width>
-     <height>21</height>
-    </rect>
-   </property>
-  </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>
