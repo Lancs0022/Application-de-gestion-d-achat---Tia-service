@@ -1614,11 +1614,11 @@ public:
 
         retranslateUi(Fenetre_Principale);
 
-        stackedWidget->setCurrentIndex(6);
+        stackedWidget->setCurrentIndex(4);
         ongletConsultation->setCurrentIndex(0);
         lstEt_mentionComboBox->setCurrentIndex(-1);
         lstEt_idEtudiantComboBox->setCurrentIndex(-1);
-        ongletInsertion->setCurrentIndex(4);
+        ongletInsertion->setCurrentIndex(2);
         ongletModification->setCurrentIndex(0);
         ongletSuppression->setCurrentIndex(1);
 

@@ -27,7 +27,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>6</number>
+     <number>4</number>
     </property>
     <widget class="QWidget" name="NonConnecte">
      <widget class="QLabel" name="nc_Message">
@@ -437,7 +437,7 @@ parcourir le programme</string>
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>4</number>
+       <number>2</number>
       </property>
       <property name="elideMode">
        <enum>Qt::ElideNone</enum>

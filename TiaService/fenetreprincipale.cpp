@@ -360,18 +360,7 @@ void FenetrePrincipale::on_inscP_idTransactionComboBox_currentTextChanged(const 
 
 void FenetrePrincipale::on_inscP_vPaiementPushButton_clicked()
 {
-
-    // QMessageBox msgBox;
-    // msgBox.setText("Voulez-vous imprimer une facture ?");
-    // msgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
-    // msgBox.setDefaultButton(QMessageBox::Yes);
-
-    // // Exécuter la boîte de message et obtenir la réponse de l'utilisateur
-    // int ret = msgBox.exec();
-
-    // if (ret == QMessageBox::Yes) {
-
-    // }
+    this->ctrl.transactionPayee(ui->inscP_idTransactionComboBox->currentText().toInt());
 }
 
 void FenetrePrincipale::on_inscP_imprimerFacturePushButton_clicked()
