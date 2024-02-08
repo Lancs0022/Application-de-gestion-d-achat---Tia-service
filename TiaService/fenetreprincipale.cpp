@@ -8,11 +8,11 @@ FenetrePrincipale::FenetrePrincipale(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->stackedWidget->setCurrentIndex(0);
-    this->ctrl.autoLog();
-    ui->tl_Lister->setEnabled(true);
-    ui->tl_Insertion->setEnabled(true);
-    ui->tl_Modification->setEnabled(true);
-    ui->tl_Suppression->setEnabled(true);
+    // this->ctrl.autoLog();
+    // ui->tl_Lister->setEnabled(true);
+    // ui->tl_Insertion->setEnabled(true);
+    // ui->tl_Modification->setEnabled(true);
+    // ui->tl_Suppression->setEnabled(true);
     ui->ongletCentrale->setFixedWidth(956);
     ui->ongletCentrale->setFixedHeight(592);
     // facture.afficherFacture();
@@ -28,7 +28,6 @@ FenetrePrincipale::~FenetrePrincipale()
 void FenetrePrincipale::on_tl_SeConnecter_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->Connexion);
-    this->ctrl.reconstituerTransaction(1,1);
 }
 
 void FenetrePrincipale::on_tl_Lister_clicked()
@@ -41,8 +40,6 @@ void FenetrePrincipale::on_tl_Insertion_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->Insertion);
     remplirToutM();
-    this->ctrl.getLastId("Etudiants", "et_id");
-    this->ctrl.getLastId("Achat", "achat_id");
 }
 
 void FenetrePrincipale::on_tl_Modification_clicked()
