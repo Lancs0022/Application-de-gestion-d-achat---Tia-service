@@ -241,7 +241,7 @@ QVector<QString> Controleur::getAllSelonIdEtranger(const QString& nomTable, cons
 }
 
 // Contrôle les informations d'un étudiant avant de les envoyer à l'objet bdd
-bool Controleur::rqtInscEt(QString& nom, QString& prenom, QString& genre,
+bool Controleur::rqtInscEt(int idEtudiant, QString& nom, QString& prenom, QString& genre,
                            QDate& dateDeNaissance, QString& faculte,
                            QString& mention, QString& niveau,
                            QString& codage, bool& passant, QString& telephone, QString& adresse){
@@ -249,14 +249,16 @@ bool Controleur::rqtInscEt(QString& nom, QString& prenom, QString& genre,
     // qDebug() << "Niveau récupéré du CBOX: " << niveau;
 
     QDate dateActuelle = QDate::currentDate();
+    qDebug() << "dateActuelle = " << dateActuelle;
     int idFaculte = this->getId(faculte, "Faculte");
     int idMention = this->getId(mention, "Mention");
     int idNiveau = this->getId(niveau, "Niveau");
-    int nombreEtudiants = bdd.compterEntrees("Etudiants");
+    if(idEtudiant == -1)
+        idEtudiant = getLastId("Etudiants", "et_id");
     int codageInt = codage.toInt();
     int telephoneInt = telephone.toInt();
     if(!isDuplicated(nom, prenom, idFaculte, idMention, idNiveau))
-        return bdd.inscrireEtudiant(nombreEtudiants, nom, prenom, genre, dateDeNaissance, idFaculte, idMention, idNiveau, codageInt, passant, telephoneInt, adresse, dateActuelle);
+        return bdd.inscrireEtudiant(idEtudiant, nom, prenom, genre, dateDeNaissance, idFaculte, idMention, idNiveau, codageInt, passant, telephoneInt, adresse, dateActuelle);
     else{
         qDebug() << "Il semblerait que l'étudiant que vous tentez d'enregistrer existe déjà";
         return false;
@@ -434,7 +436,7 @@ bool Controleur::deleteEtudiant(QString mention, QString niveau, QString faculte
     else                return false;
 }
 
-bool Controleur::enregistrerTransaction(const QVector<QVector<QString>>& listeAchat, int idEtudiant) {
+bool Controleur::enregistrerTransaction(const QVector<QVector<QString>>& listeAchat, int idEtudiant, bool estPayee) {
     qDebug() << "----- Début de \"Controleur::enregistrerAchats\" -----";
     for (const QVector<QString>& vecteur : listeAchat) {
         vecteur[4].toInt();
@@ -484,7 +486,7 @@ bool Controleur::enregistrerTransaction(const QVector<QVector<QString>>& listeAc
         qDebug() << "montant : "        << montant;
         qDebug() << "dateActuelle : "   << dateActuelle;
 
-        QSqlQuery rqAjAchat = bdd.ajouterAchat(idAchat, idService, idFormation, nombre, idTransaction, false);
+        QSqlQuery rqAjAchat = bdd.ajouterAchat(idAchat, idService, idFormation, nombre, idTransaction, estPayee);
         if (!rqAjAchat.exec()) {
             qDebug() << "Erreur lors de l'enregistrement de l'achat : " << rqAjAchat.lastError().text();
             return false;
@@ -727,6 +729,17 @@ bool Controleur::eraseFMN(QString nom, QString nomTable) {
     return this->bdd.supprimerFMN(id, nomTable);
 }
 
+bool Controleur::deleteElFTable(QString nomTable, QString champId, QString nom){
+    int id(this->getId(nom, nomTable));
+    QSqlQuery rqDelTable(this->bdd.supprimerParid(nomTable,champId,id));
+    if (rqDelTable.exec()) {
+        qDebug() << nom << " Effacé ! ";
+        return true;
+    } else {
+        qDebug() << "Erreur lors de la suppression: " << rqDelTable.lastError().text();
+        return false;
+    }
+}
 
 bool Controleur::logOut(){
     bdd.isLoggedOn = false;

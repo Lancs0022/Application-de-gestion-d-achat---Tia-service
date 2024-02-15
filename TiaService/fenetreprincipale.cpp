@@ -13,8 +13,7 @@ FenetrePrincipale::FenetrePrincipale(QWidget *parent) :
     // ui->tl_Insertion->setEnabled(true);
     // ui->tl_Modification->setEnabled(true);
     // ui->tl_Suppression->setEnabled(true);
-    ui->ongletCentrale->setFixedWidth(956);
-    ui->ongletCentrale->setFixedHeight(592);
+
     // facture.afficherFacture();
 }
 
@@ -33,7 +32,8 @@ void FenetrePrincipale::on_tl_SeConnecter_clicked()
 void FenetrePrincipale::on_tl_Lister_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->ConsulterInfos);
-    // remplirLstEt();
+    QVector<QString> idEtudiants = this->ctrl.getColumn("Etudiants", 0);
+    remplirComboBox(ui->lstT_identifiantComboBox, idEtudiants);
 }
 
 void FenetrePrincipale::on_tl_Insertion_clicked()
@@ -226,8 +226,10 @@ void FenetrePrincipale::on_inscEt_Enregistrer_clicked()
     QString telephone = ui->inscEt_telephoneLineEdit->text();
     QString adresse = ui->inscEt_adresseTextEdit->toPlainText();
     bool passant = ui->inscEt_estPassantCheckBox->isChecked();
-    if(this->ctrl.rqtInscEt(nom, prenom, genre, dateDeNaissance, faculte, mention,
-                            niveau, codage, passant, telephone, adresse)){
+
+    if(nom!="" && prenom != "" && genre != "" && telephone != "" && adresse != ""){
+        this->ctrl.rqtInscEt(-1 ,nom, prenom, genre, dateDeNaissance, faculte, mention,
+                             niveau, codage, passant, telephone, adresse);
         ui->inscEt_Message->setText("Les informations ont été sauvegardés avec succes !");
         ui->inscEt_nomLineEdit->setText("");
         ui->inscEt_prenomLineEdit->setText("");
@@ -275,6 +277,7 @@ void FenetrePrincipale::on_modEt_identifiantComboBox_currentTextChanged(const QS
 void FenetrePrincipale::on_modEt_Enregistrer_clicked()
 {
     // Récupération les valeurs des champs de formulaire
+    int idEtudiant = ui->modEt_identifiantComboBox->currentText().toInt();
     QString nom = ui->modEt_nomLineEdit->text();
     QString prenom = ui->modEt_prenomLineEdit->text();
     QString genre = ui->modEt_genreComboBox->currentText();
@@ -286,18 +289,20 @@ void FenetrePrincipale::on_modEt_Enregistrer_clicked()
     QString telephone = ui->modEt_telephoneLineEdit->text();
     QString adresse = ui->modEt_adresseTextEdit->toPlainText();
     bool passant = ui->modEt_estPassantCheckBox->isChecked();
-    if(this->ctrl.majEt(nom, prenom, genre, dateDeNaissance, faculte, mention,
-                             niveau, codage, passant, telephone, adresse)){
-        ui->modEt_Message->setText("Les informations ont été sauvegardés avec succes !");
-        ui->modEt_nomLineEdit->setText("");
-        ui->modEt_prenomLineEdit->setText("");
-        ui->modEt_codageSpinBox->setValue(0);
-        ui->modEt_telephoneLineEdit->setText("");
-        ui->modEt_adresseTextEdit->clear();
-        ui->modEt_estPassantCheckBox->setChecked(false);
-    }
-    else{
-        ui->inscEt_Message->setText("Un erreur est survenu lors de la modification");
+    if(this->ctrl.deleteEtudiant(mention, niveau, faculte,idEtudiant)){
+        if(this->ctrl.rqtInscEt(idEtudiant, nom, prenom, genre, dateDeNaissance, faculte, mention,
+                                 niveau, codage, passant, telephone, adresse)){
+            ui->modEt_Message->setText("Les informations ont été sauvegardés avec succes !");
+            ui->modEt_nomLineEdit->setText("");
+            ui->modEt_prenomLineEdit->setText("");
+            ui->modEt_codageSpinBox->setValue(0);
+            ui->modEt_telephoneLineEdit->setText("");
+            ui->modEt_adresseTextEdit->clear();
+            ui->modEt_estPassantCheckBox->setChecked(false);
+        }
+        else{
+            ui->inscEt_Message->setText("Un erreur est survenu lors de la modification");
+        }
     }
 }
 
@@ -333,60 +338,6 @@ void FenetrePrincipale::on_inscAchat_qtFormSpinBox_valueChanged(int arg1)
 {
     double prixFormation(this->ctrl.getPrixU(ui->inscAchat_formationsComboBox->currentText(), "Formations"));
     ui->inscAchat_prixFormSpinBox->setValue(prixFormation * arg1);
-}
-
-
-void FenetrePrincipale::on_inscP_identifiantComboBox_currentTextChanged(const QString &arg1)
-{
-    int idEtudiant(arg1.toInt());
-    ui->inscP_nomEtudiantLineEdit->setText(this->ctrl.nomsEtByid(idEtudiant));
-    QVector<QString> listeTransaction(this->ctrl.getAllSelonIdEtranger("Transaction", idEtudiant));
-    if(!listeTransaction.isEmpty())
-        remplirComboBox(ui->inscP_idTransactionComboBox, listeTransaction);
-    else{
-        ui->inscP_idTransactionComboBox->clear();
-        ui->inscP_idTransactionComboBox->setPlaceholderText("Aucun transaction pour cet étudiant");
-    }
-}
-
-void FenetrePrincipale::on_inscP_idTransactionComboBox_currentTextChanged(const QString &arg1)
-{
-    int idTransaction(arg1.toInt());
-    int idEtudiant(ui->inscP_identifiantComboBox->currentText().toInt());
-    QVector<QVector<QString>> listeAchat(this->ctrl.reconstituerTransaction(idTransaction, idEtudiant));
-    remplirTable(ui->inscP_commandeTableWidget, listeAchat);
-
-}
-
-void FenetrePrincipale::on_inscP_vPaiementPushButton_clicked()
-{
-    this->ctrl.transactionPayee(ui->inscP_idTransactionComboBox->currentText().toInt());
-}
-
-void FenetrePrincipale::on_inscP_imprimerFacturePushButton_clicked()
-{
-    QVector<QVector<QString>> listeAchat(this->recupererContenuTable(ui->inscP_commandeTableWidget));
-    for (const QVector<QString>& vecteur : listeAchat) {
-        qDebug() << "---- Nouveau vecteur ----";
-        for (const QString& element : vecteur) {
-            qDebug() << element;
-        }
-    }
-    if(listeAchat.isEmpty())
-        return;
-    // Créer un nouveau thread
-    QThread* thread = new QThread;
-    // Créer une instance de FenetreFacture
-    FenetreFacture* fenetreFacture = new FenetreFacture;
-    // Déplacer l'instance de FenetreFacture dans le thread
-    fenetreFacture->moveToThread(thread);
-    // Connecter le signal de fin de thread pour nettoyer les ressources
-    connect(thread, &QThread::finished, fenetreFacture, &FenetreFacture::deleteLater);
-    // Démarrer le thread
-    thread->start();
-    fenetreFacture->remplirFacture(listeAchat, ui->inscP_nomEtudiantLineEdit->text());
-    // Afficher la fenêtre de la facture
-    fenetreFacture->show();
 }
 
 void FenetrePrincipale::on_inscAchat_AjFormation_clicked()
@@ -464,7 +415,6 @@ void FenetrePrincipale::remplirToutM(){
     }
     if(!idEtudiants.isEmpty()){
         remplirComboBox(ui->inscAchat_identifiantComboBox, idEtudiants);
-        remplirComboBox(ui->inscP_identifiantComboBox, idEtudiants);
     }
     if(!faculte.isEmpty()){
         //    remplirComboBox(ui->inscAchat_mentionComboBox, mentions);
@@ -736,7 +686,7 @@ void FenetrePrincipale::on_inscAchat_confirmCmdPushButton_clicked()
 {
     QVector<QVector<QString>> listeAchats(this->recupererContenuTable(ui->inscAchat_commandeTableWidget));
     if(!listeAchats.isEmpty())
-        this->ctrl.enregistrerTransaction(listeAchats, ui->inscAchat_identifiantComboBox->currentText().toInt());
+        this->ctrl.enregistrerTransaction(listeAchats, ui->inscAchat_identifiantComboBox->currentText().toInt(), ui->inscAchat_estPayeeCheckBox->isChecked());
     else
         ui->inscAchat_Message->setText("La liste des achats est vide");
 }
@@ -828,6 +778,8 @@ void FenetrePrincipale::on_supNv_mentionComboBox_currentTextChanged(const QStrin
 }
 
 void FenetrePrincipale::remplirSupEt(){
+    QVector<QString> formations = this->ctrl.getColumn("Formations", 1);
+    QVector<QString> services = this->ctrl.getColumn("Services", 1);
     QVector<QString> mentions = this->ctrl.getColumn("Mention", 2);
     QVector<QString> niveaux = this->ctrl.getColumn("Niveau", 2);
     QVector<QString> faculte = this->ctrl.getColumn("Faculte", 1);
@@ -849,6 +801,12 @@ void FenetrePrincipale::remplirSupEt(){
     }
     if(!niveaux.isEmpty()){
         remplirComboBox(ui->supEt_niveauComboBox, niveaux);
+    }
+    if(!formations.isEmpty()){
+        remplirComboBox(ui->supFM_nomFormComboBox, formations);
+    }
+    if(!services.isEmpty()){
+        remplirComboBox(ui->supSV_nomSrvComboBox, services);
     }
     qDebug() << "Contenu de formation :";
 
@@ -882,3 +840,76 @@ void FenetrePrincipale::on_supFc_Enregistrer_clicked()
     else
          ui->supM_Message->setText("Suppression de la faculte échoué");
 }
+
+void FenetrePrincipale::on_sc_aidePushButton_clicked()
+{
+    ui->stackedWidget->setCurrentWidget(ui->Aide);
+}
+
+void FenetrePrincipale::on_lstT_identifiantComboBox_currentTextChanged(const QString &arg1)
+{
+    int idEtudiant(arg1.toInt());
+    ui->lstT_nomEtudiantLineEdit->setText(this->ctrl.nomsEtByid(idEtudiant));
+    QVector<QString> listeTransaction(this->ctrl.getAllSelonIdEtranger("Transaction", idEtudiant));
+    if(!listeTransaction.isEmpty())
+        remplirComboBox(ui->lstT_idTransactionComboBox, listeTransaction);
+    else{
+        ui->lstT_idTransactionComboBox->clear();
+        ui->lstT_idTransactionComboBox->setPlaceholderText("Aucun transaction pour cet étudiant");
+    }
+}
+
+void FenetrePrincipale::on_lstT_idTransactionComboBox_currentTextChanged(const QString &arg1)
+{
+    int idTransaction(arg1.toInt());
+    int idEtudiant(ui->lstT_identifiantComboBox->currentText().toInt());
+    QVector<QVector<QString>> listeAchat(this->ctrl.reconstituerTransaction(idTransaction, idEtudiant));
+    remplirTable(ui->lstT_commandeTableWidget, listeAchat);
+}
+
+
+void FenetrePrincipale::on_lstT_imprimerFacturePushButton_clicked()
+{
+    QVector<QVector<QString>> listeAchat(this->recupererContenuTable(ui->lstT_commandeTableWidget));
+    for (const QVector<QString>& vecteur : listeAchat) {
+        qDebug() << "---- Nouveau vecteur ----";
+        for (const QString& element : vecteur) {
+            qDebug() << element;
+        }
+    }
+    if(listeAchat.isEmpty())
+        return;
+    // Créer un nouveau thread
+    QThread* thread = new QThread;
+    // Créer une instance de FenetreFacture
+    FenetreFacture* fenetreFacture = new FenetreFacture;
+    // Déplacer l'instance de FenetreFacture dans le thread
+    fenetreFacture->moveToThread(thread);
+    // Connecter le signal de fin de thread pour nettoyer les ressources
+    connect(thread, &QThread::finished, fenetreFacture, &FenetreFacture::deleteLater);
+    // Démarrer le thread
+    thread->start();
+    fenetreFacture->remplirFacture(listeAchat, ui->lstT_nomEtudiantLineEdit->text());
+    // Afficher la fenêtre de la facture
+    fenetreFacture->show();
+}
+
+void FenetrePrincipale::on_lstT_vPaiementPushButton_clicked()
+{
+    this->ctrl.transactionPayee(ui->lstT_idTransactionComboBox->currentText().toInt());
+}
+
+void FenetrePrincipale::on_supFM_EnregistrerForm_clicked()
+{
+    QString nomFormation(ui->supFM_nomFormComboBox->currentText());
+    this->ctrl.deleteElFTable("Formations", "form_id", nomFormation);
+}
+
+
+void FenetrePrincipale::on_supSV_EnregistrerSrv_clicked()
+{
+    QString nomService(ui->supSV_nomSrvComboBox->currentText());
+
+    this->ctrl.deleteElFTable("Services", "srv_id", nomService);
+}
+

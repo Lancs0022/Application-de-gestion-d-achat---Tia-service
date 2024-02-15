@@ -20,7 +20,7 @@ public:
     //QVector<QString> getAllSelonMention(const QString& choix, const int& idMention);
     QVector<QString> getAllSelonIdEtranger(const QString& nomTable, const int& idEtranger);
 
-    bool rqtInscEt(QString& nom, QString& prenom, QString& genre,
+    bool rqtInscEt(int idEtudiant, QString& nom, QString& prenom, QString& genre,
                    QDate& dateDeNaissance, QString& faculte,
                    QString& mention, QString& niveau,
                    QString& codage, bool& passant, QString& telephone, QString& adresse);
@@ -29,12 +29,12 @@ public:
     bool isDuplicated(QString& nom, QString& prenom, int& idFaculte, int& idMention,
                       int& idNiveau);
     QVector<QVector<QString>> getStudent(QString Faculte, QString mention, QString niveau, int& idEtudiant, QString mode);
-    bool deleteEtudiant(QString mention, QString niveau, QString parcours, int& idEtudiant);
+    bool deleteEtudiant(QString mention, QString niveau, QString faculte, int& idEtudiant);
     bool majEt(QString& nom, QString& prenom, QString& genre,
                            QDate& dateDeNaissance, QString& faculte,
                            QString& mention, QString& niveau,
                            QString& codage, bool& passant, QString& telephone, QString& adresse);
-    bool enregistrerTransaction(const QVector<QVector<QString>>& listeAchat, int idEtudiant);
+    bool enregistrerTransaction(const QVector<QVector<QString>>& listeAchat, int idEtudiant, bool estPayee);
     QVector<QVector<QString>> getAllBackupTransaction(const QString& nomTable, const int& id);
     QVector<QVector<QString>> reconstituerTransaction(int idTransaction, int idEtudiant);
     bool addAdmin(const QString& nomPersonnel, const QString& mdpPersonnel);
@@ -47,6 +47,7 @@ public:
     bool enregistrerSrvOUForm(QString& nom, double& prix, QString duree, QString nomTable);
 
     bool transactionPayee(int idTransaction);
+    bool deleteElFTable(QString nomTable, QString champId, QString nom);
 
     bool logOut();
     bool autoLog();

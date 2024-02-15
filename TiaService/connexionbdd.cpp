@@ -200,17 +200,17 @@ QSqlQuery ConnexionDDB::obtenirDernierId(const QString& nomTable, const QString&
     return query;
 }
 
-bool ConnexionDDB::inscrireEtudiant(int& nbEtudiants, QString& nom, QString& prenom, QString& genre,
+bool ConnexionDDB::inscrireEtudiant(int& idEtudiant, QString& nom, QString& prenom, QString& genre,
                                     QDate& dateDeNaissance, int& idFaculte, int& idMention,
                                     int& idNiveau, int& codage,
                                     bool& passant, int& telephone, QString& adresse, QDate& dateInscription){
     QSqlQuery query;
     // Construction de la requête d'insertion
     query.prepare("INSERT INTO etudiants (et_id, fc_id, mt_id, nv_id, et_nom, et_prenom, et_genre, et_dateDeNaissance, et_codage, et_estpassant, et_numerotel, et_adresse, et_dateInscription) "
-                  "VALUES (:idEtudiant, :idFaculte, :idMention, :idNiveau, :nom, :prenom, :genre, :dateDeNaissance, :codage, :passant, :telephone, :adresse, :dateInsciption)");
+                  "VALUES (:idEtudiant, :idFaculte, :idMention, :idNiveau, :nom, :prenom, :genre, :dateDeNaissance, :codage, :passant, :telephone, :adresse, :dateInscription)");
 
     // Binding des valeurs
-    query.bindValue(":idEtudiant", nbEtudiants+1);
+    query.bindValue(":idEtudiant", idEtudiant);
     query.bindValue(":nom", nom);
     query.bindValue(":prenom", prenom);
     query.bindValue(":genre", genre);
@@ -223,6 +223,13 @@ bool ConnexionDDB::inscrireEtudiant(int& nbEtudiants, QString& nom, QString& pre
     query.bindValue(":adresse", adresse);
     query.bindValue(":passant", passant);
     query.bindValue(":dateInscription", dateInscription);
+    qDebug() << "Date inscription : " << dateInscription;
+
+    // Afficher les informations de débogage pour les paramètres et les valeurs liées
+    qDebug() << "Nombre de paramètres attendus: " << query.boundValueNames().count();
+    for (const auto& key : query.boundValueNames()) {
+        qDebug() << "Paramètre: " << key << ", Valeur liée: " << query.boundValue(key);
+    }
 
     // Exécution de la requête
     if (query.exec()) {
@@ -656,6 +663,17 @@ QSqlQuery ConnexionDDB::definirSurPaye(int idTransaction){
     QSqlQuery query;
     query.prepare("UPDATE ACHAT SET ACHAT_ESTPAYE = true WHERE trans_id = :idTransaction");
     query.bindValue(":idTransaction", idTransaction);
+    return query;
+}
+
+QSqlQuery ConnexionDDB::supprimerParid(QString nomTable, QString champId, int id){
+    QSqlQuery query;
+    if(nomTable == "Services")
+        query.prepare("DELETE * FROM Services WHERE :champId = :id");
+    else if(nomTable == "Formations")
+        query.prepare("DELETE * FROM Formations WHERE :champId = :id");
+    query.bindValue(":champId", champId);
+    query.bindValue(":id", id);
     return query;
 }
 

@@ -75,8 +75,6 @@ private slots:
 
     void on_supEt_identifiantComboBox_currentTextChanged(const QString &arg1);
 
-    void on_inscP_identifiantComboBox_currentTextChanged(const QString &arg1);
-
     void on_inscAchat_identifiantComboBox_currentTextChanged(const QString &arg1);
 
     void on_lstEt_idEtudiantComboBox_currentTextChanged(const QString &arg1);
@@ -113,12 +111,6 @@ private slots:
 
     void on_modEt_Enregistrer_clicked();
 
-    void on_inscP_idTransactionComboBox_currentTextChanged(const QString &arg1);
-
-    void on_inscP_vPaiementPushButton_clicked();
-
-    void on_inscP_imprimerFacturePushButton_clicked();
-
     void on_lstEt_faculteComboBox_currentTextChanged(const QString &arg1);
 
     void on_inscFM_EnregistrerF_clicked();
@@ -136,6 +128,20 @@ private slots:
     void on_supNv_Enregistrer_clicked();
 
     void on_supFc_Enregistrer_clicked();
+
+    void on_sc_aidePushButton_clicked();
+
+    void on_lstT_identifiantComboBox_currentTextChanged(const QString &arg1);
+
+    void on_lstT_idTransactionComboBox_currentTextChanged(const QString &arg1);
+
+    void on_lstT_imprimerFacturePushButton_clicked();
+
+    void on_lstT_vPaiementPushButton_clicked();
+
+    void on_supFM_EnregistrerForm_clicked();
+
+    void on_supSV_EnregistrerSrv_clicked();
 
 private:
     Ui::Fenetre_Principale *ui;

@@ -22,7 +22,7 @@ public:
     QSqlQuery recupererNiveauxSelonMention(const int& idMention);
     QSqlQuery recupNomParId(const QString& id, const QString& nomTable);
     int compterEntrees(const QString& nomTable);
-    bool inscrireEtudiant(int& nbEtudiants, QString& nom, QString& prenom, QString& genre,
+    bool inscrireEtudiant(int& idEtudiant, QString& nom, QString& prenom, QString& genre,
                           QDate& dateDeNaissance, int& idFaculte, int& idMention,
                           int& idNiveau, int& codage,
                           bool& passant, int& telephone, QString& adresse, QDate &dateInscription);
@@ -50,6 +50,7 @@ public:
     QSqlQuery ajouterService(const int idService, const QString& nomService, const QString& prixService);
     QSqlQuery definirSurPaye(int idTransaction);
     QSqlQuery ajouterServiceOuFormation(const int idSF, const QString& nomSF, const double prixSF, const QString nomTable, QString& duree);
+    QSqlQuery supprimerParid(QString nomTable, QString champId, int id);
 
     bool logOut();
     bool autoLogOn();

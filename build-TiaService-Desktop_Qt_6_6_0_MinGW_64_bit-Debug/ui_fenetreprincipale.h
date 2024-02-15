@@ -29,6 +29,7 @@
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTabWidget>
 #include <QtWidgets/QTableWidget>
+#include <QtWidgets/QTextBrowser>
 #include <QtWidgets/QTextEdit>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
@@ -46,6 +47,8 @@ public:
     QLabel *Bvn_Message1;
     QLabel *Bvn_Message2;
     QPushButton *Bvn_aide;
+    QWidget *Aide;
+    QTextBrowser *textBrowser;
     QWidget *Connexion;
     QLabel *sc_Message;
     QWidget *formLayoutWidget;
@@ -56,7 +59,7 @@ public:
     QLabel *sc_utilisateurLabel;
     QLineEdit *sc_utilisateurLineEdit;
     QLineEdit *sc_motDePasseLineEdit;
-    QPushButton *Bvn_aide_2;
+    QPushButton *sc_aidePushButton;
     QWidget *ConsulterInfos;
     QTabWidget *ongletConsultation;
     QWidget *listeEleve;
@@ -81,6 +84,18 @@ public:
     QLabel *lstEt_faculteLabel;
     QComboBox *lstEt_faculteComboBox;
     QCheckBox *lstEt_faculteCheckBox;
+    QWidget *tab;
+    QTableWidget *lstT_commandeTableWidget;
+    QWidget *gridLayoutWidget_4;
+    QGridLayout *gridLayout_3;
+    QLineEdit *lstT_nomEtudiantLineEdit;
+    QLabel *lstT_idTransactionLabel;
+    QLabel *lstT_identifiantLabel;
+    QComboBox *lstT_idTransactionComboBox;
+    QComboBox *lstT_identifiantComboBox;
+    QFrame *line;
+    QPushButton *lstT_vPaiementPushButton;
+    QPushButton *lstT_imprimerFacturePushButton;
     QWidget *Insertion;
     QTabWidget *ongletInsertion;
     QWidget *insc_Etudiant;
@@ -132,18 +147,7 @@ public:
     QLineEdit *inscAchat_nomEtudiantLineEdit;
     QPushButton *inscAchat_confirmCmdPushButton;
     QPushButton *inscAchat_suppCmdPushButton;
-    QWidget *insc_payement;
-    QWidget *gridLayoutWidget_4;
-    QGridLayout *gridLayout_3;
-    QLineEdit *inscP_nomEtudiantLineEdit;
-    QLabel *inscP_idTransactionLabel;
-    QLabel *inscP_identifiantLabel;
-    QComboBox *inscP_idTransactionComboBox;
-    QComboBox *inscP_identifiantComboBox;
-    QFrame *line;
-    QPushButton *inscP_vPaiementPushButton;
-    QPushButton *inscP_imprimerFacturePushButton;
-    QTableWidget *inscP_commandeTableWidget;
+    QCheckBox *inscAchat_estPayeeCheckBox;
     QWidget *insc_Form_Msrv;
     QWidget *formLayoutWidget_2;
     QFormLayout *formLayout_2;
@@ -288,6 +292,17 @@ public:
     QPushButton *supMt_Enregistrer;
     QComboBox *supMt_faculteComboBox;
     QComboBox *supMt_mentionComboBox;
+    QWidget *sup_FormOuSrv;
+    QWidget *formLayoutWidget_16;
+    QFormLayout *formLayout_7;
+    QLabel *supFM_nomFormLabel;
+    QPushButton *supFM_EnregistrerForm;
+    QComboBox *supFM_nomFormComboBox;
+    QWidget *formLayoutWidget_4;
+    QFormLayout *formLayout_4;
+    QLabel *supSV_nomSrvLabel;
+    QPushButton *supSV_EnregistrerSrv;
+    QComboBox *supSV_nomSrvComboBox;
     QWidget *layoutWidget;
     QVBoxLayout *Toolbox;
     QPushButton *tl_SeConnecter;
@@ -302,13 +317,14 @@ public:
     {
         if (Fenetre_Principale->objectName().isEmpty())
             Fenetre_Principale->setObjectName("Fenetre_Principale");
-        Fenetre_Principale->resize(956, 652);
+        Fenetre_Principale->resize(959, 652);
         Fenetre_Principale->setAutoFillBackground(true);
         ongletCentrale = new QWidget(Fenetre_Principale);
         ongletCentrale->setObjectName("ongletCentrale");
+        ongletCentrale->setAcceptDrops(false);
         stackedWidget = new QStackedWidget(ongletCentrale);
         stackedWidget->setObjectName("stackedWidget");
-        stackedWidget->setGeometry(QRect(220, 0, 731, 621));
+        stackedWidget->setGeometry(QRect(220, 0, 731, 651));
         NonConnecte = new QWidget();
         NonConnecte->setObjectName("NonConnecte");
         nc_Message = new QLabel(NonConnecte);
@@ -336,6 +352,12 @@ public:
         Bvn_aide->setObjectName("Bvn_aide");
         Bvn_aide->setGeometry(QRect(640, 550, 91, 41));
         stackedWidget->addWidget(Bienvenue);
+        Aide = new QWidget();
+        Aide->setObjectName("Aide");
+        textBrowser = new QTextBrowser(Aide);
+        textBrowser->setObjectName("textBrowser");
+        textBrowser->setGeometry(QRect(10, 0, 721, 621));
+        stackedWidget->addWidget(Aide);
         Connexion = new QWidget();
         Connexion->setObjectName("Connexion");
         sc_Message = new QLabel(Connexion);
@@ -380,9 +402,9 @@ public:
 
         formLayout->setWidget(4, QFormLayout::FieldRole, sc_motDePasseLineEdit);
 
-        Bvn_aide_2 = new QPushButton(Connexion);
-        Bvn_aide_2->setObjectName("Bvn_aide_2");
-        Bvn_aide_2->setGeometry(QRect(640, 550, 91, 41));
+        sc_aidePushButton = new QPushButton(Connexion);
+        sc_aidePushButton->setObjectName("sc_aidePushButton");
+        sc_aidePushButton->setGeometry(QRect(640, 550, 91, 41));
         stackedWidget->addWidget(Connexion);
         ConsulterInfos = new QWidget();
         ConsulterInfos->setObjectName("ConsulterInfos");
@@ -517,6 +539,85 @@ public:
         gridLayout_4->addWidget(lstEt_faculteCheckBox, 0, 2, 1, 1);
 
         ongletConsultation->addTab(listeEleve, QString());
+        tab = new QWidget();
+        tab->setObjectName("tab");
+        lstT_commandeTableWidget = new QTableWidget(tab);
+        if (lstT_commandeTableWidget->columnCount() < 5)
+            lstT_commandeTableWidget->setColumnCount(5);
+        QTableWidgetItem *__qtablewidgetitem8 = new QTableWidgetItem();
+        lstT_commandeTableWidget->setHorizontalHeaderItem(0, __qtablewidgetitem8);
+        QTableWidgetItem *__qtablewidgetitem9 = new QTableWidgetItem();
+        lstT_commandeTableWidget->setHorizontalHeaderItem(1, __qtablewidgetitem9);
+        QTableWidgetItem *__qtablewidgetitem10 = new QTableWidgetItem();
+        lstT_commandeTableWidget->setHorizontalHeaderItem(2, __qtablewidgetitem10);
+        QTableWidgetItem *__qtablewidgetitem11 = new QTableWidgetItem();
+        lstT_commandeTableWidget->setHorizontalHeaderItem(3, __qtablewidgetitem11);
+        QTableWidgetItem *__qtablewidgetitem12 = new QTableWidgetItem();
+        lstT_commandeTableWidget->setHorizontalHeaderItem(4, __qtablewidgetitem12);
+        lstT_commandeTableWidget->setObjectName("lstT_commandeTableWidget");
+        lstT_commandeTableWidget->setGeometry(QRect(60, 140, 621, 411));
+        gridLayoutWidget_4 = new QWidget(tab);
+        gridLayoutWidget_4->setObjectName("gridLayoutWidget_4");
+        gridLayoutWidget_4->setGeometry(QRect(60, 10, 621, 111));
+        gridLayout_3 = new QGridLayout(gridLayoutWidget_4);
+        gridLayout_3->setSpacing(6);
+        gridLayout_3->setContentsMargins(11, 11, 11, 11);
+        gridLayout_3->setObjectName("gridLayout_3");
+        gridLayout_3->setContentsMargins(0, 0, 0, 0);
+        lstT_nomEtudiantLineEdit = new QLineEdit(gridLayoutWidget_4);
+        lstT_nomEtudiantLineEdit->setObjectName("lstT_nomEtudiantLineEdit");
+        lstT_nomEtudiantLineEdit->setReadOnly(true);
+
+        gridLayout_3->addWidget(lstT_nomEtudiantLineEdit, 0, 2, 1, 1);
+
+        lstT_idTransactionLabel = new QLabel(gridLayoutWidget_4);
+        lstT_idTransactionLabel->setObjectName("lstT_idTransactionLabel");
+
+        gridLayout_3->addWidget(lstT_idTransactionLabel, 1, 0, 1, 1);
+
+        lstT_identifiantLabel = new QLabel(gridLayoutWidget_4);
+        lstT_identifiantLabel->setObjectName("lstT_identifiantLabel");
+
+        gridLayout_3->addWidget(lstT_identifiantLabel, 0, 0, 1, 1);
+
+        lstT_idTransactionComboBox = new QComboBox(gridLayoutWidget_4);
+        lstT_idTransactionComboBox->setObjectName("lstT_idTransactionComboBox");
+        lstT_idTransactionComboBox->setDuplicatesEnabled(false);
+        lstT_idTransactionComboBox->setFrame(true);
+
+        gridLayout_3->addWidget(lstT_idTransactionComboBox, 1, 1, 1, 2);
+
+        lstT_identifiantComboBox = new QComboBox(gridLayoutWidget_4);
+        lstT_identifiantComboBox->setObjectName("lstT_identifiantComboBox");
+
+        gridLayout_3->addWidget(lstT_identifiantComboBox, 0, 1, 1, 1);
+
+        line = new QFrame(gridLayoutWidget_4);
+        line->setObjectName("line");
+        line->setFrameShape(QFrame::HLine);
+        line->setFrameShadow(QFrame::Sunken);
+
+        gridLayout_3->addWidget(line, 2, 0, 1, 3);
+
+        lstT_vPaiementPushButton = new QPushButton(gridLayoutWidget_4);
+        lstT_vPaiementPushButton->setObjectName("lstT_vPaiementPushButton");
+
+        gridLayout_3->addWidget(lstT_vPaiementPushButton, 3, 2, 1, 1);
+
+        lstT_imprimerFacturePushButton = new QPushButton(gridLayoutWidget_4);
+        lstT_imprimerFacturePushButton->setObjectName("lstT_imprimerFacturePushButton");
+
+        gridLayout_3->addWidget(lstT_imprimerFacturePushButton, 3, 0, 1, 2);
+
+        lstT_idTransactionComboBox->raise();
+        lstT_identifiantComboBox->raise();
+        lstT_identifiantLabel->raise();
+        lstT_nomEtudiantLineEdit->raise();
+        lstT_idTransactionLabel->raise();
+        lstT_vPaiementPushButton->raise();
+        line->raise();
+        lstT_imprimerFacturePushButton->raise();
+        ongletConsultation->addTab(tab, QString());
         stackedWidget->addWidget(ConsulterInfos);
         Insertion = new QWidget();
         Insertion->setObjectName("Insertion");
@@ -742,18 +843,18 @@ public:
         inscAchat_commandeTableWidget = new QTableWidget(insc_Achat);
         if (inscAchat_commandeTableWidget->columnCount() < 6)
             inscAchat_commandeTableWidget->setColumnCount(6);
-        QTableWidgetItem *__qtablewidgetitem8 = new QTableWidgetItem();
-        inscAchat_commandeTableWidget->setHorizontalHeaderItem(0, __qtablewidgetitem8);
-        QTableWidgetItem *__qtablewidgetitem9 = new QTableWidgetItem();
-        inscAchat_commandeTableWidget->setHorizontalHeaderItem(1, __qtablewidgetitem9);
-        QTableWidgetItem *__qtablewidgetitem10 = new QTableWidgetItem();
-        inscAchat_commandeTableWidget->setHorizontalHeaderItem(2, __qtablewidgetitem10);
-        QTableWidgetItem *__qtablewidgetitem11 = new QTableWidgetItem();
-        inscAchat_commandeTableWidget->setHorizontalHeaderItem(3, __qtablewidgetitem11);
-        QTableWidgetItem *__qtablewidgetitem12 = new QTableWidgetItem();
-        inscAchat_commandeTableWidget->setHorizontalHeaderItem(4, __qtablewidgetitem12);
         QTableWidgetItem *__qtablewidgetitem13 = new QTableWidgetItem();
-        inscAchat_commandeTableWidget->setHorizontalHeaderItem(5, __qtablewidgetitem13);
+        inscAchat_commandeTableWidget->setHorizontalHeaderItem(0, __qtablewidgetitem13);
+        QTableWidgetItem *__qtablewidgetitem14 = new QTableWidgetItem();
+        inscAchat_commandeTableWidget->setHorizontalHeaderItem(1, __qtablewidgetitem14);
+        QTableWidgetItem *__qtablewidgetitem15 = new QTableWidgetItem();
+        inscAchat_commandeTableWidget->setHorizontalHeaderItem(2, __qtablewidgetitem15);
+        QTableWidgetItem *__qtablewidgetitem16 = new QTableWidgetItem();
+        inscAchat_commandeTableWidget->setHorizontalHeaderItem(3, __qtablewidgetitem16);
+        QTableWidgetItem *__qtablewidgetitem17 = new QTableWidgetItem();
+        inscAchat_commandeTableWidget->setHorizontalHeaderItem(4, __qtablewidgetitem17);
+        QTableWidgetItem *__qtablewidgetitem18 = new QTableWidgetItem();
+        inscAchat_commandeTableWidget->setHorizontalHeaderItem(5, __qtablewidgetitem18);
         inscAchat_commandeTableWidget->setObjectName("inscAchat_commandeTableWidget");
         inscAchat_commandeTableWidget->setGeometry(QRect(10, 220, 701, 311));
         gridLayoutWidget_3 = new QWidget(insc_Achat);
@@ -786,88 +887,12 @@ public:
         inscAchat_suppCmdPushButton = new QPushButton(insc_Achat);
         inscAchat_suppCmdPushButton->setObjectName("inscAchat_suppCmdPushButton");
         inscAchat_suppCmdPushButton->setGeometry(QRect(90, 540, 80, 24));
+        inscAchat_estPayeeCheckBox = new QCheckBox(insc_Achat);
+        inscAchat_estPayeeCheckBox->setObjectName("inscAchat_estPayeeCheckBox");
+        inscAchat_estPayeeCheckBox->setGeometry(QRect(190, 540, 131, 22));
         QIcon icon1;
         icon1.addFile(QString::fromUtf8("Assets/icons8-checklist-64.png"), QSize(), QIcon::Normal, QIcon::Off);
         ongletInsertion->addTab(insc_Achat, icon1, QString());
-        insc_payement = new QWidget();
-        insc_payement->setObjectName("insc_payement");
-        gridLayoutWidget_4 = new QWidget(insc_payement);
-        gridLayoutWidget_4->setObjectName("gridLayoutWidget_4");
-        gridLayoutWidget_4->setGeometry(QRect(50, 20, 621, 111));
-        gridLayout_3 = new QGridLayout(gridLayoutWidget_4);
-        gridLayout_3->setSpacing(6);
-        gridLayout_3->setContentsMargins(11, 11, 11, 11);
-        gridLayout_3->setObjectName("gridLayout_3");
-        gridLayout_3->setContentsMargins(0, 0, 0, 0);
-        inscP_nomEtudiantLineEdit = new QLineEdit(gridLayoutWidget_4);
-        inscP_nomEtudiantLineEdit->setObjectName("inscP_nomEtudiantLineEdit");
-        inscP_nomEtudiantLineEdit->setReadOnly(true);
-
-        gridLayout_3->addWidget(inscP_nomEtudiantLineEdit, 0, 2, 1, 1);
-
-        inscP_idTransactionLabel = new QLabel(gridLayoutWidget_4);
-        inscP_idTransactionLabel->setObjectName("inscP_idTransactionLabel");
-
-        gridLayout_3->addWidget(inscP_idTransactionLabel, 1, 0, 1, 1);
-
-        inscP_identifiantLabel = new QLabel(gridLayoutWidget_4);
-        inscP_identifiantLabel->setObjectName("inscP_identifiantLabel");
-
-        gridLayout_3->addWidget(inscP_identifiantLabel, 0, 0, 1, 1);
-
-        inscP_idTransactionComboBox = new QComboBox(gridLayoutWidget_4);
-        inscP_idTransactionComboBox->setObjectName("inscP_idTransactionComboBox");
-        inscP_idTransactionComboBox->setDuplicatesEnabled(false);
-        inscP_idTransactionComboBox->setFrame(true);
-
-        gridLayout_3->addWidget(inscP_idTransactionComboBox, 1, 1, 1, 2);
-
-        inscP_identifiantComboBox = new QComboBox(gridLayoutWidget_4);
-        inscP_identifiantComboBox->setObjectName("inscP_identifiantComboBox");
-
-        gridLayout_3->addWidget(inscP_identifiantComboBox, 0, 1, 1, 1);
-
-        line = new QFrame(gridLayoutWidget_4);
-        line->setObjectName("line");
-        line->setFrameShape(QFrame::HLine);
-        line->setFrameShadow(QFrame::Sunken);
-
-        gridLayout_3->addWidget(line, 2, 0, 1, 3);
-
-        inscP_vPaiementPushButton = new QPushButton(gridLayoutWidget_4);
-        inscP_vPaiementPushButton->setObjectName("inscP_vPaiementPushButton");
-
-        gridLayout_3->addWidget(inscP_vPaiementPushButton, 3, 2, 1, 1);
-
-        inscP_imprimerFacturePushButton = new QPushButton(gridLayoutWidget_4);
-        inscP_imprimerFacturePushButton->setObjectName("inscP_imprimerFacturePushButton");
-
-        gridLayout_3->addWidget(inscP_imprimerFacturePushButton, 3, 0, 1, 2);
-
-        inscP_idTransactionComboBox->raise();
-        inscP_identifiantComboBox->raise();
-        inscP_identifiantLabel->raise();
-        inscP_nomEtudiantLineEdit->raise();
-        inscP_idTransactionLabel->raise();
-        inscP_vPaiementPushButton->raise();
-        line->raise();
-        inscP_imprimerFacturePushButton->raise();
-        inscP_commandeTableWidget = new QTableWidget(insc_payement);
-        if (inscP_commandeTableWidget->columnCount() < 5)
-            inscP_commandeTableWidget->setColumnCount(5);
-        QTableWidgetItem *__qtablewidgetitem14 = new QTableWidgetItem();
-        inscP_commandeTableWidget->setHorizontalHeaderItem(0, __qtablewidgetitem14);
-        QTableWidgetItem *__qtablewidgetitem15 = new QTableWidgetItem();
-        inscP_commandeTableWidget->setHorizontalHeaderItem(1, __qtablewidgetitem15);
-        QTableWidgetItem *__qtablewidgetitem16 = new QTableWidgetItem();
-        inscP_commandeTableWidget->setHorizontalHeaderItem(2, __qtablewidgetitem16);
-        QTableWidgetItem *__qtablewidgetitem17 = new QTableWidgetItem();
-        inscP_commandeTableWidget->setHorizontalHeaderItem(3, __qtablewidgetitem17);
-        QTableWidgetItem *__qtablewidgetitem18 = new QTableWidgetItem();
-        inscP_commandeTableWidget->setHorizontalHeaderItem(4, __qtablewidgetitem18);
-        inscP_commandeTableWidget->setObjectName("inscP_commandeTableWidget");
-        inscP_commandeTableWidget->setGeometry(QRect(50, 150, 621, 411));
-        ongletInsertion->addTab(insc_payement, QString());
         insc_Form_Msrv = new QWidget();
         insc_Form_Msrv->setObjectName("insc_Form_Msrv");
         formLayoutWidget_2 = new QWidget(insc_Form_Msrv);
@@ -1557,10 +1582,63 @@ public:
         supMt->setWidget(1, QFormLayout::FieldRole, supMt_mentionComboBox);
 
         ongletSuppression->addTab(sup_Mention, QString());
+        sup_FormOuSrv = new QWidget();
+        sup_FormOuSrv->setObjectName("sup_FormOuSrv");
+        formLayoutWidget_16 = new QWidget(sup_FormOuSrv);
+        formLayoutWidget_16->setObjectName("formLayoutWidget_16");
+        formLayoutWidget_16->setGeometry(QRect(20, 190, 341, 61));
+        formLayout_7 = new QFormLayout(formLayoutWidget_16);
+        formLayout_7->setSpacing(6);
+        formLayout_7->setContentsMargins(11, 11, 11, 11);
+        formLayout_7->setObjectName("formLayout_7");
+        formLayout_7->setContentsMargins(0, 0, 0, 0);
+        supFM_nomFormLabel = new QLabel(formLayoutWidget_16);
+        supFM_nomFormLabel->setObjectName("supFM_nomFormLabel");
+
+        formLayout_7->setWidget(0, QFormLayout::LabelRole, supFM_nomFormLabel);
+
+        supFM_EnregistrerForm = new QPushButton(formLayoutWidget_16);
+        supFM_EnregistrerForm->setObjectName("supFM_EnregistrerForm");
+        supFM_EnregistrerForm->setEnabled(false);
+
+        formLayout_7->setWidget(1, QFormLayout::SpanningRole, supFM_EnregistrerForm);
+
+        supFM_nomFormComboBox = new QComboBox(formLayoutWidget_16);
+        supFM_nomFormComboBox->setObjectName("supFM_nomFormComboBox");
+        supFM_nomFormComboBox->setEnabled(true);
+
+        formLayout_7->setWidget(0, QFormLayout::FieldRole, supFM_nomFormComboBox);
+
+        formLayoutWidget_4 = new QWidget(sup_FormOuSrv);
+        formLayoutWidget_4->setObjectName("formLayoutWidget_4");
+        formLayoutWidget_4->setGeometry(QRect(410, 190, 301, 61));
+        formLayout_4 = new QFormLayout(formLayoutWidget_4);
+        formLayout_4->setSpacing(6);
+        formLayout_4->setContentsMargins(11, 11, 11, 11);
+        formLayout_4->setObjectName("formLayout_4");
+        formLayout_4->setContentsMargins(0, 0, 0, 0);
+        supSV_nomSrvLabel = new QLabel(formLayoutWidget_4);
+        supSV_nomSrvLabel->setObjectName("supSV_nomSrvLabel");
+
+        formLayout_4->setWidget(0, QFormLayout::LabelRole, supSV_nomSrvLabel);
+
+        supSV_EnregistrerSrv = new QPushButton(formLayoutWidget_4);
+        supSV_EnregistrerSrv->setObjectName("supSV_EnregistrerSrv");
+        supSV_EnregistrerSrv->setEnabled(false);
+
+        formLayout_4->setWidget(1, QFormLayout::SpanningRole, supSV_EnregistrerSrv);
+
+        supSV_nomSrvComboBox = new QComboBox(formLayoutWidget_4);
+        supSV_nomSrvComboBox->setObjectName("supSV_nomSrvComboBox");
+        supSV_nomSrvComboBox->setEnabled(true);
+
+        formLayout_4->setWidget(0, QFormLayout::FieldRole, supSV_nomSrvComboBox);
+
+        ongletSuppression->addTab(sup_FormOuSrv, QString());
         stackedWidget->addWidget(Suppression);
         layoutWidget = new QWidget(ongletCentrale);
         layoutWidget->setObjectName("layoutWidget");
-        layoutWidget->setGeometry(QRect(0, 0, 221, 621));
+        layoutWidget->setGeometry(QRect(0, 0, 221, 631));
         Toolbox = new QVBoxLayout(layoutWidget);
         Toolbox->setSpacing(6);
         Toolbox->setContentsMargins(11, 11, 11, 11);
@@ -1614,13 +1692,13 @@ public:
 
         retranslateUi(Fenetre_Principale);
 
-        stackedWidget->setCurrentIndex(4);
+        stackedWidget->setCurrentIndex(2);
         ongletConsultation->setCurrentIndex(0);
         lstEt_mentionComboBox->setCurrentIndex(-1);
         lstEt_idEtudiantComboBox->setCurrentIndex(-1);
         ongletInsertion->setCurrentIndex(2);
         ongletModification->setCurrentIndex(0);
-        ongletSuppression->setCurrentIndex(1);
+        ongletSuppression->setCurrentIndex(2);
 
 
         QMetaObject::connectSlotsByName(Fenetre_Principale);
@@ -1639,13 +1717,62 @@ public:
 "- Vous devez vous connecter en tant qu'admin avant d'\303\252tre autoris\303\251 \303\240\n"
 "parcourir le programme", nullptr));
         Bvn_aide->setText(QCoreApplication::translate("Fenetre_Principale", "Aide", nullptr));
+        textBrowser->setHtml(QCoreApplication::translate("Fenetre_Principale", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"hr { height: 1px; border-width: 0; }\n"
+"li.unchecked::marker { content: \"\\2610\"; }\n"
+"li.checked::marker { content: \"\\2612\"; }\n"
+"</style></head><body style=\" font-family:'Segoe UI'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" text-decoration: underline;\">Page d'aide</span></p>\n"
+"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; text-decoration: underline;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-in"
+                        "dent:0px;\">	Au lancement du programme, les differents fonctionnalit\303\251s sont d\303\251sactiv\303\251s par d\303\251faut pour des questions de s\303\251curit\303\251s. Il suffit d'appuyer sur le bouton &quot;Se connecter&quot; pour d\303\251verouiller l'int\303\251gralit\303\251 du programme.</p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">1-<span style=\" text-decoration: underline;\">Se connecter</span></p>\n"
+"<p align=\"justify\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">	Pour pouvoir se connecter, il suffit de renseigner un nom et un mot de passe enregistr\303\251 dans la base de donn\303\251e dans les formulaires correspondants sur la page de connexion puis d'appuyer sur le bouton &quot;"
+                        "Se connecter&quot; en bas du formulaire. Le bouton &quot;Se d\303\251connecter&quot; permet quand \303\240 lui \303\240 fermer l'acc\303\250s de l'application, rendant les fonctionnalit\303\251s du programme inutilisables.</p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">2-<span style=\" text-decoration: underline;\">Consulter les informations</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">	Cette section est dedi\303\251 \303\240 la recherche des donn\303\251es enregistr\303\251s dans la base de donn\303\251es. Il permet notamme"
+                        "nt de rechercher un \303\251tudiant avec des filtres \303\240 disposition. et de retrouver une transaction faites par un \303\251tudiant.</p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" text-decoration: underline;\">3-Insertions</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">	Cette partie permet d'entrer de nouvelles informations dans la base de donn\303\251e. La partie insertion est reparti en plusieurs onglets diff\303\251rents qui permettent entre autre :</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; "
+                        "margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">        - D'inscrire un \303\251tudiant avec ses informations,</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">        - D'inscrire les des transactions faits par l'\303\251tudiant et d'en gen\303\251rer la facture.</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">D'un autre c\303\264t\303\251, cette partie permet aussi :</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">        - D'ajouter des choix de niveaux d'\303\251tudes,</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">        - D'ajouter de nouveaux services ou formations au catalogue de vente,</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; "
+                        "margin-right:0px; -qt-block-indent:0; text-indent:0px;\">        - D'ajouter un nouveau utilisateur de l'application</p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">  3/1-<span style=\" text-decoration: underline;\">Insertion d'un nouveau \303\251tudiant</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">	L'insertion d'un \303\251tudiant se fait en remplisant une formulaire renseignants ses informations qui serviront \303\240 l'identifier. Il faut faire attention \303\240 remplir la t\303\264tzlit\303\251 des champs du formulaire et de ne pas avoir de doublure dans la dans la base de donn\303\251e.</p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:"
+                        "0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"> 3/2-<span style=\" text-decoration: underline;\">Enregistrement d'achats</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">	Afin d'enregistrer une transaction, il faut tout d'abord s\303\251l\303\251ctionner l'id de l'\303\251tudiant dans le qui correspond \303\240 l'ordre d'insertion de l'\303\251tudiant dans l'application. Un champ sert d'aide et affiche le nom et le pr\303\251nom de l'\303\251tudiant pour faciliter la s\303\251lection. Une fois l'id de l'\303\251tudiant renseign\303\251, on peut ajouter des achats pouvant \303\252tre des achats de services ou de formations dans une transaction avant de confirmer en appuyant sur le bouton &quot;Confirmer&quot; tout en bas de la page. </p>\n"
+"<p style=\"-qt-paragraph-type:empty;"
+                        " margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">4-<span style=\" text-decoration: underline;\">Modifications et mises \303\240 jours</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">	 Cette partie permet de mettre \303\240 jour les informations concernant les \303\251tudiants.</p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-"
+                        "indent:0px;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">5-<span style=\" text-decoration: underline;\">Suppression</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">	Cette partie permet la suppression d'un \303\251tudiant et de certaines choses entr\303\251es dans la partie insertion. Mais attention, toute suppression est d\303\251finitif !</p></body></html>", nullptr));
         sc_Message->setText(QCoreApplication::translate("Fenetre_Principale", "Authentifiez vous pour acc\303\251der \303\240 l'application", nullptr));
         sc_Deconnexion->setText(QCoreApplication::translate("Fenetre_Principale", "Se deconnecter", nullptr));
         sc_Connexion->setText(QCoreApplication::translate("Fenetre_Principale", "Se connecter", nullptr));
         sc_motDePasseLabel->setText(QCoreApplication::translate("Fenetre_Principale", "Mot de passe	: ", nullptr));
         sc_utilisateurLabel->setText(QCoreApplication::translate("Fenetre_Principale", "Utilisateur	:", nullptr));
         sc_motDePasseLineEdit->setText(QString());
-        Bvn_aide_2->setText(QCoreApplication::translate("Fenetre_Principale", "Aide", nullptr));
+        sc_aidePushButton->setText(QCoreApplication::translate("Fenetre_Principale", "Aide", nullptr));
         QTableWidgetItem *___qtablewidgetitem = lstE_listeEtudiant->horizontalHeaderItem(0);
         ___qtablewidgetitem->setText(QCoreApplication::translate("Fenetre_Principale", "Num\303\251ro", nullptr));
         QTableWidgetItem *___qtablewidgetitem1 = lstE_listeEtudiant->horizontalHeaderItem(1);
@@ -1679,6 +1806,23 @@ public:
         lstEt_faculteComboBox->setPlaceholderText(QCoreApplication::translate("Fenetre_Principale", "Entrez le parcours de l'\303\251tudiant :", nullptr));
         lstEt_faculteCheckBox->setText(QString());
         ongletConsultation->setTabText(ongletConsultation->indexOf(listeEleve), QCoreApplication::translate("Fenetre_Principale", "Liste des \303\251l\303\250ves", nullptr));
+        QTableWidgetItem *___qtablewidgetitem8 = lstT_commandeTableWidget->horizontalHeaderItem(0);
+        ___qtablewidgetitem8->setText(QCoreApplication::translate("Fenetre_Principale", "Type", nullptr));
+        QTableWidgetItem *___qtablewidgetitem9 = lstT_commandeTableWidget->horizontalHeaderItem(1);
+        ___qtablewidgetitem9->setText(QCoreApplication::translate("Fenetre_Principale", "Designation", nullptr));
+        QTableWidgetItem *___qtablewidgetitem10 = lstT_commandeTableWidget->horizontalHeaderItem(2);
+        ___qtablewidgetitem10->setText(QCoreApplication::translate("Fenetre_Principale", "Quantit\303\251", nullptr));
+        QTableWidgetItem *___qtablewidgetitem11 = lstT_commandeTableWidget->horizontalHeaderItem(3);
+        ___qtablewidgetitem11->setText(QCoreApplication::translate("Fenetre_Principale", "Prix", nullptr));
+        QTableWidgetItem *___qtablewidgetitem12 = lstT_commandeTableWidget->horizontalHeaderItem(4);
+        ___qtablewidgetitem12->setText(QCoreApplication::translate("Fenetre_Principale", "Montant", nullptr));
+        lstT_idTransactionLabel->setText(QCoreApplication::translate("Fenetre_Principale", "Id de transaction	:", nullptr));
+        lstT_identifiantLabel->setText(QCoreApplication::translate("Fenetre_Principale", "Identifiant de l'\303\251tudiant	:", nullptr));
+        lstT_idTransactionComboBox->setPlaceholderText(QCoreApplication::translate("Fenetre_Principale", "Entrez l'id de la transaction", nullptr));
+        lstT_identifiantComboBox->setPlaceholderText(QCoreApplication::translate("Fenetre_Principale", "Entrez l'identifiant de l'\303\251tudiant :", nullptr));
+        lstT_vPaiementPushButton->setText(QCoreApplication::translate("Fenetre_Principale", "D\303\251finir comme \303\251tant pay\303\251", nullptr));
+        lstT_imprimerFacturePushButton->setText(QCoreApplication::translate("Fenetre_Principale", "Imprimer la facture", nullptr));
+        ongletConsultation->setTabText(ongletConsultation->indexOf(tab), QCoreApplication::translate("Fenetre_Principale", "Liste de transactions", nullptr));
         inscEt_Message->setText(QCoreApplication::translate("Fenetre_Principale", "Entrez les informations du nouveau/nouvelle \303\251tudiant(e)", nullptr));
         inscEt_nomLabel->setText(QCoreApplication::translate("Fenetre_Principale", "Nom		 :", nullptr));
         inscEt_prenomLabel->setText(QCoreApplication::translate("Fenetre_Principale", "Prenom		 :", nullptr));
@@ -1706,38 +1850,22 @@ public:
         inscAchat_servicesLabel->setText(QCoreApplication::translate("Fenetre_Principale", "Les services disponibles :", nullptr));
         inscAchat_AjFormation->setText(QCoreApplication::translate("Fenetre_Principale", "Ajouter", nullptr));
         inscAchat_AjService->setText(QCoreApplication::translate("Fenetre_Principale", "Ajouter", nullptr));
-        QTableWidgetItem *___qtablewidgetitem8 = inscAchat_commandeTableWidget->horizontalHeaderItem(0);
-        ___qtablewidgetitem8->setText(QCoreApplication::translate("Fenetre_Principale", "Type", nullptr));
-        QTableWidgetItem *___qtablewidgetitem9 = inscAchat_commandeTableWidget->horizontalHeaderItem(1);
-        ___qtablewidgetitem9->setText(QCoreApplication::translate("Fenetre_Principale", "Designation", nullptr));
-        QTableWidgetItem *___qtablewidgetitem10 = inscAchat_commandeTableWidget->horizontalHeaderItem(2);
-        ___qtablewidgetitem10->setText(QCoreApplication::translate("Fenetre_Principale", "Quantit\303\251", nullptr));
-        QTableWidgetItem *___qtablewidgetitem11 = inscAchat_commandeTableWidget->horizontalHeaderItem(3);
-        ___qtablewidgetitem11->setText(QCoreApplication::translate("Fenetre_Principale", "Prix", nullptr));
-        QTableWidgetItem *___qtablewidgetitem12 = inscAchat_commandeTableWidget->horizontalHeaderItem(4);
-        ___qtablewidgetitem12->setText(QCoreApplication::translate("Fenetre_Principale", "Montant", nullptr));
+        QTableWidgetItem *___qtablewidgetitem13 = inscAchat_commandeTableWidget->horizontalHeaderItem(0);
+        ___qtablewidgetitem13->setText(QCoreApplication::translate("Fenetre_Principale", "Type", nullptr));
+        QTableWidgetItem *___qtablewidgetitem14 = inscAchat_commandeTableWidget->horizontalHeaderItem(1);
+        ___qtablewidgetitem14->setText(QCoreApplication::translate("Fenetre_Principale", "Designation", nullptr));
+        QTableWidgetItem *___qtablewidgetitem15 = inscAchat_commandeTableWidget->horizontalHeaderItem(2);
+        ___qtablewidgetitem15->setText(QCoreApplication::translate("Fenetre_Principale", "Quantit\303\251", nullptr));
+        QTableWidgetItem *___qtablewidgetitem16 = inscAchat_commandeTableWidget->horizontalHeaderItem(3);
+        ___qtablewidgetitem16->setText(QCoreApplication::translate("Fenetre_Principale", "Prix", nullptr));
+        QTableWidgetItem *___qtablewidgetitem17 = inscAchat_commandeTableWidget->horizontalHeaderItem(4);
+        ___qtablewidgetitem17->setText(QCoreApplication::translate("Fenetre_Principale", "Montant", nullptr));
         inscAchat_identifiantLabel->setText(QCoreApplication::translate("Fenetre_Principale", "Identifiant de l'\303\251tudiant	:", nullptr));
         inscAchat_identifiantComboBox->setPlaceholderText(QCoreApplication::translate("Fenetre_Principale", "Entrez l'identifiant de l'\303\251tudiant :", nullptr));
         inscAchat_confirmCmdPushButton->setText(QCoreApplication::translate("Fenetre_Principale", "Confirmer", nullptr));
         inscAchat_suppCmdPushButton->setText(QCoreApplication::translate("Fenetre_Principale", "Effacer", nullptr));
+        inscAchat_estPayeeCheckBox->setText(QCoreApplication::translate("Fenetre_Principale", "Transaction pay\303\251e ?", nullptr));
         ongletInsertion->setTabText(ongletInsertion->indexOf(insc_Achat), QCoreApplication::translate("Fenetre_Principale", "Achats", nullptr));
-        inscP_idTransactionLabel->setText(QCoreApplication::translate("Fenetre_Principale", "Id de transaction	:", nullptr));
-        inscP_identifiantLabel->setText(QCoreApplication::translate("Fenetre_Principale", "Identifiant de l'\303\251tudiant	:", nullptr));
-        inscP_idTransactionComboBox->setPlaceholderText(QCoreApplication::translate("Fenetre_Principale", "Entrez l'id de la transaction", nullptr));
-        inscP_identifiantComboBox->setPlaceholderText(QCoreApplication::translate("Fenetre_Principale", "Entrez l'identifiant de l'\303\251tudiant :", nullptr));
-        inscP_vPaiementPushButton->setText(QCoreApplication::translate("Fenetre_Principale", "D\303\251finir comme \303\251tant pay\303\251", nullptr));
-        inscP_imprimerFacturePushButton->setText(QCoreApplication::translate("Fenetre_Principale", "Imprimer la facture", nullptr));
-        QTableWidgetItem *___qtablewidgetitem13 = inscP_commandeTableWidget->horizontalHeaderItem(0);
-        ___qtablewidgetitem13->setText(QCoreApplication::translate("Fenetre_Principale", "Type", nullptr));
-        QTableWidgetItem *___qtablewidgetitem14 = inscP_commandeTableWidget->horizontalHeaderItem(1);
-        ___qtablewidgetitem14->setText(QCoreApplication::translate("Fenetre_Principale", "Designation", nullptr));
-        QTableWidgetItem *___qtablewidgetitem15 = inscP_commandeTableWidget->horizontalHeaderItem(2);
-        ___qtablewidgetitem15->setText(QCoreApplication::translate("Fenetre_Principale", "Quantit\303\251", nullptr));
-        QTableWidgetItem *___qtablewidgetitem16 = inscP_commandeTableWidget->horizontalHeaderItem(3);
-        ___qtablewidgetitem16->setText(QCoreApplication::translate("Fenetre_Principale", "Prix", nullptr));
-        QTableWidgetItem *___qtablewidgetitem17 = inscP_commandeTableWidget->horizontalHeaderItem(4);
-        ___qtablewidgetitem17->setText(QCoreApplication::translate("Fenetre_Principale", "Montant", nullptr));
-        ongletInsertion->setTabText(ongletInsertion->indexOf(insc_payement), QCoreApplication::translate("Fenetre_Principale", "Payements", nullptr));
         inscFM_nomFormLabel->setText(QCoreApplication::translate("Fenetre_Principale", "Nom de la formation	:", nullptr));
         inscFM_prixFormLabel->setText(QCoreApplication::translate("Fenetre_Principale", "Prix de la formation	:", nullptr));
         inscFM_dureeFormLabel->setText(QCoreApplication::translate("Fenetre_Principale", "Dur\303\251e de la formation	:", nullptr));
@@ -1762,7 +1890,7 @@ public:
         inscFc_Enregistrer->setText(QCoreApplication::translate("Fenetre_Principale", "Enregistrer", nullptr));
         inscNv_Message->setText(QCoreApplication::translate("Fenetre_Principale", "Enregistrer un nouveau niveau", nullptr));
         inscFc_Message->setText(QCoreApplication::translate("Fenetre_Principale", "Enregistrer une nouvelle facult\303\251", nullptr));
-        ongletInsertion->setTabText(ongletInsertion->indexOf(insc_MentionNvPrc), QCoreApplication::translate("Fenetre_Principale", "Mt, nv, prc", nullptr));
+        ongletInsertion->setTabText(ongletInsertion->indexOf(insc_MentionNvPrc), QCoreApplication::translate("Fenetre_Principale", "Niveau d'\303\251tude", nullptr));
         inscA_motDePasseLabel->setText(QCoreApplication::translate("Fenetre_Principale", "Mot de passe	:", nullptr));
         inscA_enregistrer->setText(QCoreApplication::translate("Fenetre_Principale", "Enregistrer", nullptr));
         inscA_nomDeLAdminLabel->setText(QCoreApplication::translate("Fenetre_Principale", "Nom de l'admin	:", nullptr));
@@ -1827,7 +1955,12 @@ public:
         supMt_faculteLabel->setText(QCoreApplication::translate("Fenetre_Principale", "Facult\303\251	:", nullptr));
         supMt_mentionLabel->setText(QCoreApplication::translate("Fenetre_Principale", "Mention	:", nullptr));
         supMt_Enregistrer->setText(QCoreApplication::translate("Fenetre_Principale", "Enregistrer", nullptr));
-        ongletSuppression->setTabText(ongletSuppression->indexOf(sup_Mention), QCoreApplication::translate("Fenetre_Principale", "Supprimer une mati\303\250re", nullptr));
+        ongletSuppression->setTabText(ongletSuppression->indexOf(sup_Mention), QCoreApplication::translate("Fenetre_Principale", "Supprimer un niveau d'\303\251tude", nullptr));
+        supFM_nomFormLabel->setText(QCoreApplication::translate("Fenetre_Principale", "Nom de la formation	:", nullptr));
+        supFM_EnregistrerForm->setText(QCoreApplication::translate("Fenetre_Principale", "Supprimer", nullptr));
+        supSV_nomSrvLabel->setText(QCoreApplication::translate("Fenetre_Principale", "Nom du service	:", nullptr));
+        supSV_EnregistrerSrv->setText(QCoreApplication::translate("Fenetre_Principale", "Supprimer", nullptr));
+        ongletSuppression->setTabText(ongletSuppression->indexOf(sup_FormOuSrv), QCoreApplication::translate("Fenetre_Principale", "Supprimer un service ou une formation", nullptr));
         tl_SeConnecter->setText(QCoreApplication::translate("Fenetre_Principale", "Se connecter", nullptr));
         tl_Lister->setText(QCoreApplication::translate("Fenetre_Principale", "Consulter les informations", nullptr));
         tl_Insertion->setText(QCoreApplication::translate("Fenetre_Principale", "Insertions", nullptr));

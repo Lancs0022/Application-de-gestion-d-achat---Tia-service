@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>956</width>
+    <width>959</width>
     <height>652</height>
    </rect>
   </property>
@@ -17,17 +17,20 @@
    <bool>true</bool>
   </property>
   <widget class="QWidget" name="ongletCentrale">
+   <property name="acceptDrops">
+    <bool>false</bool>
+   </property>
    <widget class="QStackedWidget" name="stackedWidget">
     <property name="geometry">
      <rect>
       <x>220</x>
       <y>0</y>
       <width>731</width>
-      <height>621</height>
+      <height>651</height>
      </rect>
     </property>
     <property name="currentIndex">
-     <number>4</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="NonConnecte">
      <widget class="QLabel" name="nc_Message">
@@ -104,6 +107,61 @@ parcourir le programme</string>
       </property>
      </widget>
     </widget>
+    <widget class="QWidget" name="Aide">
+     <widget class="QTextBrowser" name="textBrowser">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>0</y>
+        <width>721</width>
+        <height>621</height>
+       </rect>
+      </property>
+      <property name="html">
+       <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+hr { height: 1px; border-width: 0; }
+li.unchecked::marker { content: &quot;\2610&quot;; }
+li.checked::marker { content: &quot;\2612&quot;; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Segoe UI'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;Page d'aide&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;	Au lancement du programme, les differents fonctionnalités sont désactivés par défaut pour des questions de sécurités. Il suffit d'appuyer sur le bouton &amp;quot;Se connecter&amp;quot; pour déverouiller l'intégralité du programme.&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;1-&lt;span style=&quot; text-decoration: underline;&quot;&gt;Se connecter&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;	Pour pouvoir se connecter, il suffit de renseigner un nom et un mot de passe enregistré dans la base de donnée dans les formulaires correspondants sur la page de connexion puis d'appuyer sur le bouton &amp;quot;Se connecter&amp;quot; en bas du formulaire. Le bouton &amp;quot;Se déconnecter&amp;quot; permet quand à lui à fermer l'accès de l'application, rendant les fonctionnalités du programme inutilisables.&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;2-&lt;span style=&quot; text-decoration: underline;&quot;&gt;Consulter les informations&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;	Cette section est dedié à la recherche des données enregistrés dans la base de données. Il permet notamment de rechercher un étudiant avec des filtres à disposition. et de retrouver une transaction faites par un étudiant.&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;3-Insertions&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;	Cette partie permet d'entrer de nouvelles informations dans la base de donnée. La partie insertion est reparti en plusieurs onglets différents qui permettent entre autre :&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;        - D'inscrire un étudiant avec ses informations,&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;        - D'inscrire les des transactions faits par l'étudiant et d'en genérer la facture.&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;D'un autre côté, cette partie permet aussi :&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;        - D'ajouter des choix de niveaux d'études,&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;        - D'ajouter de nouveaux services ou formations au catalogue de vente,&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;        - D'ajouter un nouveau utilisateur de l'application&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;  3/1-&lt;span style=&quot; text-decoration: underline;&quot;&gt;Insertion d'un nouveau étudiant&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;	L'insertion d'un étudiant se fait en remplisant une formulaire renseignants ses informations qui serviront à l'identifier. Il faut faire attention à remplir la tôtalité des champs du formulaire et de ne pas avoir de doublure dans la dans la base de donnée.&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt; 3/2-&lt;span style=&quot; text-decoration: underline;&quot;&gt;Enregistrement d'achats&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;	Afin d'enregistrer une transaction, il faut tout d'abord séléctionner l'id de l'étudiant dans le qui correspond à l'ordre d'insertion de l'étudiant dans l'application. Un champ sert d'aide et affiche le nom et le prénom de l'étudiant pour faciliter la sélection. Une fois l'id de l'étudiant renseigné, on peut ajouter des achats pouvant être des achats de services ou de formations dans une transaction avant de confirmer en appuyant sur le bouton &amp;quot;Confirmer&amp;quot; tout en bas de la page. &lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;4-&lt;span style=&quot; text-decoration: underline;&quot;&gt;Modifications et mises à jours&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;	 Cette partie permet de mettre à jour les informations concernant les étudiants.&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;5-&lt;span style=&quot; text-decoration: underline;&quot;&gt;Suppression&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;	Cette partie permet la suppression d'un étudiant et de certaines choses entrées dans la partie insertion. Mais attention, toute suppression est définitif !&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+    </widget>
     <widget class="QWidget" name="Connexion">
      <widget class="QLabel" name="sc_Message">
       <property name="geometry">
@@ -171,7 +229,7 @@ parcourir le programme</string>
        </item>
       </layout>
      </widget>
-     <widget class="QPushButton" name="Bvn_aide_2">
+     <widget class="QPushButton" name="sc_aidePushButton">
       <property name="geometry">
        <rect>
         <x>640</x>
@@ -416,6 +474,128 @@ parcourir le programme</string>
           </widget>
          </item>
         </layout>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="tab">
+       <attribute name="title">
+        <string>Liste de transactions</string>
+       </attribute>
+       <widget class="QTableWidget" name="lstT_commandeTableWidget">
+        <property name="geometry">
+         <rect>
+          <x>60</x>
+          <y>140</y>
+          <width>621</width>
+          <height>411</height>
+         </rect>
+        </property>
+        <column>
+         <property name="text">
+          <string>Type</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Designation</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Quantité</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Prix</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Montant</string>
+         </property>
+        </column>
+       </widget>
+       <widget class="QWidget" name="gridLayoutWidget_4">
+        <property name="geometry">
+         <rect>
+          <x>60</x>
+          <y>10</y>
+          <width>621</width>
+          <height>111</height>
+         </rect>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_3">
+         <item row="0" column="2">
+          <widget class="QLineEdit" name="lstT_nomEtudiantLineEdit">
+           <property name="readOnly">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="lstT_idTransactionLabel">
+           <property name="text">
+            <string>Id de transaction	:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0">
+          <widget class="QLabel" name="lstT_identifiantLabel">
+           <property name="text">
+            <string>Identifiant de l'étudiant	:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1" colspan="2">
+          <widget class="QComboBox" name="lstT_idTransactionComboBox">
+           <property name="placeholderText">
+            <string>Entrez l'id de la transaction</string>
+           </property>
+           <property name="duplicatesEnabled">
+            <bool>false</bool>
+           </property>
+           <property name="frame">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QComboBox" name="lstT_identifiantComboBox">
+           <property name="placeholderText">
+            <string>Entrez l'identifiant de l'étudiant :</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0" colspan="3">
+          <widget class="Line" name="line">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="2">
+          <widget class="QPushButton" name="lstT_vPaiementPushButton">
+           <property name="text">
+            <string>Définir comme étant payé</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="0" colspan="2">
+          <widget class="QPushButton" name="lstT_imprimerFacturePushButton">
+           <property name="text">
+            <string>Imprimer la facture</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+        <zorder>lstT_idTransactionComboBox</zorder>
+        <zorder>lstT_identifiantComboBox</zorder>
+        <zorder>lstT_identifiantLabel</zorder>
+        <zorder>lstT_nomEtudiantLineEdit</zorder>
+        <zorder>lstT_idTransactionLabel</zorder>
+        <zorder>lstT_vPaiementPushButton</zorder>
+        <zorder>line</zorder>
+        <zorder>lstT_imprimerFacturePushButton</zorder>
        </widget>
       </widget>
      </widget>
@@ -850,127 +1030,18 @@ parcourir le programme</string>
          <string>Effacer</string>
         </property>
        </widget>
-      </widget>
-      <widget class="QWidget" name="insc_payement">
-       <attribute name="title">
-        <string>Payements</string>
-       </attribute>
-       <widget class="QWidget" name="gridLayoutWidget_4">
+       <widget class="QCheckBox" name="inscAchat_estPayeeCheckBox">
         <property name="geometry">
          <rect>
-          <x>50</x>
-          <y>20</y>
-          <width>621</width>
-          <height>111</height>
+          <x>190</x>
+          <y>540</y>
+          <width>131</width>
+          <height>22</height>
          </rect>
         </property>
-        <layout class="QGridLayout" name="gridLayout_3">
-         <item row="0" column="2">
-          <widget class="QLineEdit" name="inscP_nomEtudiantLineEdit">
-           <property name="readOnly">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="0">
-          <widget class="QLabel" name="inscP_idTransactionLabel">
-           <property name="text">
-            <string>Id de transaction	:</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="0">
-          <widget class="QLabel" name="inscP_identifiantLabel">
-           <property name="text">
-            <string>Identifiant de l'étudiant	:</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="1" colspan="2">
-          <widget class="QComboBox" name="inscP_idTransactionComboBox">
-           <property name="placeholderText">
-            <string>Entrez l'id de la transaction</string>
-           </property>
-           <property name="duplicatesEnabled">
-            <bool>false</bool>
-           </property>
-           <property name="frame">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="1">
-          <widget class="QComboBox" name="inscP_identifiantComboBox">
-           <property name="placeholderText">
-            <string>Entrez l'identifiant de l'étudiant :</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="0" colspan="3">
-          <widget class="Line" name="line">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="2">
-          <widget class="QPushButton" name="inscP_vPaiementPushButton">
-           <property name="text">
-            <string>Définir comme étant payé</string>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="0" colspan="2">
-          <widget class="QPushButton" name="inscP_imprimerFacturePushButton">
-           <property name="text">
-            <string>Imprimer la facture</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-        <zorder>inscP_idTransactionComboBox</zorder>
-        <zorder>inscP_identifiantComboBox</zorder>
-        <zorder>inscP_identifiantLabel</zorder>
-        <zorder>inscP_nomEtudiantLineEdit</zorder>
-        <zorder>inscP_idTransactionLabel</zorder>
-        <zorder>inscP_vPaiementPushButton</zorder>
-        <zorder>line</zorder>
-        <zorder>inscP_imprimerFacturePushButton</zorder>
-       </widget>
-       <widget class="QTableWidget" name="inscP_commandeTableWidget">
-        <property name="geometry">
-         <rect>
-          <x>50</x>
-          <y>150</y>
-          <width>621</width>
-          <height>411</height>
-         </rect>
+        <property name="text">
+         <string>Transaction payée ?</string>
         </property>
-        <column>
-         <property name="text">
-          <string>Type</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>Designation</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>Quantité</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>Prix</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>Montant</string>
-         </property>
-        </column>
        </widget>
       </widget>
       <widget class="QWidget" name="insc_Form_Msrv">
@@ -1093,7 +1164,7 @@ parcourir le programme</string>
          <normaloff>Assets/icons8-class-64.png</normaloff>Assets/icons8-class-64.png</iconset>
        </attribute>
        <attribute name="title">
-        <string>Mt, nv, prc</string>
+        <string>Niveau d'étude</string>
        </attribute>
        <widget class="QWidget" name="formLayoutWidget_6">
         <property name="geometry">
@@ -1599,7 +1670,7 @@ parcourir le programme</string>
        </rect>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="sup_Etudiants">
        <attribute name="title">
@@ -1859,7 +1930,7 @@ parcourir le programme</string>
       </widget>
       <widget class="QWidget" name="sup_Mention">
        <attribute name="title">
-        <string>Supprimer une matière</string>
+        <string>Supprimer un niveau d'étude</string>
        </attribute>
        <widget class="QLabel" name="supM_Message">
         <property name="geometry">
@@ -1998,6 +2069,83 @@ parcourir le programme</string>
         </layout>
        </widget>
       </widget>
+      <widget class="QWidget" name="sup_FormOuSrv">
+       <attribute name="title">
+        <string>Supprimer un service ou une formation</string>
+       </attribute>
+       <widget class="QWidget" name="formLayoutWidget_16">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>190</y>
+          <width>341</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <layout class="QFormLayout" name="formLayout_7">
+         <item row="0" column="0">
+          <widget class="QLabel" name="supFM_nomFormLabel">
+           <property name="text">
+            <string>Nom de la formation	:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0" colspan="2">
+          <widget class="QPushButton" name="supFM_EnregistrerForm">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string>Supprimer</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QComboBox" name="supFM_nomFormComboBox">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="formLayoutWidget_4">
+        <property name="geometry">
+         <rect>
+          <x>410</x>
+          <y>190</y>
+          <width>301</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <layout class="QFormLayout" name="formLayout_4">
+         <item row="0" column="0">
+          <widget class="QLabel" name="supSV_nomSrvLabel">
+           <property name="text">
+            <string>Nom du service	:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0" colspan="2">
+          <widget class="QPushButton" name="supSV_EnregistrerSrv">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string>Supprimer</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QComboBox" name="supSV_nomSrvComboBox">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </widget>
      </widget>
     </widget>
    </widget>
@@ -2007,7 +2155,7 @@ parcourir le programme</string>
       <x>0</x>
       <y>0</y>
       <width>221</width>
-      <height>621</height>
+      <height>631</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="Toolbox">
