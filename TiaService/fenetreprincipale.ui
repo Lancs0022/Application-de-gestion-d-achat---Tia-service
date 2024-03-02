@@ -29,8 +29,14 @@
       <height>651</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Berlin Sans FB</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>7</number>
     </property>
     <widget class="QWidget" name="NonConnecte">
      <widget class="QLabel" name="nc_Message">
@@ -41,6 +47,12 @@
         <width>331</width>
         <height>141</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Berlin Sans FB</family>
+        <pointsize>12</pointsize>
+       </font>
       </property>
       <property name="text">
        <string>Vous devez vous connecter avant de pouvoir
@@ -54,7 +66,7 @@
        <rect>
         <x>220</x>
         <y>50</y>
-        <width>221</width>
+        <width>241</width>
         <height>101</height>
        </rect>
       </property>
@@ -108,14 +120,39 @@ parcourir le programme</string>
      </widget>
     </widget>
     <widget class="QWidget" name="Aide">
+     <property name="font">
+      <font>
+       <family>Berlin Sans FB</family>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
      <widget class="QTextBrowser" name="textBrowser">
       <property name="geometry">
        <rect>
         <x>10</x>
         <y>0</y>
         <width>721</width>
-        <height>621</height>
+        <height>631</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Berlin Sans FB</family>
+        <pointsize>9</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">@font-face {
+    font-family: 'Berlin Sans FB';
+    src: url('./BRLNSR.TTF') format('truetype');
+}
+
+body {
+    font-family: 'Berlin Sans FB', 'Sugoe UI', sans serif;
+    font-size: 12pt;
+    font-weight: 400;
+    font-style: normal;
+}</string>
       </property>
       <property name="html">
        <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
@@ -124,82 +161,109 @@ p, li { white-space: pre-wrap; }
 hr { height: 1px; border-width: 0; }
 li.unchecked::marker { content: &quot;\2610&quot;; }
 li.checked::marker { content: &quot;\2612&quot;; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Segoe UI'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;Page d'aide&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;	Au lancement du programme, les differents fonctionnalités sont désactivés par défaut pour des questions de sécurités. Il suffit d'appuyer sur le bouton &amp;quot;Se connecter&amp;quot; pour déverouiller l'intégralité du programme.&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;1-&lt;span style=&quot; text-decoration: underline;&quot;&gt;Se connecter&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;justify&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;	Pour pouvoir se connecter, il suffit de renseigner un nom et un mot de passe enregistré dans la base de donnée dans les formulaires correspondants sur la page de connexion puis d'appuyer sur le bouton &amp;quot;Se connecter&amp;quot; en bas du formulaire. Le bouton &amp;quot;Se déconnecter&amp;quot; permet quand à lui à fermer l'accès de l'application, rendant les fonctionnalités du programme inutilisables.&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;2-&lt;span style=&quot; text-decoration: underline;&quot;&gt;Consulter les informations&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;	Cette section est dedié à la recherche des données enregistrés dans la base de données. Il permet notamment de rechercher un étudiant avec des filtres à disposition. et de retrouver une transaction faites par un étudiant.&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;3-Insertions&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;	Cette partie permet d'entrer de nouvelles informations dans la base de donnée. La partie insertion est reparti en plusieurs onglets différents qui permettent entre autre :&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;        - D'inscrire un étudiant avec ses informations,&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;        - D'inscrire les des transactions faits par l'étudiant et d'en genérer la facture.&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;D'un autre côté, cette partie permet aussi :&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;        - D'ajouter des choix de niveaux d'études,&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;        - D'ajouter de nouveaux services ou formations au catalogue de vente,&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;        - D'ajouter un nouveau utilisateur de l'application&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;  3/1-&lt;span style=&quot; text-decoration: underline;&quot;&gt;Insertion d'un nouveau étudiant&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;	L'insertion d'un étudiant se fait en remplisant une formulaire renseignants ses informations qui serviront à l'identifier. Il faut faire attention à remplir la tôtalité des champs du formulaire et de ne pas avoir de doublure dans la dans la base de donnée.&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt; 3/2-&lt;span style=&quot; text-decoration: underline;&quot;&gt;Enregistrement d'achats&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;	Afin d'enregistrer une transaction, il faut tout d'abord séléctionner l'id de l'étudiant dans le qui correspond à l'ordre d'insertion de l'étudiant dans l'application. Un champ sert d'aide et affiche le nom et le prénom de l'étudiant pour faciliter la sélection. Une fois l'id de l'étudiant renseigné, on peut ajouter des achats pouvant être des achats de services ou de formations dans une transaction avant de confirmer en appuyant sur le bouton &amp;quot;Confirmer&amp;quot; tout en bas de la page. &lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;4-&lt;span style=&quot; text-decoration: underline;&quot;&gt;Modifications et mises à jours&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;	 Cette partie permet de mettre à jour les informations concernant les étudiants.&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;5-&lt;span style=&quot; text-decoration: underline;&quot;&gt;Suppression&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;	Cette partie permet la suppression d'un étudiant et de certaines choses entrées dans la partie insertion. Mais attention, toute suppression est définitif !&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Berlin Sans FB'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Segoe UI'; font-size:12pt; text-decoration: underline;&quot;&gt;Page d'aide&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Segoe UI'; font-size:12pt; text-decoration: underline;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Segoe UI'; font-size:12pt;&quot;&gt;	Au lancement du programme, les differents fonctionnalités sont désactivés par défaut pour des questions de sécurités. Il suffit d'appuyer sur le bouton &amp;quot;Se connecter&amp;quot; pour déverouiller l'intégralité du programme.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Segoe UI'; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Segoe UI'; font-size:12pt;&quot;&gt;1-&lt;/span&gt;&lt;span style=&quot; font-family:'Segoe UI'; font-size:12pt; text-decoration: underline;&quot;&gt;Se connecter&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Segoe UI'; font-size:12pt;&quot;&gt;	Pour pouvoir se connecter, il suffit de renseigner un nom et un mot de passe enregistré dans la base de donnée dans les formulaires correspondants sur la page de connexion puis d'appuyer sur le bouton &amp;quot;Se connecter&amp;quot; en bas du formulaire. Le bouton &amp;quot;Se déconnecter&amp;quot; permet quand à lui à fermer l'accès de l'application, rendant les fonctionnalités du programme inutilisables.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Segoe UI'; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Segoe UI'; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Segoe UI'; font-size:12pt;&quot;&gt;2-&lt;/span&gt;&lt;span style=&quot; font-family:'Segoe UI'; font-size:12pt; text-decoration: underline;&quot;&gt;Consulter les informations&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Segoe UI'; font-size:12pt;&quot;&gt;	Cette section est dedié à la recherche des données enregistrés dans la base de données. Il permet notamment de rechercher un étudiant avec des filtres à disposition. et de retrouver une transaction faites par un étudiant.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Segoe UI'; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Segoe UI'; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Segoe UI'; font-size:12pt; text-decoration: underline;&quot;&gt;3-Insertions&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Segoe UI'; font-size:12pt;&quot;&gt;	Cette partie permet d'entrer de nouvelles informations dans la base de donnée. La partie insertion est reparti en plusieurs onglets différents qui permettent entre autre :&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Segoe UI'; font-size:12pt;&quot;&gt;        - D'inscrire un étudiant avec ses informations,&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Segoe UI'; font-size:12pt;&quot;&gt;        - D'inscrire les des transactions faits par l'étudiant et d'en genérer la facture.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Segoe UI'; font-size:12pt;&quot;&gt;D'un autre côté, cette partie permet aussi :&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Segoe UI'; font-size:12pt;&quot;&gt;        - D'ajouter des choix de niveaux d'études,&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Segoe UI'; font-size:12pt;&quot;&gt;        - D'ajouter de nouveaux services ou formations au catalogue de vente,&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Segoe UI'; font-size:12pt;&quot;&gt;        - D'ajouter un nouveau utilisateur de l'application&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Segoe UI'; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Segoe UI'; font-size:12pt;&quot;&gt;  3/1-&lt;/span&gt;&lt;span style=&quot; font-family:'Segoe UI'; font-size:12pt; text-decoration: underline;&quot;&gt;Insertion d'un nouveau étudiant&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Segoe UI'; font-size:12pt;&quot;&gt;	L'insertion d'un étudiant se fait en remplisant une formulaire renseignants ses informations qui serviront à l'identifier. Il faut faire attention à remplir la tôtalité des champs du formulaire et de ne pas avoir de doublure dans la dans la base de donnée.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Segoe UI'; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Segoe UI'; font-size:12pt;&quot;&gt; 3/2-&lt;/span&gt;&lt;span style=&quot; font-family:'Segoe UI'; font-size:12pt; text-decoration: underline;&quot;&gt;Enregistrement d'achats&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Segoe UI'; font-size:12pt;&quot;&gt;	Afin d'enregistrer une transaction, il faut tout d'abord séléctionner l'id de l'étudiant dans le qui correspond à l'ordre d'insertion de l'étudiant dans l'application. Un champ sert d'aide et affiche le nom et le prénom de l'étudiant pour faciliter la sélection. Une fois l'id de l'étudiant renseigné, on peut ajouter des achats pouvant être des achats de services ou de formations dans une transaction avant de confirmer en appuyant sur le bouton &amp;quot;Confirmer&amp;quot; tout en bas de la page. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Segoe UI'; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Segoe UI'; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Segoe UI'; font-size:12pt;&quot;&gt;4-&lt;/span&gt;&lt;span style=&quot; font-family:'Segoe UI'; font-size:12pt; text-decoration: underline;&quot;&gt;Modifications et mises à jours&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Segoe UI'; font-size:12pt;&quot;&gt;	 Cette partie permet de mettre à jour les informations concernant les étudiants.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Segoe UI'; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Segoe UI'; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Segoe UI'; font-size:12pt;&quot;&gt;5-&lt;/span&gt;&lt;span style=&quot; font-family:'Segoe UI'; font-size:12pt; text-decoration: underline;&quot;&gt;Suppression&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Segoe UI'; font-size:12pt;&quot;&gt;	Cette partie permet la suppression d'un étudiant et de certaines choses entrées dans la partie insertion. Mais attention, toute suppression est définitif !&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
     </widget>
     <widget class="QWidget" name="Connexion">
-     <widget class="QLabel" name="sc_Message">
+     <widget class="QPushButton" name="sc_aidePushButton">
       <property name="geometry">
        <rect>
-        <x>250</x>
-        <y>110</y>
-        <width>251</width>
+        <x>640</x>
+        <y>550</y>
+        <width>91</width>
         <height>41</height>
        </rect>
       </property>
+      <property name="cursor">
+       <cursorShape>WhatsThisCursor</cursorShape>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton
+{
+	background-color: rgb(34, 100, 255);
+	font: 12pt &quot;Berlin Sans FB&quot;;
+	border-radius:10px;
+	color: rgb(255, 255, 255);
+	border:none;
+}
+
+QPushButton:Hover
+{
+	
+	background-color: red;
+}</string>
+      </property>
       <property name="text">
-       <string>Authentifiez vous pour accéder à l'application</string>
+       <string>Aide</string>
       </property>
      </widget>
-     <widget class="QWidget" name="formLayoutWidget">
+     <widget class="QFrame" name="formFrame">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>220</x>
-        <y>200</y>
+        <y>220</y>
         <width>291</width>
         <height>141</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(236, 236, 236);</string>
       </property>
       <layout class="QFormLayout" name="formLayout">
        <property name="fieldGrowthPolicy">
         <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
        </property>
-       <item row="6" column="0" colspan="2">
-        <widget class="QPushButton" name="sc_Deconnexion">
+       <item row="3" column="0">
+        <widget class="QLabel" name="sc_utilisateurLabel">
          <property name="text">
-          <string>Se deconnecter</string>
+          <string>Utilisateur	:</string>
          </property>
         </widget>
        </item>
-       <item row="5" column="0" colspan="2">
-        <widget class="QPushButton" name="sc_Connexion">
-         <property name="text">
-          <string>Se connecter</string>
+       <item row="3" column="1">
+        <widget class="QLineEdit" name="sc_utilisateurLineEdit">
+         <property name="styleSheet">
+          <string notr="true">font: 11pt &quot;Berlin Sans FB&quot;;
+background-color: rgb(255, 255, 255);
+</string>
          </property>
         </widget>
        </item>
@@ -210,36 +274,82 @@ li.checked::marker { content: &quot;\2612&quot;; }
          </property>
         </widget>
        </item>
-       <item row="3" column="0">
-        <widget class="QLabel" name="sc_utilisateurLabel">
-         <property name="text">
-          <string>Utilisateur	:</string>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="1">
-        <widget class="QLineEdit" name="sc_utilisateurLineEdit"/>
-       </item>
        <item row="4" column="1">
         <widget class="QLineEdit" name="sc_motDePasseLineEdit">
+         <property name="styleSheet">
+          <string notr="true">font: 11pt &quot;Berlin Sans FB&quot;;
+background-color: rgb(255, 255, 255);
+</string>
+         </property>
          <property name="text">
           <string/>
          </property>
         </widget>
        </item>
+       <item row="5" column="0" colspan="2">
+        <widget class="QPushButton" name="sc_Connexion">
+         <property name="styleSheet">
+          <string notr="true">QPushButton
+{
+	
+	background-color: rgb(59, 203, 15);
+	font: 12pt &quot;Berlin Sans FB&quot;;
+	border-radius:10px;
+	color: rgb(255, 255, 255);
+	border:none;
+}
+
+QPushButton:Hover
+{
+	
+	background-color: rgb(34, 100, 255);
+}</string>
+         </property>
+         <property name="text">
+          <string>Se connecter</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="0" colspan="2">
+        <widget class="QPushButton" name="sc_Deconnexion">
+         <property name="styleSheet">
+          <string notr="true">QPushButton
+{
+	
+	background-color: rgb(59, 203, 15);
+	font: 12pt &quot;Berlin Sans FB&quot;;
+	border-radius:10px;
+	color: rgb(255, 255, 255);
+	border:none;
+}
+
+QPushButton:Hover
+{
+	
+	background-color: rgb(34, 100, 255);
+}</string>
+         </property>
+         <property name="text">
+          <string>Se deconnecter</string>
+         </property>
+        </widget>
+       </item>
       </layout>
      </widget>
-     <widget class="QPushButton" name="sc_aidePushButton">
+     <widget class="QLabel" name="sc_Message">
       <property name="geometry">
        <rect>
-        <x>640</x>
-        <y>550</y>
-        <width>91</width>
+        <x>220</x>
+        <y>150</y>
+        <width>281</width>
         <height>41</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">font: 11pt &quot;Berlin Sans FB&quot;;</string>
+      </property>
       <property name="text">
-       <string>Aide</string>
+       <string>Authentifiez vous pour accéder à l'application</string>
       </property>
      </widget>
     </widget>
@@ -250,11 +360,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <x>0</x>
         <y>0</y>
         <width>731</width>
-        <height>621</height>
+        <height>651</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <family>Berlin Sans FB</family>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="listeEleve">
        <attribute name="title">
@@ -326,34 +442,13 @@ li.checked::marker { content: &quot;\2612&quot;; }
        <widget class="QWidget" name="gridLayoutWidget_5">
         <property name="geometry">
          <rect>
-          <x>130</x>
+          <x>140</x>
           <y>20</y>
           <width>461</width>
-          <height>207</height>
+          <height>201</height>
          </rect>
         </property>
         <layout class="QGridLayout" name="gridLayout_4">
-         <item row="6" column="0">
-          <widget class="QLabel" name="lstEt_idEtudiantLabel">
-           <property name="text">
-            <string>ID de l'étudiant		:</string>
-           </property>
-          </widget>
-         </item>
-         <item row="6" column="2">
-          <widget class="QCheckBox" name="lstEt_idEtudiantCheckBox">
-           <property name="text">
-            <string/>
-           </property>
-          </widget>
-         </item>
-         <item row="7" column="0">
-          <widget class="QLabel" name="lstEt_nomEtudiantLabel">
-           <property name="text">
-            <string>Nom de l'étudiant	:</string>
-           </property>
-          </widget>
-         </item>
          <item row="1" column="1">
           <widget class="QComboBox" name="lstEt_mentionComboBox">
            <property name="enabled">
@@ -370,6 +465,30 @@ li.checked::marker { content: &quot;\2612&quot;; }
            </property>
           </widget>
          </item>
+         <item row="0" column="1">
+          <widget class="QComboBox" name="lstEt_faculteComboBox">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="placeholderText">
+            <string>Entrez le parcours de l'étudiant :</string>
+           </property>
+          </widget>
+         </item>
+         <item row="7" column="0">
+          <widget class="QLabel" name="lstEt_nomEtudiantLabel">
+           <property name="text">
+            <string>Nom de l'étudiant	:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="2">
+          <widget class="QCheckBox" name="lstEt_faculteCheckBox">
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
          <item row="7" column="2">
           <widget class="QCheckBox" name="lstEt_nomEtudiantCheckBox">
            <property name="text">
@@ -377,17 +496,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
            </property>
           </widget>
          </item>
-         <item row="1" column="0">
-          <widget class="QLabel" name="lstEt_mentionLabel">
-           <property name="text">
-            <string>Mention de l'étudiant	:</string>
-           </property>
-          </widget>
-         </item>
          <item row="1" column="2">
           <widget class="QCheckBox" name="lstEt_mentionCheckBox">
            <property name="text">
             <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="lstEt_niveauLabel">
+           <property name="text">
+            <string>Niveau de l'étudiant	:</string>
            </property>
           </widget>
          </item>
@@ -401,17 +520,31 @@ li.checked::marker { content: &quot;\2612&quot;; }
            </property>
           </widget>
          </item>
-         <item row="2" column="0">
-          <widget class="QLabel" name="lstEt_niveauLabel">
+         <item row="2" column="2">
+          <widget class="QCheckBox" name="lstEt_niveauCheckBox">
            <property name="text">
-            <string>Niveau de l'étudiant	:</string>
+            <string/>
            </property>
           </widget>
          </item>
-         <item row="8" column="0" colspan="3">
-          <widget class="QPushButton" name="lstEt_Rechercher">
+         <item row="6" column="0">
+          <widget class="QLabel" name="lstEt_idEtudiantLabel">
            <property name="text">
-            <string>Rechercher</string>
+            <string>ID de l'étudiant		:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0">
+          <widget class="QLabel" name="lstEt_faculteLabel">
+           <property name="text">
+            <string>Faculté de l'étudiant	:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="2">
+          <widget class="QCheckBox" name="lstEt_idEtudiantCheckBox">
+           <property name="text">
+            <string/>
            </property>
           </widget>
          </item>
@@ -428,20 +561,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
            </property>
           </widget>
          </item>
-         <item row="7" column="1">
-          <widget class="QLineEdit" name="lstEt_nomEtudiantLineEdit">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="2">
-          <widget class="QCheckBox" name="lstEt_niveauCheckBox">
-           <property name="text">
-            <string/>
-           </property>
-          </widget>
-         </item>
          <item row="4" column="0" colspan="2">
           <widget class="Line" name="lstEt_line1">
            <property name="orientation">
@@ -449,34 +568,47 @@ li.checked::marker { content: &quot;\2612&quot;; }
            </property>
           </widget>
          </item>
-         <item row="0" column="0">
-          <widget class="QLabel" name="lstEt_faculteLabel">
-           <property name="text">
-            <string>Faculté de l'étudiant	:</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="1">
-          <widget class="QComboBox" name="lstEt_faculteComboBox">
+         <item row="7" column="1">
+          <widget class="QLineEdit" name="lstEt_nomEtudiantLineEdit">
            <property name="enabled">
             <bool>false</bool>
            </property>
-           <property name="placeholderText">
-            <string>Entrez le parcours de l'étudiant :</string>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="lstEt_mentionLabel">
+           <property name="text">
+            <string>Mention de l'étudiant	:</string>
            </property>
           </widget>
          </item>
-         <item row="0" column="2">
-          <widget class="QCheckBox" name="lstEt_faculteCheckBox">
+         <item row="8" column="0" colspan="3">
+          <widget class="QPushButton" name="lstEt_Rechercher">
+           <property name="styleSheet">
+            <string notr="true">QPushButton
+{
+	background-color: rgb(34, 100, 255);
+	font: 12pt &quot;Berlin Sans FB&quot;;
+	border-radius:10px;
+	color: rgb(255, 255, 255);
+	border:none;
+}
+
+QPushButton:Hover
+{
+	
+	background-color: red;
+}</string>
+           </property>
            <property name="text">
-            <string/>
+            <string>Rechercher</string>
            </property>
           </widget>
          </item>
         </layout>
        </widget>
       </widget>
-      <widget class="QWidget" name="tab">
+      <widget class="QWidget" name="listeTransation">
        <attribute name="title">
         <string>Liste de transactions</string>
        </attribute>
@@ -575,6 +707,23 @@ li.checked::marker { content: &quot;\2612&quot;; }
          </item>
          <item row="3" column="2">
           <widget class="QPushButton" name="lstT_vPaiementPushButton">
+           <property name="styleSheet">
+            <string notr="true">QPushButton
+{
+	
+	background-color: rgb(59, 203, 15);
+	font: 12pt &quot;Berlin Sans FB&quot;;
+	border-radius:10px;
+	color: rgb(255, 255, 255);
+	border:none;
+}
+
+QPushButton:Hover
+{
+	
+	background-color: rgb(34, 100, 255);
+}</string>
+           </property>
            <property name="text">
             <string>Définir comme étant payé</string>
            </property>
@@ -582,6 +731,23 @@ li.checked::marker { content: &quot;\2612&quot;; }
          </item>
          <item row="3" column="0" colspan="2">
           <widget class="QPushButton" name="lstT_imprimerFacturePushButton">
+           <property name="styleSheet">
+            <string notr="true">QPushButton
+{
+	
+	background-color: rgb(59, 203, 15);
+	font: 12pt &quot;Berlin Sans FB&quot;;
+	border-radius:10px;
+	color: rgb(255, 255, 255);
+	border:none;
+}
+
+QPushButton:Hover
+{
+	
+	background-color: rgb(34, 100, 255);
+}</string>
+           </property>
            <property name="text">
             <string>Imprimer la facture</string>
            </property>
@@ -598,6 +764,97 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <zorder>lstT_imprimerFacturePushButton</zorder>
        </widget>
       </widget>
+      <widget class="QWidget" name="listeFormation">
+       <attribute name="title">
+        <string>Formations</string>
+       </attribute>
+       <widget class="QTableWidget" name="tableWidget">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>100</y>
+          <width>671</width>
+          <height>461</height>
+         </rect>
+        </property>
+        <column>
+         <property name="text">
+          <string>ID</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Nom</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Prix</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Durée</string>
+         </property>
+        </column>
+       </widget>
+       <widget class="QLabel" name="label">
+        <property name="geometry">
+         <rect>
+          <x>130</x>
+          <y>30</y>
+          <width>361</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Liste de tous les formations enregistrés</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="tab">
+       <attribute name="title">
+        <string>Page</string>
+       </attribute>
+       <widget class="QLabel" name="label_2">
+        <property name="geometry">
+         <rect>
+          <x>140</x>
+          <y>50</y>
+          <width>361</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Liste de tous les services enregistrés</string>
+        </property>
+       </widget>
+       <widget class="QTableWidget" name="tableWidget_2">
+        <property name="geometry">
+         <rect>
+          <x>40</x>
+          <y>120</y>
+          <width>671</width>
+          <height>461</height>
+         </rect>
+        </property>
+        <column>
+         <property name="text">
+          <string>ID</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Nom</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Prix</string>
+         </property>
+        </column>
+       </widget>
+      </widget>
      </widget>
     </widget>
     <widget class="QWidget" name="Insertion">
@@ -610,8 +867,14 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <x>0</x>
         <y>0</y>
         <width>721</width>
-        <height>630</height>
+        <height>651</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Berlin Sans FB</family>
+        <pointsize>12</pointsize>
+       </font>
       </property>
       <property name="tabShape">
        <enum>QTabWidget::Rounded</enum>
@@ -654,6 +917,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <property name="font">
          <font>
           <family>Calibri</family>
+          <pointsize>12</pointsize>
          </font>
         </property>
         <property name="text">
@@ -666,7 +930,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
           <x>160</x>
           <y>100</y>
           <width>411</width>
-          <height>404</height>
+          <height>413</height>
          </rect>
         </property>
         <layout class="QFormLayout" name="formLayout_9">
@@ -800,6 +1064,23 @@ li.checked::marker { content: &quot;\2612&quot;; }
          </item>
          <item row="11" column="0" colspan="2">
           <widget class="QPushButton" name="inscEt_Enregistrer">
+           <property name="styleSheet">
+            <string notr="true">QPushButton
+{
+	
+	background-color: rgb(59, 203, 15);
+	font: 12pt &quot;Berlin Sans FB&quot;;
+	border-radius:10px;
+	color: rgb(255, 255, 255);
+	border:none;
+}
+
+QPushButton:Hover
+{
+	
+	background-color: rgb(34, 100, 255);
+}</string>
+           </property>
            <property name="text">
             <string>Enregistrer</string>
            </property>
@@ -842,94 +1123,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <property name="font">
          <font>
           <family>Arial</family>
+          <pointsize>12</pointsize>
          </font>
         </property>
         <property name="text">
          <string>Enregistrement d'un achat</string>
         </property>
-       </widget>
-       <widget class="QWidget" name="gridLayoutWidget">
-        <property name="geometry">
-         <rect>
-          <x>80</x>
-          <y>70</y>
-          <width>541</width>
-          <height>140</height>
-         </rect>
-        </property>
-        <layout class="QGridLayout" name="gridLayout" rowstretch="0,0,0,0,0">
-         <property name="topMargin">
-          <number>0</number>
-         </property>
-         <item row="1" column="0">
-          <widget class="QComboBox" name="inscAchat_formationsComboBox"/>
-         </item>
-         <item row="0" column="0">
-          <widget class="QLabel" name="inscAchat_formationsLabel">
-           <property name="text">
-            <string>Nos formations :</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="0">
-          <widget class="QSpinBox" name="inscAchat_qtFormSpinBox">
-           <property name="value">
-            <number>1</number>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="1">
-          <widget class="QComboBox" name="inscAchat_servicesComboBox"/>
-         </item>
-         <item row="2" column="1">
-          <widget class="QSpinBox" name="inscAchat_qtServiceSpinBox">
-           <property name="value">
-            <number>1</number>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="1">
-          <widget class="QLabel" name="inscAchat_servicesLabel">
-           <property name="text">
-            <string>Les services disponibles :</string>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="0">
-          <widget class="QDoubleSpinBox" name="inscAchat_prixFormSpinBox">
-           <property name="maximum">
-            <double>1000000000000.000000000000000</double>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="1">
-          <widget class="QDoubleSpinBox" name="inscAchat_prixServiceSpinBox">
-           <property name="maximum">
-            <double>1000000000000.000000000000000</double>
-           </property>
-          </widget>
-         </item>
-         <item row="4" column="0">
-          <widget class="QPushButton" name="inscAchat_AjFormation">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-           <property name="text">
-            <string>Ajouter</string>
-           </property>
-          </widget>
-         </item>
-         <item row="4" column="1">
-          <widget class="QPushButton" name="inscAchat_AjService">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-           <property name="text">
-            <string>Ajouter</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
        </widget>
        <widget class="QTableWidget" name="inscAchat_commandeTableWidget">
         <property name="geometry">
@@ -971,39 +1170,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
          </property>
         </column>
        </widget>
-       <widget class="QWidget" name="gridLayoutWidget_3">
-        <property name="geometry">
-         <rect>
-          <x>50</x>
-          <y>30</y>
-          <width>581</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <layout class="QGridLayout" name="gridLayout_2">
-         <item row="0" column="0">
-          <widget class="QLabel" name="inscAchat_identifiantLabel">
-           <property name="text">
-            <string>Identifiant de l'étudiant	:</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="1">
-          <widget class="QComboBox" name="inscAchat_identifiantComboBox">
-           <property name="placeholderText">
-            <string>Entrez l'identifiant de l'étudiant :</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="2">
-          <widget class="QLineEdit" name="inscAchat_nomEtudiantLineEdit">
-           <property name="readOnly">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
        <widget class="QPushButton" name="inscAchat_confirmCmdPushButton">
         <property name="geometry">
          <rect>
@@ -1043,6 +1209,171 @@ li.checked::marker { content: &quot;\2612&quot;; }
          <string>Transaction payée ?</string>
         </property>
        </widget>
+       <widget class="QWidget" name="gridLayoutWidget">
+        <property name="geometry">
+         <rect>
+          <x>80</x>
+          <y>70</y>
+          <width>541</width>
+          <height>140</height>
+         </rect>
+        </property>
+        <layout class="QGridLayout" name="gridLayout" rowstretch="0,0,0,0,0">
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <item row="1" column="0">
+          <widget class="QComboBox" name="inscAchat_formationsComboBox"/>
+         </item>
+         <item row="0" column="0">
+          <widget class="QLabel" name="inscAchat_formationsLabel">
+           <property name="font">
+            <font>
+             <family>Berlin Sans FB</family>
+             <pointsize>12</pointsize>
+             <bold>false</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>Nos formations :</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QSpinBox" name="inscAchat_qtFormSpinBox">
+           <property name="value">
+            <number>1</number>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QComboBox" name="inscAchat_servicesComboBox"/>
+         </item>
+         <item row="2" column="1">
+          <widget class="QSpinBox" name="inscAchat_qtServiceSpinBox">
+           <property name="value">
+            <number>1</number>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QLabel" name="inscAchat_servicesLabel">
+           <property name="font">
+            <font>
+             <family>Berlin Sans FB</family>
+             <pointsize>12</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Les services disponibles :</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <widget class="QDoubleSpinBox" name="inscAchat_prixFormSpinBox">
+           <property name="maximum">
+            <double>1000000000000.000000000000000</double>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="1">
+          <widget class="QDoubleSpinBox" name="inscAchat_prixServiceSpinBox">
+           <property name="maximum">
+            <double>1000000000000.000000000000000</double>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="0">
+          <widget class="QPushButton" name="inscAchat_AjFormation">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton
+{
+	
+	background-color: rgb(59, 203, 15);
+	font: 12pt &quot;Berlin Sans FB&quot;;
+	border-radius:10px;
+	color: rgb(255, 255, 255);
+	border:none;
+}
+
+QPushButton:Hover
+{
+	
+	background-color: rgb(34, 100, 255);
+}</string>
+           </property>
+           <property name="text">
+            <string>Ajouter</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="1">
+          <widget class="QPushButton" name="inscAchat_AjService">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton
+{
+	
+	background-color: rgb(59, 203, 15);
+	font: 12pt &quot;Berlin Sans FB&quot;;
+	border-radius:10px;
+	color: rgb(255, 255, 255);
+	border:none;
+}
+
+QPushButton:Hover
+{
+	
+	background-color: rgb(34, 100, 255);
+}</string>
+           </property>
+           <property name="text">
+            <string>Ajouter</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="gridLayoutWidget_3">
+        <property name="geometry">
+         <rect>
+          <x>60</x>
+          <y>30</y>
+          <width>581</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_2">
+         <item row="0" column="0">
+          <widget class="QLabel" name="inscAchat_identifiantLabel">
+           <property name="text">
+            <string>Identifiant de l'étudiant	:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QComboBox" name="inscAchat_identifiantComboBox">
+           <item>
+            <property name="text">
+             <string>Entrez l'identifiant de l'étudiant :</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item row="0" column="2">
+          <widget class="QLineEdit" name="inscAchat_nomEtudiantLineEdit">
+           <property name="readOnly">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
       </widget>
       <widget class="QWidget" name="insc_Form_Msrv">
        <attribute name="title">
@@ -1054,7 +1385,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
           <x>10</x>
           <y>90</y>
           <width>321</width>
-          <height>117</height>
+          <height>121</height>
          </rect>
         </property>
         <layout class="QFormLayout" name="formLayout_2">
@@ -1087,6 +1418,23 @@ li.checked::marker { content: &quot;\2612&quot;; }
          </item>
          <item row="3" column="0" colspan="2">
           <widget class="QPushButton" name="inscFM_EnregistrerF">
+           <property name="styleSheet">
+            <string notr="true">QPushButton
+{
+	
+	background-color: rgb(59, 203, 15);
+	font: 12pt &quot;Berlin Sans FB&quot;;
+	border-radius:10px;
+	color: rgb(255, 255, 255);
+	border:none;
+}
+
+QPushButton:Hover
+{
+	
+	background-color: rgb(34, 100, 255);
+}</string>
+           </property>
            <property name="text">
             <string>Enregistrer</string>
            </property>
@@ -1107,7 +1455,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
           <x>370</x>
           <y>100</y>
           <width>341</width>
-          <height>87</height>
+          <height>90</height>
          </rect>
         </property>
         <layout class="QFormLayout" name="formLayout_3">
@@ -1130,6 +1478,23 @@ li.checked::marker { content: &quot;\2612&quot;; }
          </item>
          <item row="2" column="0" colspan="2">
           <widget class="QPushButton" name="inscSV_EnregistrerS">
+           <property name="styleSheet">
+            <string notr="true">QPushButton
+{
+	
+	background-color: rgb(59, 203, 15);
+	font: 12pt &quot;Berlin Sans FB&quot;;
+	border-radius:10px;
+	color: rgb(255, 255, 255);
+	border:none;
+}
+
+QPushButton:Hover
+{
+	
+	background-color: rgb(34, 100, 255);
+}</string>
+           </property>
            <property name="text">
             <string>Enregistrer</string>
            </property>
@@ -1192,6 +1557,23 @@ li.checked::marker { content: &quot;\2612&quot;; }
          </item>
          <item row="2" column="0" colspan="2">
           <widget class="QPushButton" name="inscMt_Enregistrer">
+           <property name="styleSheet">
+            <string notr="true">QPushButton
+{
+	
+	background-color: rgb(59, 203, 15);
+	font: 12pt &quot;Berlin Sans FB&quot;;
+	border-radius:10px;
+	color: rgb(255, 255, 255);
+	border:none;
+}
+
+QPushButton:Hover
+{
+	
+	background-color: rgb(34, 100, 255);
+}</string>
+           </property>
            <property name="text">
             <string>Enregistrer</string>
            </property>
@@ -1221,6 +1603,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <property name="font">
          <font>
           <family>Calibri</family>
+          <pointsize>12</pointsize>
          </font>
         </property>
         <property name="text">
@@ -1233,7 +1616,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
           <x>360</x>
           <y>100</y>
           <width>311</width>
-          <height>116</height>
+          <height>120</height>
          </rect>
         </property>
         <layout class="QFormLayout" name="inscNv">
@@ -1263,6 +1646,23 @@ li.checked::marker { content: &quot;\2612&quot;; }
          </item>
          <item row="3" column="0" colspan="2">
           <widget class="QPushButton" name="inscNv_Enregistrer">
+           <property name="styleSheet">
+            <string notr="true">QPushButton
+{
+	
+	background-color: rgb(59, 203, 15);
+	font: 12pt &quot;Berlin Sans FB&quot;;
+	border-radius:10px;
+	color: rgb(255, 255, 255);
+	border:none;
+}
+
+QPushButton:Hover
+{
+	
+	background-color: rgb(34, 100, 255);
+}</string>
+           </property>
            <property name="text">
             <string>Enregistrer</string>
            </property>
@@ -1306,6 +1706,23 @@ li.checked::marker { content: &quot;\2612&quot;; }
          </item>
          <item row="1" column="0" colspan="2">
           <widget class="QPushButton" name="inscFc_Enregistrer">
+           <property name="styleSheet">
+            <string notr="true">QPushButton
+{
+	
+	background-color: rgb(59, 203, 15);
+	font: 12pt &quot;Berlin Sans FB&quot;;
+	border-radius:10px;
+	color: rgb(255, 255, 255);
+	border:none;
+}
+
+QPushButton:Hover
+{
+	
+	background-color: rgb(34, 100, 255);
+}</string>
+           </property>
            <property name="text">
             <string>Enregistrer</string>
            </property>
@@ -1386,6 +1803,23 @@ li.checked::marker { content: &quot;\2612&quot;; }
          </item>
          <item row="3" column="0" colspan="2">
           <widget class="QPushButton" name="inscA_enregistrer">
+           <property name="styleSheet">
+            <string notr="true">QPushButton
+{
+	
+	background-color: rgb(59, 203, 15);
+	font: 12pt &quot;Berlin Sans FB&quot;;
+	border-radius:10px;
+	color: rgb(255, 255, 255);
+	border:none;
+}
+
+QPushButton:Hover
+{
+	
+	background-color: rgb(34, 100, 255);
+}</string>
+           </property>
            <property name="text">
             <string>Enregistrer</string>
            </property>
@@ -1403,15 +1837,16 @@ li.checked::marker { content: &quot;\2612&quot;; }
        <widget class="QLabel" name="inscA_Message">
         <property name="geometry">
          <rect>
-          <x>220</x>
+          <x>190</x>
           <y>110</y>
-          <width>281</width>
+          <width>321</width>
           <height>61</height>
          </rect>
         </property>
         <property name="font">
          <font>
-          <family>Calibri</family>
+          <family>Berlin Sans FB</family>
+          <pointsize>12</pointsize>
          </font>
         </property>
         <property name="text">
@@ -1431,8 +1866,14 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <x>0</x>
         <y>0</y>
         <width>731</width>
-        <height>621</height>
+        <height>651</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Berlin Sans FB</family>
+        <pointsize>12</pointsize>
+       </font>
       </property>
       <property name="tabShape">
        <enum>QTabWidget::Rounded</enum>
@@ -1456,6 +1897,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <property name="font">
          <font>
           <family>Calibri</family>
+          <pointsize>12</pointsize>
          </font>
         </property>
         <property name="text">
@@ -1501,7 +1943,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
           <x>150</x>
           <y>110</y>
           <width>411</width>
-          <height>404</height>
+          <height>433</height>
          </rect>
         </property>
         <layout class="QFormLayout" name="formLayout_10">
@@ -1532,16 +1974,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
            </property>
           </widget>
          </item>
-         <item row="3" column="0">
-          <widget class="QLabel" name="modEt_dateDeNaissanceLabel">
-           <property name="text">
-            <string>Date de naissance	 :</string>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="1">
-          <widget class="QDateEdit" name="modEt_dateDeNaissanceDateEdit"/>
-         </item>
          <item row="2" column="1">
           <widget class="QComboBox" name="modEt_genreComboBox">
            <item>
@@ -1560,6 +1992,16 @@ li.checked::marker { content: &quot;\2612&quot;; }
             </property>
            </item>
           </widget>
+         </item>
+         <item row="3" column="0">
+          <widget class="QLabel" name="modEt_dateDeNaissanceLabel">
+           <property name="text">
+            <string>Date de naissance	 :</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="1">
+          <widget class="QDateEdit" name="modEt_dateDeNaissanceDateEdit"/>
          </item>
          <item row="4" column="0">
           <widget class="QLabel" name="modEt_faculteLabel">
@@ -1633,13 +2075,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
          <item row="9" column="1">
           <widget class="QTextEdit" name="modEt_adresseTextEdit"/>
          </item>
-         <item row="11" column="0" colspan="2">
-          <widget class="QPushButton" name="modEt_Enregistrer">
-           <property name="text">
-            <string>Enregistrer</string>
-           </property>
-          </widget>
-         </item>
          <item row="10" column="0">
           <widget class="QLabel" name="modEt_estPassantLabel">
            <property name="text">
@@ -1654,7 +2089,41 @@ li.checked::marker { content: &quot;\2612&quot;; }
            </property>
           </widget>
          </item>
+         <item row="11" column="0" colspan="2">
+          <widget class="QPushButton" name="modEt_Enregistrer">
+           <property name="styleSheet">
+            <string notr="true">QPushButton
+{
+	
+	background-color: rgb(59, 203, 15);
+	font: 12pt &quot;Berlin Sans FB&quot;;
+	border-radius:10px;
+	color: rgb(255, 255, 255);
+	border:none;
+}
+
+QPushButton:Hover
+{
+	
+	background-color: rgb(34, 100, 255);
+}</string>
+           </property>
+           <property name="text">
+            <string>Enregistrer</string>
+           </property>
+          </widget>
+         </item>
         </layout>
+       </widget>
+       <widget class="QDateEdit" name="modEt_dateInscriptionDateEdit">
+        <property name="geometry">
+         <rect>
+          <x>270</x>
+          <y>550</y>
+          <width>0</width>
+          <height>0</height>
+         </rect>
+        </property>
        </widget>
       </widget>
      </widget>
@@ -1666,8 +2135,14 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <x>0</x>
         <y>0</y>
         <width>731</width>
-        <height>621</height>
+        <height>651</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Berlin Sans FB</family>
+        <pointsize>12</pointsize>
+       </font>
       </property>
       <property name="currentIndex">
        <number>2</number>
@@ -1688,6 +2163,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <property name="font">
          <font>
           <family>Calibri</family>
+          <pointsize>12</pointsize>
          </font>
         </property>
         <property name="text">
@@ -1700,7 +2176,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
           <x>80</x>
           <y>50</y>
           <width>581</width>
-          <height>56</height>
+          <height>58</height>
          </rect>
         </property>
         <layout class="QGridLayout" name="gridLayout_6">
@@ -1727,6 +2203,23 @@ li.checked::marker { content: &quot;\2612&quot;; }
          </item>
          <item row="1" column="0" colspan="3">
           <widget class="QPushButton" name="supEt_Supprimer">
+           <property name="styleSheet">
+            <string notr="true">QPushButton
+{
+	
+	background-color: rgb(59, 203, 15);
+	font: 12pt &quot;Berlin Sans FB&quot;;
+	border-radius:10px;
+	color: rgb(255, 255, 255);
+	border:none;
+}
+
+QPushButton:Hover
+{
+	
+	background-color: rgb(34, 100, 255);
+}</string>
+           </property>
            <property name="text">
             <string>Supprimer</string>
            </property>
@@ -1944,6 +2437,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <property name="font">
          <font>
           <family>Calibri</family>
+          <pointsize>12</pointsize>
          </font>
         </property>
         <property name="text">
@@ -1957,7 +2451,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
           <x>410</x>
           <y>190</y>
           <width>311</width>
-          <height>116</height>
+          <height>120</height>
          </rect>
         </property>
         <layout class="QFormLayout" name="supNv">
@@ -1980,6 +2474,23 @@ li.checked::marker { content: &quot;\2612&quot;; }
          </item>
          <item row="3" column="0" colspan="2">
           <widget class="QPushButton" name="supNv_Enregistrer">
+           <property name="styleSheet">
+            <string notr="true">QPushButton
+{
+	
+	background-color: rgb(59, 203, 15);
+	font: 12pt &quot;Berlin Sans FB&quot;;
+	border-radius:10px;
+	color: rgb(255, 255, 255);
+	border:none;
+}
+
+QPushButton:Hover
+{
+	
+	background-color: rgb(34, 100, 255);
+}</string>
+           </property>
            <property name="text">
             <string>Enregistrer</string>
            </property>
@@ -2019,6 +2530,23 @@ li.checked::marker { content: &quot;\2612&quot;; }
          </item>
          <item row="1" column="0" colspan="2">
           <widget class="QPushButton" name="supFc_Enregistrer">
+           <property name="styleSheet">
+            <string notr="true">QPushButton
+{
+	
+	background-color: rgb(59, 203, 15);
+	font: 12pt &quot;Berlin Sans FB&quot;;
+	border-radius:10px;
+	color: rgb(255, 255, 255);
+	border:none;
+}
+
+QPushButton:Hover
+{
+	
+	background-color: rgb(34, 100, 255);
+}</string>
+           </property>
            <property name="text">
             <string>Enregistrer</string>
            </property>
@@ -2055,6 +2583,23 @@ li.checked::marker { content: &quot;\2612&quot;; }
          </item>
          <item row="2" column="0" colspan="2">
           <widget class="QPushButton" name="supMt_Enregistrer">
+           <property name="styleSheet">
+            <string notr="true">QPushButton
+{
+	
+	background-color: rgb(59, 203, 15);
+	font: 12pt &quot;Berlin Sans FB&quot;;
+	border-radius:10px;
+	color: rgb(255, 255, 255);
+	border:none;
+}
+
+QPushButton:Hover
+{
+	
+	background-color: rgb(34, 100, 255);
+}</string>
+           </property>
            <property name="text">
             <string>Enregistrer</string>
            </property>
@@ -2095,6 +2640,23 @@ li.checked::marker { content: &quot;\2612&quot;; }
            <property name="enabled">
             <bool>false</bool>
            </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton
+{
+	
+	background-color: rgb(59, 203, 15);
+	font: 12pt &quot;Berlin Sans FB&quot;;
+	border-radius:10px;
+	color: rgb(255, 255, 255);
+	border:none;
+}
+
+QPushButton:Hover
+{
+	
+	background-color: rgb(34, 100, 255);
+}</string>
+           </property>
            <property name="text">
             <string>Supprimer</string>
            </property>
@@ -2131,6 +2693,23 @@ li.checked::marker { content: &quot;\2612&quot;; }
            <property name="enabled">
             <bool>false</bool>
            </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton
+{
+	
+	background-color: rgb(59, 203, 15);
+	font: 12pt &quot;Berlin Sans FB&quot;;
+	border-radius:10px;
+	color: rgb(255, 255, 255);
+	border:none;
+}
+
+QPushButton:Hover
+{
+	
+	background-color: rgb(34, 100, 255);
+}</string>
+           </property>
            <property name="text">
             <string>Supprimer</string>
            </property>
@@ -2149,14 +2728,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
      </widget>
     </widget>
    </widget>
-   <widget class="QWidget" name="layoutWidget">
+   <widget class="QGroupBox" name="groupBox">
     <property name="geometry">
      <rect>
       <x>0</x>
       <y>0</y>
       <width>221</width>
-      <height>631</height>
+      <height>651</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(18, 48, 41);</string>
     </property>
     <layout class="QVBoxLayout" name="Toolbox">
      <item>
@@ -2168,10 +2750,35 @@ li.checked::marker { content: &quot;\2612&quot;; }
         </size>
        </property>
        <property name="styleSheet">
-        <string notr="true"/>
+        <string notr="true">QPushButton
+{
+	
+	background-color: rgb(59, 203, 15);
+	font: 12pt &quot;Berlin Sans FB&quot;;
+	border-radius:10px;
+	color: rgb(255, 255, 255);
+	border:none;
+}
+
+QPushButton:Hover
+{
+	
+	background-color: rgb(34, 100, 255);
+	letter-spacing: 1px;
+}</string>
        </property>
        <property name="text">
         <string>Se connecter</string>
+       </property>
+       <property name="icon">
+        <iconset resource="image/images.qrc">
+         <normaloff>:/user.png</normaloff>:/user.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>40</width>
+         <height>40</height>
+        </size>
        </property>
       </widget>
      </item>
@@ -2186,8 +2793,35 @@ li.checked::marker { content: &quot;\2612&quot;; }
          <height>50</height>
         </size>
        </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton
+{
+	background-color: rgb(59, 203, 15);
+	font: 12pt &quot;Berlin Sans FB&quot;;
+	border-radius:10px;
+	color: rgb(255, 255, 255);
+	border:none;
+}
+
+QPushButton:Hover
+{
+	
+	background-color: rgb(34, 100, 255);
+	letter-spacing: 1px;
+}</string>
+       </property>
        <property name="text">
-        <string>Consulter les informations</string>
+        <string>Consulter les info</string>
+       </property>
+       <property name="icon">
+        <iconset resource="image/images.qrc">
+         <normaloff>:/information-button.png</normaloff>:/information-button.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>40</width>
+         <height>40</height>
+        </size>
        </property>
       </widget>
      </item>
@@ -2202,8 +2836,36 @@ li.checked::marker { content: &quot;\2612&quot;; }
          <height>50</height>
         </size>
        </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton
+{
+	
+	background-color: rgb(59, 203, 15);
+	font: 12pt &quot;Berlin Sans FB&quot;;
+	border-radius:10px;
+	color: rgb(255, 255, 255);
+	border:none;
+}
+
+QPushButton:Hover
+{
+	
+	background-color: rgb(34, 100, 255);
+	letter-spacing: 1px;
+}</string>
+       </property>
        <property name="text">
         <string>Insertions</string>
+       </property>
+       <property name="icon">
+        <iconset resource="image/images.qrc">
+         <normaloff>:/insert.png</normaloff>:/insert.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>40</width>
+         <height>40</height>
+        </size>
        </property>
       </widget>
      </item>
@@ -2218,8 +2880,36 @@ li.checked::marker { content: &quot;\2612&quot;; }
          <height>50</height>
         </size>
        </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton
+{
+	
+	background-color: rgb(59, 203, 15);
+	font: 12pt &quot;Berlin Sans FB&quot;;
+	border-radius:10px;
+	color: rgb(255, 255, 255);
+	border:none;
+}
+
+QPushButton:Hover
+{
+	
+	background-color: rgb(34, 100, 255);
+	letter-spacing: 1px;
+}</string>
+       </property>
        <property name="text">
-        <string>Modifications et mise à jour</string>
+        <string>Modifications </string>
+       </property>
+       <property name="icon">
+        <iconset resource="image/images.qrc">
+         <normaloff>:/system-update (1).png</normaloff>:/system-update (1).png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>40</width>
+         <height>40</height>
+        </size>
        </property>
       </widget>
      </item>
@@ -2234,8 +2924,36 @@ li.checked::marker { content: &quot;\2612&quot;; }
          <height>50</height>
         </size>
        </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton
+{
+	
+	background-color: rgb(59, 203, 15);
+	font: 12pt &quot;Berlin Sans FB&quot;;
+	border-radius:10px;
+	color: rgb(255, 255, 255);
+	border:none;
+}
+
+QPushButton:Hover
+{
+	
+	background-color: rgb(34, 100, 255);
+	letter-spacing: 1px;
+}</string>
+       </property>
        <property name="text">
-        <string>Suppression d'une entrée</string>
+        <string>Suppression </string>
+       </property>
+       <property name="icon">
+        <iconset resource="image/images.qrc">
+         <normaloff>:/trash (1).png</normaloff>:/trash (1).png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>40</width>
+         <height>40</height>
+        </size>
        </property>
       </widget>
      </item>
@@ -2247,17 +2965,47 @@ li.checked::marker { content: &quot;\2612&quot;; }
          <height>50</height>
         </size>
        </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton
+{
+	
+	background-color: rgb(59, 203, 15);
+	font: 12pt &quot;Berlin Sans FB&quot;;
+	border-radius:10px;
+	color: rgb(255, 255, 255);
+	border:none;
+}
+
+QPushButton:Hover
+{
+	
+	background-color: rgb(34, 100, 255);
+	letter-spacing: 1px;
+}</string>
+       </property>
        <property name="text">
         <string>Quitter</string>
+       </property>
+       <property name="icon">
+        <iconset resource="image/images.qrc">
+         <normaloff>:/cross.png</normaloff>:/cross.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>60</width>
+         <height>40</height>
+        </size>
        </property>
       </widget>
      </item>
     </layout>
    </widget>
   </widget>
-  <widget class="QStatusBar" name="statusBar"/>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="image/images.qrc"/>
+  <include location="image/images.qrc"/>
+ </resources>
  <connections/>
 </ui>

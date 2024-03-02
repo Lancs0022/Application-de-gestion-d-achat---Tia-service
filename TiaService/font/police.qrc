@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>BRLNSB.TTF</file>
+        <file>BRLNSR.TTF</file>
+    </qresource>
+</RCC>

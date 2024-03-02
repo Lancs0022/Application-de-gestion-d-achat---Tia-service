@@ -243,12 +243,13 @@ QVector<QString> Controleur::getAllSelonIdEtranger(const QString& nomTable, cons
 // Contrôle les informations d'un étudiant avant de les envoyer à l'objet bdd
 bool Controleur::rqtInscEt(int idEtudiant, QString& nom, QString& prenom, QString& genre,
                            QDate& dateDeNaissance, QString& faculte,
-                           QString& mention, QString& niveau,
-                           QString& codage, bool& passant, QString& telephone, QString& adresse){
+                           QString& mention, QString& niveau, QString& codage,
+                           bool& passant, QString& telephone, QString& adresse, QDate dateActuelle){
     // qDebug() << "Mention récupéré du CBOX: " << mention;
     // qDebug() << "Niveau récupéré du CBOX: " << niveau;
 
-    QDate dateActuelle = QDate::currentDate();
+    if(dateActuelle.isNull())
+        dateActuelle = QDate::currentDate();
     qDebug() << "dateActuelle = " << dateActuelle;
     int idFaculte = this->getId(faculte, "Faculte");
     int idMention = this->getId(mention, "Mention");
@@ -391,6 +392,7 @@ QVector<QVector<QString>> Controleur::getStudent(QString faculte, QString mentio
                 QString idFaculte = rqBcpEt.value(2).toString();
                 QString idMention = rqBcpEt.value(1).toString();
                 QString idNiveau  = rqBcpEt.value(3).toString();
+                QString dateInscription = rqBcpEt.value(12).toDate().toString("yyyy-MM-dd");
 
                 QString faculte = getNom(idFaculte, "Faculte");
                 QString mention = getNom(idMention, "Mention");
@@ -407,6 +409,7 @@ QVector<QVector<QString>> Controleur::getStudent(QString faculte, QString mentio
                 colonne.push_back(faculte);
                 colonne.push_back(mention);
                 colonne.push_back(niveau);
+                colonne.push_back(dateInscription);
             }
 
             etudiantData.push_back(colonne);

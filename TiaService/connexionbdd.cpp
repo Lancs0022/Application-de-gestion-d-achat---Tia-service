@@ -13,7 +13,7 @@ ConnexionDDB::ConnexionDDB() {
 bool ConnexionDDB::ouvrirLaBase(){
     // Initialisation de la base de données
     db = QSqlDatabase::addDatabase("QODBC");
-    QString cheminBDD = QCoreApplication::applicationDirPath() + "/TIA SERVICE.MDB";
+    QString cheminBDD = QCoreApplication::applicationDirPath() + "/TIA SERVICE.accdb";
     qDebug() << "chemin de l'application : " << cheminBDD;
     db.setDatabaseName("DRIVER={Microsoft Access Driver (*.mdb, *.accdb)};FIL={MS Access};DBQ="+cheminBDD);
     // Tentative de connexion à la base de données

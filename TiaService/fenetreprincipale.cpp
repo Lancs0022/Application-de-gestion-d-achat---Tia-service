@@ -8,13 +8,11 @@ FenetrePrincipale::FenetrePrincipale(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->stackedWidget->setCurrentIndex(0);
-    // this->ctrl.autoLog();
-    // ui->tl_Lister->setEnabled(true);
-    // ui->tl_Insertion->setEnabled(true);
-    // ui->tl_Modification->setEnabled(true);
-    // ui->tl_Suppression->setEnabled(true);
-
-    // facture.afficherFacture();
+    this->ctrl.autoLog();
+    ui->tl_Lister->setEnabled(true);
+    ui->tl_Insertion->setEnabled(true);
+    ui->tl_Modification->setEnabled(true);
+    ui->tl_Suppression->setEnabled(true);
 }
 
 FenetrePrincipale::~FenetrePrincipale()
@@ -229,7 +227,7 @@ void FenetrePrincipale::on_inscEt_Enregistrer_clicked()
 
     if(nom!="" && prenom != "" && genre != "" && telephone != "" && adresse != ""){
         this->ctrl.rqtInscEt(-1 ,nom, prenom, genre, dateDeNaissance, faculte, mention,
-                             niveau, codage, passant, telephone, adresse);
+                             niveau, codage, passant, telephone, adresse, QDate());
         ui->inscEt_Message->setText("Les informations ont été sauvegardés avec succes !");
         ui->inscEt_nomLineEdit->setText("");
         ui->inscEt_prenomLineEdit->setText("");
@@ -271,6 +269,8 @@ void FenetrePrincipale::on_modEt_identifiantComboBox_currentTextChanged(const QS
         ui->modEt_faculteComboBox->setCurrentText(donnees[8]);
         ui->modEt_mentionComboBox->setCurrentText(donnees[9]);
         ui->modEt_niveauComboBox->setCurrentText(donnees[10]);
+        ui->modEt_dateInscriptionDateEdit->setDate(QDate::fromString(donnees[11], "yyyy-MM-dd"));
+        qDebug() << "!!_ dateInscription = " << donnees[11];
     }
 }
 
@@ -289,9 +289,10 @@ void FenetrePrincipale::on_modEt_Enregistrer_clicked()
     QString telephone = ui->modEt_telephoneLineEdit->text();
     QString adresse = ui->modEt_adresseTextEdit->toPlainText();
     bool passant = ui->modEt_estPassantCheckBox->isChecked();
+    QDate dateInscription = ui->modEt_dateInscriptionDateEdit->date();
     if(this->ctrl.deleteEtudiant(mention, niveau, faculte,idEtudiant)){
         if(this->ctrl.rqtInscEt(idEtudiant, nom, prenom, genre, dateDeNaissance, faculte, mention,
-                                 niveau, codage, passant, telephone, adresse)){
+                                 niveau, codage, passant, telephone, adresse, dateInscription)){
             ui->modEt_Message->setText("Les informations ont été sauvegardés avec succes !");
             ui->modEt_nomLineEdit->setText("");
             ui->modEt_prenomLineEdit->setText("");

@@ -10,6 +10,7 @@
 #define UI_FENETREPRINCIPALE_H
 
 #include <QtCore/QVariant>
+#include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QCheckBox>
 #include <QtWidgets/QComboBox>
@@ -18,6 +19,7 @@
 #include <QtWidgets/QFormLayout>
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QGridLayout>
+#include <QtWidgets/QGroupBox>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
@@ -26,7 +28,6 @@
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QSpinBox>
 #include <QtWidgets/QStackedWidget>
-#include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTabWidget>
 #include <QtWidgets/QTableWidget>
 #include <QtWidgets/QTextBrowser>
@@ -50,16 +51,16 @@ public:
     QWidget *Aide;
     QTextBrowser *textBrowser;
     QWidget *Connexion;
-    QLabel *sc_Message;
-    QWidget *formLayoutWidget;
+    QPushButton *sc_aidePushButton;
+    QFrame *formFrame;
     QFormLayout *formLayout;
-    QPushButton *sc_Deconnexion;
-    QPushButton *sc_Connexion;
-    QLabel *sc_motDePasseLabel;
     QLabel *sc_utilisateurLabel;
     QLineEdit *sc_utilisateurLineEdit;
+    QLabel *sc_motDePasseLabel;
     QLineEdit *sc_motDePasseLineEdit;
-    QPushButton *sc_aidePushButton;
+    QPushButton *sc_Connexion;
+    QPushButton *sc_Deconnexion;
+    QLabel *sc_Message;
     QWidget *ConsulterInfos;
     QTabWidget *ongletConsultation;
     QWidget *listeEleve;
@@ -67,24 +68,24 @@ public:
     QLabel *lstE_Message;
     QWidget *gridLayoutWidget_5;
     QGridLayout *gridLayout_4;
-    QLabel *lstEt_idEtudiantLabel;
-    QCheckBox *lstEt_idEtudiantCheckBox;
-    QLabel *lstEt_nomEtudiantLabel;
     QComboBox *lstEt_mentionComboBox;
-    QCheckBox *lstEt_nomEtudiantCheckBox;
-    QLabel *lstEt_mentionLabel;
-    QCheckBox *lstEt_mentionCheckBox;
-    QComboBox *lstEt_niveauComboBox;
-    QLabel *lstEt_niveauLabel;
-    QPushButton *lstEt_Rechercher;
-    QComboBox *lstEt_idEtudiantComboBox;
-    QLineEdit *lstEt_nomEtudiantLineEdit;
-    QCheckBox *lstEt_niveauCheckBox;
-    QFrame *lstEt_line1;
-    QLabel *lstEt_faculteLabel;
     QComboBox *lstEt_faculteComboBox;
+    QLabel *lstEt_nomEtudiantLabel;
     QCheckBox *lstEt_faculteCheckBox;
-    QWidget *tab;
+    QCheckBox *lstEt_nomEtudiantCheckBox;
+    QCheckBox *lstEt_mentionCheckBox;
+    QLabel *lstEt_niveauLabel;
+    QComboBox *lstEt_niveauComboBox;
+    QCheckBox *lstEt_niveauCheckBox;
+    QLabel *lstEt_idEtudiantLabel;
+    QLabel *lstEt_faculteLabel;
+    QCheckBox *lstEt_idEtudiantCheckBox;
+    QComboBox *lstEt_idEtudiantComboBox;
+    QFrame *lstEt_line1;
+    QLineEdit *lstEt_nomEtudiantLineEdit;
+    QLabel *lstEt_mentionLabel;
+    QPushButton *lstEt_Rechercher;
+    QWidget *listeTransation;
     QTableWidget *lstT_commandeTableWidget;
     QWidget *gridLayoutWidget_4;
     QGridLayout *gridLayout_3;
@@ -96,6 +97,12 @@ public:
     QFrame *line;
     QPushButton *lstT_vPaiementPushButton;
     QPushButton *lstT_imprimerFacturePushButton;
+    QWidget *listeFormation;
+    QTableWidget *tableWidget;
+    QLabel *label;
+    QWidget *tab;
+    QLabel *label_2;
+    QTableWidget *tableWidget_2;
     QWidget *Insertion;
     QTabWidget *ongletInsertion;
     QWidget *insc_Etudiant;
@@ -127,6 +134,10 @@ public:
     QCheckBox *inscEt_estPassantCheckBox;
     QWidget *insc_Achat;
     QLabel *inscAchat_Message;
+    QTableWidget *inscAchat_commandeTableWidget;
+    QPushButton *inscAchat_confirmCmdPushButton;
+    QPushButton *inscAchat_suppCmdPushButton;
+    QCheckBox *inscAchat_estPayeeCheckBox;
     QWidget *gridLayoutWidget;
     QGridLayout *gridLayout;
     QComboBox *inscAchat_formationsComboBox;
@@ -139,15 +150,11 @@ public:
     QDoubleSpinBox *inscAchat_prixServiceSpinBox;
     QPushButton *inscAchat_AjFormation;
     QPushButton *inscAchat_AjService;
-    QTableWidget *inscAchat_commandeTableWidget;
     QWidget *gridLayoutWidget_3;
     QGridLayout *gridLayout_2;
     QLabel *inscAchat_identifiantLabel;
     QComboBox *inscAchat_identifiantComboBox;
     QLineEdit *inscAchat_nomEtudiantLineEdit;
-    QPushButton *inscAchat_confirmCmdPushButton;
-    QPushButton *inscAchat_suppCmdPushButton;
-    QCheckBox *inscAchat_estPayeeCheckBox;
     QWidget *insc_Form_Msrv;
     QWidget *formLayoutWidget_2;
     QFormLayout *formLayout_2;
@@ -217,9 +224,9 @@ public:
     QLabel *modEt_prenomLabel;
     QLineEdit *modEt_prenomLineEdit;
     QLabel *modEt_genreLabel;
+    QComboBox *modEt_genreComboBox;
     QLabel *modEt_dateDeNaissanceLabel;
     QDateEdit *modEt_dateDeNaissanceDateEdit;
-    QComboBox *modEt_genreComboBox;
     QLabel *modEt_faculteLabel;
     QComboBox *modEt_faculteComboBox;
     QLabel *modEt_mentionLabel;
@@ -232,9 +239,10 @@ public:
     QLineEdit *modEt_telephoneLineEdit;
     QLabel *modEt_adresseLabel;
     QTextEdit *modEt_adresseTextEdit;
-    QPushButton *modEt_Enregistrer;
     QLabel *modEt_estPassantLabel;
     QCheckBox *modEt_estPassantCheckBox;
+    QPushButton *modEt_Enregistrer;
+    QDateEdit *modEt_dateInscriptionDateEdit;
     QWidget *Suppression;
     QTabWidget *ongletSuppression;
     QWidget *sup_Etudiants;
@@ -303,7 +311,7 @@ public:
     QLabel *supSV_nomSrvLabel;
     QPushButton *supSV_EnregistrerSrv;
     QComboBox *supSV_nomSrvComboBox;
-    QWidget *layoutWidget;
+    QGroupBox *groupBox;
     QVBoxLayout *Toolbox;
     QPushButton *tl_SeConnecter;
     QPushButton *tl_Lister;
@@ -311,7 +319,6 @@ public:
     QPushButton *tl_Modification;
     QPushButton *tl_Suppression;
     QPushButton *tl_Quitter;
-    QStatusBar *statusBar;
 
     void setupUi(QMainWindow *Fenetre_Principale)
     {
@@ -325,92 +332,167 @@ public:
         stackedWidget = new QStackedWidget(ongletCentrale);
         stackedWidget->setObjectName("stackedWidget");
         stackedWidget->setGeometry(QRect(220, 0, 731, 651));
+        QFont font;
+        font.setFamilies({QString::fromUtf8("Berlin Sans FB")});
+        font.setPointSize(12);
+        stackedWidget->setFont(font);
         NonConnecte = new QWidget();
         NonConnecte->setObjectName("NonConnecte");
         nc_Message = new QLabel(NonConnecte);
         nc_Message->setObjectName("nc_Message");
         nc_Message->setGeometry(QRect(180, 140, 331, 141));
+        nc_Message->setFont(font);
         stackedWidget->addWidget(NonConnecte);
         Bienvenue = new QWidget();
         Bienvenue->setObjectName("Bienvenue");
         Bvn_Message1 = new QLabel(Bienvenue);
         Bvn_Message1->setObjectName("Bvn_Message1");
-        Bvn_Message1->setGeometry(QRect(220, 50, 221, 101));
-        QFont font;
-        font.setFamilies({QString::fromUtf8("Verdana")});
-        font.setPointSize(10);
-        font.setBold(true);
-        Bvn_Message1->setFont(font);
+        Bvn_Message1->setGeometry(QRect(220, 50, 241, 101));
+        QFont font1;
+        font1.setFamilies({QString::fromUtf8("Verdana")});
+        font1.setPointSize(10);
+        font1.setBold(true);
+        Bvn_Message1->setFont(font1);
         Bvn_Message2 = new QLabel(Bienvenue);
         Bvn_Message2->setObjectName("Bvn_Message2");
         Bvn_Message2->setGeometry(QRect(120, 170, 441, 131));
-        QFont font1;
-        font1.setFamilies({QString::fromUtf8("Verdana")});
-        font1.setPointSize(9);
-        Bvn_Message2->setFont(font1);
+        QFont font2;
+        font2.setFamilies({QString::fromUtf8("Verdana")});
+        font2.setPointSize(9);
+        Bvn_Message2->setFont(font2);
         Bvn_aide = new QPushButton(Bienvenue);
         Bvn_aide->setObjectName("Bvn_aide");
         Bvn_aide->setGeometry(QRect(640, 550, 91, 41));
         stackedWidget->addWidget(Bienvenue);
         Aide = new QWidget();
         Aide->setObjectName("Aide");
+        Aide->setFont(font);
         textBrowser = new QTextBrowser(Aide);
         textBrowser->setObjectName("textBrowser");
-        textBrowser->setGeometry(QRect(10, 0, 721, 621));
+        textBrowser->setGeometry(QRect(10, 0, 721, 631));
+        QFont font3;
+        font3.setFamilies({QString::fromUtf8("Berlin Sans FB")});
+        font3.setPointSize(9);
+        textBrowser->setFont(font3);
+        textBrowser->setStyleSheet(QString::fromUtf8("@font-face {\n"
+"    font-family: 'Berlin Sans FB';\n"
+"    src: url('./BRLNSR.TTF') format('truetype');\n"
+"}\n"
+"\n"
+"body {\n"
+"    font-family: 'Berlin Sans FB', 'Sugoe UI', sans serif;\n"
+"    font-size: 12pt;\n"
+"    font-weight: 400;\n"
+"    font-style: normal;\n"
+"}"));
         stackedWidget->addWidget(Aide);
         Connexion = new QWidget();
         Connexion->setObjectName("Connexion");
-        sc_Message = new QLabel(Connexion);
-        sc_Message->setObjectName("sc_Message");
-        sc_Message->setGeometry(QRect(250, 110, 251, 41));
-        formLayoutWidget = new QWidget(Connexion);
-        formLayoutWidget->setObjectName("formLayoutWidget");
-        formLayoutWidget->setGeometry(QRect(220, 200, 291, 141));
-        formLayout = new QFormLayout(formLayoutWidget);
+        sc_aidePushButton = new QPushButton(Connexion);
+        sc_aidePushButton->setObjectName("sc_aidePushButton");
+        sc_aidePushButton->setGeometry(QRect(640, 550, 91, 41));
+        sc_aidePushButton->setCursor(QCursor(Qt::WhatsThisCursor));
+        sc_aidePushButton->setStyleSheet(QString::fromUtf8("QPushButton\n"
+"{\n"
+"	background-color: rgb(34, 100, 255);\n"
+"	font: 12pt \"Berlin Sans FB\";\n"
+"	border-radius:10px;\n"
+"	color: rgb(255, 255, 255);\n"
+"	border:none;\n"
+"}\n"
+"\n"
+"QPushButton:Hover\n"
+"{\n"
+"	\n"
+"	background-color: red;\n"
+"}"));
+        formFrame = new QFrame(Connexion);
+        formFrame->setObjectName("formFrame");
+        formFrame->setEnabled(true);
+        formFrame->setGeometry(QRect(220, 220, 291, 141));
+        formFrame->setStyleSheet(QString::fromUtf8("background-color: rgb(236, 236, 236);"));
+        formLayout = new QFormLayout(formFrame);
         formLayout->setSpacing(6);
         formLayout->setContentsMargins(11, 11, 11, 11);
         formLayout->setObjectName("formLayout");
         formLayout->setFieldGrowthPolicy(QFormLayout::AllNonFixedFieldsGrow);
-        formLayout->setContentsMargins(0, 0, 0, 0);
-        sc_Deconnexion = new QPushButton(formLayoutWidget);
-        sc_Deconnexion->setObjectName("sc_Deconnexion");
-
-        formLayout->setWidget(6, QFormLayout::SpanningRole, sc_Deconnexion);
-
-        sc_Connexion = new QPushButton(formLayoutWidget);
-        sc_Connexion->setObjectName("sc_Connexion");
-
-        formLayout->setWidget(5, QFormLayout::SpanningRole, sc_Connexion);
-
-        sc_motDePasseLabel = new QLabel(formLayoutWidget);
-        sc_motDePasseLabel->setObjectName("sc_motDePasseLabel");
-
-        formLayout->setWidget(4, QFormLayout::LabelRole, sc_motDePasseLabel);
-
-        sc_utilisateurLabel = new QLabel(formLayoutWidget);
+        sc_utilisateurLabel = new QLabel(formFrame);
         sc_utilisateurLabel->setObjectName("sc_utilisateurLabel");
 
         formLayout->setWidget(3, QFormLayout::LabelRole, sc_utilisateurLabel);
 
-        sc_utilisateurLineEdit = new QLineEdit(formLayoutWidget);
+        sc_utilisateurLineEdit = new QLineEdit(formFrame);
         sc_utilisateurLineEdit->setObjectName("sc_utilisateurLineEdit");
+        sc_utilisateurLineEdit->setStyleSheet(QString::fromUtf8("font: 11pt \"Berlin Sans FB\";\n"
+"background-color: rgb(255, 255, 255);\n"
+""));
 
         formLayout->setWidget(3, QFormLayout::FieldRole, sc_utilisateurLineEdit);
 
-        sc_motDePasseLineEdit = new QLineEdit(formLayoutWidget);
+        sc_motDePasseLabel = new QLabel(formFrame);
+        sc_motDePasseLabel->setObjectName("sc_motDePasseLabel");
+
+        formLayout->setWidget(4, QFormLayout::LabelRole, sc_motDePasseLabel);
+
+        sc_motDePasseLineEdit = new QLineEdit(formFrame);
         sc_motDePasseLineEdit->setObjectName("sc_motDePasseLineEdit");
+        sc_motDePasseLineEdit->setStyleSheet(QString::fromUtf8("font: 11pt \"Berlin Sans FB\";\n"
+"background-color: rgb(255, 255, 255);\n"
+""));
 
         formLayout->setWidget(4, QFormLayout::FieldRole, sc_motDePasseLineEdit);
 
-        sc_aidePushButton = new QPushButton(Connexion);
-        sc_aidePushButton->setObjectName("sc_aidePushButton");
-        sc_aidePushButton->setGeometry(QRect(640, 550, 91, 41));
+        sc_Connexion = new QPushButton(formFrame);
+        sc_Connexion->setObjectName("sc_Connexion");
+        sc_Connexion->setStyleSheet(QString::fromUtf8("QPushButton\n"
+"{\n"
+"	\n"
+"	background-color: rgb(59, 203, 15);\n"
+"	font: 12pt \"Berlin Sans FB\";\n"
+"	border-radius:10px;\n"
+"	color: rgb(255, 255, 255);\n"
+"	border:none;\n"
+"}\n"
+"\n"
+"QPushButton:Hover\n"
+"{\n"
+"	\n"
+"	background-color: rgb(34, 100, 255);\n"
+"}"));
+
+        formLayout->setWidget(5, QFormLayout::SpanningRole, sc_Connexion);
+
+        sc_Deconnexion = new QPushButton(formFrame);
+        sc_Deconnexion->setObjectName("sc_Deconnexion");
+        sc_Deconnexion->setStyleSheet(QString::fromUtf8("QPushButton\n"
+"{\n"
+"	\n"
+"	background-color: rgb(59, 203, 15);\n"
+"	font: 12pt \"Berlin Sans FB\";\n"
+"	border-radius:10px;\n"
+"	color: rgb(255, 255, 255);\n"
+"	border:none;\n"
+"}\n"
+"\n"
+"QPushButton:Hover\n"
+"{\n"
+"	\n"
+"	background-color: rgb(34, 100, 255);\n"
+"}"));
+
+        formLayout->setWidget(6, QFormLayout::SpanningRole, sc_Deconnexion);
+
+        sc_Message = new QLabel(Connexion);
+        sc_Message->setObjectName("sc_Message");
+        sc_Message->setGeometry(QRect(220, 150, 281, 41));
+        sc_Message->setStyleSheet(QString::fromUtf8("font: 11pt \"Berlin Sans FB\";"));
         stackedWidget->addWidget(Connexion);
         ConsulterInfos = new QWidget();
         ConsulterInfos->setObjectName("ConsulterInfos");
         ongletConsultation = new QTabWidget(ConsulterInfos);
         ongletConsultation->setObjectName("ongletConsultation");
-        ongletConsultation->setGeometry(QRect(0, 0, 731, 621));
+        ongletConsultation->setGeometry(QRect(0, 0, 731, 651));
+        ongletConsultation->setFont(font);
         listeEleve = new QWidget();
         listeEleve->setObjectName("listeEleve");
         lstE_listeEtudiant = new QTableWidget(listeEleve);
@@ -439,27 +521,12 @@ public:
         lstE_Message->setGeometry(QRect(300, 0, 241, 16));
         gridLayoutWidget_5 = new QWidget(listeEleve);
         gridLayoutWidget_5->setObjectName("gridLayoutWidget_5");
-        gridLayoutWidget_5->setGeometry(QRect(130, 20, 461, 207));
+        gridLayoutWidget_5->setGeometry(QRect(140, 20, 461, 201));
         gridLayout_4 = new QGridLayout(gridLayoutWidget_5);
         gridLayout_4->setSpacing(6);
         gridLayout_4->setContentsMargins(11, 11, 11, 11);
         gridLayout_4->setObjectName("gridLayout_4");
         gridLayout_4->setContentsMargins(0, 0, 0, 0);
-        lstEt_idEtudiantLabel = new QLabel(gridLayoutWidget_5);
-        lstEt_idEtudiantLabel->setObjectName("lstEt_idEtudiantLabel");
-
-        gridLayout_4->addWidget(lstEt_idEtudiantLabel, 6, 0, 1, 1);
-
-        lstEt_idEtudiantCheckBox = new QCheckBox(gridLayoutWidget_5);
-        lstEt_idEtudiantCheckBox->setObjectName("lstEt_idEtudiantCheckBox");
-
-        gridLayout_4->addWidget(lstEt_idEtudiantCheckBox, 6, 2, 1, 1);
-
-        lstEt_nomEtudiantLabel = new QLabel(gridLayoutWidget_5);
-        lstEt_nomEtudiantLabel->setObjectName("lstEt_nomEtudiantLabel");
-
-        gridLayout_4->addWidget(lstEt_nomEtudiantLabel, 7, 0, 1, 1);
-
         lstEt_mentionComboBox = new QComboBox(gridLayoutWidget_5);
         lstEt_mentionComboBox->setObjectName("lstEt_mentionComboBox");
         lstEt_mentionComboBox->setEnabled(false);
@@ -467,20 +534,36 @@ public:
 
         gridLayout_4->addWidget(lstEt_mentionComboBox, 1, 1, 1, 1);
 
+        lstEt_faculteComboBox = new QComboBox(gridLayoutWidget_5);
+        lstEt_faculteComboBox->setObjectName("lstEt_faculteComboBox");
+        lstEt_faculteComboBox->setEnabled(false);
+
+        gridLayout_4->addWidget(lstEt_faculteComboBox, 0, 1, 1, 1);
+
+        lstEt_nomEtudiantLabel = new QLabel(gridLayoutWidget_5);
+        lstEt_nomEtudiantLabel->setObjectName("lstEt_nomEtudiantLabel");
+
+        gridLayout_4->addWidget(lstEt_nomEtudiantLabel, 7, 0, 1, 1);
+
+        lstEt_faculteCheckBox = new QCheckBox(gridLayoutWidget_5);
+        lstEt_faculteCheckBox->setObjectName("lstEt_faculteCheckBox");
+
+        gridLayout_4->addWidget(lstEt_faculteCheckBox, 0, 2, 1, 1);
+
         lstEt_nomEtudiantCheckBox = new QCheckBox(gridLayoutWidget_5);
         lstEt_nomEtudiantCheckBox->setObjectName("lstEt_nomEtudiantCheckBox");
 
         gridLayout_4->addWidget(lstEt_nomEtudiantCheckBox, 7, 2, 1, 1);
 
-        lstEt_mentionLabel = new QLabel(gridLayoutWidget_5);
-        lstEt_mentionLabel->setObjectName("lstEt_mentionLabel");
-
-        gridLayout_4->addWidget(lstEt_mentionLabel, 1, 0, 1, 1);
-
         lstEt_mentionCheckBox = new QCheckBox(gridLayoutWidget_5);
         lstEt_mentionCheckBox->setObjectName("lstEt_mentionCheckBox");
 
         gridLayout_4->addWidget(lstEt_mentionCheckBox, 1, 2, 1, 1);
+
+        lstEt_niveauLabel = new QLabel(gridLayoutWidget_5);
+        lstEt_niveauLabel->setObjectName("lstEt_niveauLabel");
+
+        gridLayout_4->addWidget(lstEt_niveauLabel, 2, 0, 1, 1);
 
         lstEt_niveauComboBox = new QComboBox(gridLayoutWidget_5);
         lstEt_niveauComboBox->setObjectName("lstEt_niveauComboBox");
@@ -488,32 +571,31 @@ public:
 
         gridLayout_4->addWidget(lstEt_niveauComboBox, 2, 1, 1, 1);
 
-        lstEt_niveauLabel = new QLabel(gridLayoutWidget_5);
-        lstEt_niveauLabel->setObjectName("lstEt_niveauLabel");
+        lstEt_niveauCheckBox = new QCheckBox(gridLayoutWidget_5);
+        lstEt_niveauCheckBox->setObjectName("lstEt_niveauCheckBox");
 
-        gridLayout_4->addWidget(lstEt_niveauLabel, 2, 0, 1, 1);
+        gridLayout_4->addWidget(lstEt_niveauCheckBox, 2, 2, 1, 1);
 
-        lstEt_Rechercher = new QPushButton(gridLayoutWidget_5);
-        lstEt_Rechercher->setObjectName("lstEt_Rechercher");
+        lstEt_idEtudiantLabel = new QLabel(gridLayoutWidget_5);
+        lstEt_idEtudiantLabel->setObjectName("lstEt_idEtudiantLabel");
 
-        gridLayout_4->addWidget(lstEt_Rechercher, 8, 0, 1, 3);
+        gridLayout_4->addWidget(lstEt_idEtudiantLabel, 6, 0, 1, 1);
+
+        lstEt_faculteLabel = new QLabel(gridLayoutWidget_5);
+        lstEt_faculteLabel->setObjectName("lstEt_faculteLabel");
+
+        gridLayout_4->addWidget(lstEt_faculteLabel, 0, 0, 1, 1);
+
+        lstEt_idEtudiantCheckBox = new QCheckBox(gridLayoutWidget_5);
+        lstEt_idEtudiantCheckBox->setObjectName("lstEt_idEtudiantCheckBox");
+
+        gridLayout_4->addWidget(lstEt_idEtudiantCheckBox, 6, 2, 1, 1);
 
         lstEt_idEtudiantComboBox = new QComboBox(gridLayoutWidget_5);
         lstEt_idEtudiantComboBox->setObjectName("lstEt_idEtudiantComboBox");
         lstEt_idEtudiantComboBox->setEnabled(false);
 
         gridLayout_4->addWidget(lstEt_idEtudiantComboBox, 6, 1, 1, 1);
-
-        lstEt_nomEtudiantLineEdit = new QLineEdit(gridLayoutWidget_5);
-        lstEt_nomEtudiantLineEdit->setObjectName("lstEt_nomEtudiantLineEdit");
-        lstEt_nomEtudiantLineEdit->setEnabled(false);
-
-        gridLayout_4->addWidget(lstEt_nomEtudiantLineEdit, 7, 1, 1, 1);
-
-        lstEt_niveauCheckBox = new QCheckBox(gridLayoutWidget_5);
-        lstEt_niveauCheckBox->setObjectName("lstEt_niveauCheckBox");
-
-        gridLayout_4->addWidget(lstEt_niveauCheckBox, 2, 2, 1, 1);
 
         lstEt_line1 = new QFrame(gridLayoutWidget_5);
         lstEt_line1->setObjectName("lstEt_line1");
@@ -522,26 +604,40 @@ public:
 
         gridLayout_4->addWidget(lstEt_line1, 4, 0, 1, 2);
 
-        lstEt_faculteLabel = new QLabel(gridLayoutWidget_5);
-        lstEt_faculteLabel->setObjectName("lstEt_faculteLabel");
+        lstEt_nomEtudiantLineEdit = new QLineEdit(gridLayoutWidget_5);
+        lstEt_nomEtudiantLineEdit->setObjectName("lstEt_nomEtudiantLineEdit");
+        lstEt_nomEtudiantLineEdit->setEnabled(false);
 
-        gridLayout_4->addWidget(lstEt_faculteLabel, 0, 0, 1, 1);
+        gridLayout_4->addWidget(lstEt_nomEtudiantLineEdit, 7, 1, 1, 1);
 
-        lstEt_faculteComboBox = new QComboBox(gridLayoutWidget_5);
-        lstEt_faculteComboBox->setObjectName("lstEt_faculteComboBox");
-        lstEt_faculteComboBox->setEnabled(false);
+        lstEt_mentionLabel = new QLabel(gridLayoutWidget_5);
+        lstEt_mentionLabel->setObjectName("lstEt_mentionLabel");
 
-        gridLayout_4->addWidget(lstEt_faculteComboBox, 0, 1, 1, 1);
+        gridLayout_4->addWidget(lstEt_mentionLabel, 1, 0, 1, 1);
 
-        lstEt_faculteCheckBox = new QCheckBox(gridLayoutWidget_5);
-        lstEt_faculteCheckBox->setObjectName("lstEt_faculteCheckBox");
+        lstEt_Rechercher = new QPushButton(gridLayoutWidget_5);
+        lstEt_Rechercher->setObjectName("lstEt_Rechercher");
+        lstEt_Rechercher->setStyleSheet(QString::fromUtf8("QPushButton\n"
+"{\n"
+"	background-color: rgb(34, 100, 255);\n"
+"	font: 12pt \"Berlin Sans FB\";\n"
+"	border-radius:10px;\n"
+"	color: rgb(255, 255, 255);\n"
+"	border:none;\n"
+"}\n"
+"\n"
+"QPushButton:Hover\n"
+"{\n"
+"	\n"
+"	background-color: red;\n"
+"}"));
 
-        gridLayout_4->addWidget(lstEt_faculteCheckBox, 0, 2, 1, 1);
+        gridLayout_4->addWidget(lstEt_Rechercher, 8, 0, 1, 3);
 
         ongletConsultation->addTab(listeEleve, QString());
-        tab = new QWidget();
-        tab->setObjectName("tab");
-        lstT_commandeTableWidget = new QTableWidget(tab);
+        listeTransation = new QWidget();
+        listeTransation->setObjectName("listeTransation");
+        lstT_commandeTableWidget = new QTableWidget(listeTransation);
         if (lstT_commandeTableWidget->columnCount() < 5)
             lstT_commandeTableWidget->setColumnCount(5);
         QTableWidgetItem *__qtablewidgetitem8 = new QTableWidgetItem();
@@ -556,7 +652,7 @@ public:
         lstT_commandeTableWidget->setHorizontalHeaderItem(4, __qtablewidgetitem12);
         lstT_commandeTableWidget->setObjectName("lstT_commandeTableWidget");
         lstT_commandeTableWidget->setGeometry(QRect(60, 140, 621, 411));
-        gridLayoutWidget_4 = new QWidget(tab);
+        gridLayoutWidget_4 = new QWidget(listeTransation);
         gridLayoutWidget_4->setObjectName("gridLayoutWidget_4");
         gridLayoutWidget_4->setGeometry(QRect(60, 10, 621, 111));
         gridLayout_3 = new QGridLayout(gridLayoutWidget_4);
@@ -601,11 +697,41 @@ public:
 
         lstT_vPaiementPushButton = new QPushButton(gridLayoutWidget_4);
         lstT_vPaiementPushButton->setObjectName("lstT_vPaiementPushButton");
+        lstT_vPaiementPushButton->setStyleSheet(QString::fromUtf8("QPushButton\n"
+"{\n"
+"	\n"
+"	background-color: rgb(59, 203, 15);\n"
+"	font: 12pt \"Berlin Sans FB\";\n"
+"	border-radius:10px;\n"
+"	color: rgb(255, 255, 255);\n"
+"	border:none;\n"
+"}\n"
+"\n"
+"QPushButton:Hover\n"
+"{\n"
+"	\n"
+"	background-color: rgb(34, 100, 255);\n"
+"}"));
 
         gridLayout_3->addWidget(lstT_vPaiementPushButton, 3, 2, 1, 1);
 
         lstT_imprimerFacturePushButton = new QPushButton(gridLayoutWidget_4);
         lstT_imprimerFacturePushButton->setObjectName("lstT_imprimerFacturePushButton");
+        lstT_imprimerFacturePushButton->setStyleSheet(QString::fromUtf8("QPushButton\n"
+"{\n"
+"	\n"
+"	background-color: rgb(59, 203, 15);\n"
+"	font: 12pt \"Berlin Sans FB\";\n"
+"	border-radius:10px;\n"
+"	color: rgb(255, 255, 255);\n"
+"	border:none;\n"
+"}\n"
+"\n"
+"QPushButton:Hover\n"
+"{\n"
+"	\n"
+"	background-color: rgb(34, 100, 255);\n"
+"}"));
 
         gridLayout_3->addWidget(lstT_imprimerFacturePushButton, 3, 0, 1, 2);
 
@@ -617,6 +743,42 @@ public:
         lstT_vPaiementPushButton->raise();
         line->raise();
         lstT_imprimerFacturePushButton->raise();
+        ongletConsultation->addTab(listeTransation, QString());
+        listeFormation = new QWidget();
+        listeFormation->setObjectName("listeFormation");
+        tableWidget = new QTableWidget(listeFormation);
+        if (tableWidget->columnCount() < 4)
+            tableWidget->setColumnCount(4);
+        QTableWidgetItem *__qtablewidgetitem13 = new QTableWidgetItem();
+        tableWidget->setHorizontalHeaderItem(0, __qtablewidgetitem13);
+        QTableWidgetItem *__qtablewidgetitem14 = new QTableWidgetItem();
+        tableWidget->setHorizontalHeaderItem(1, __qtablewidgetitem14);
+        QTableWidgetItem *__qtablewidgetitem15 = new QTableWidgetItem();
+        tableWidget->setHorizontalHeaderItem(2, __qtablewidgetitem15);
+        QTableWidgetItem *__qtablewidgetitem16 = new QTableWidgetItem();
+        tableWidget->setHorizontalHeaderItem(3, __qtablewidgetitem16);
+        tableWidget->setObjectName("tableWidget");
+        tableWidget->setGeometry(QRect(30, 100, 671, 461));
+        label = new QLabel(listeFormation);
+        label->setObjectName("label");
+        label->setGeometry(QRect(130, 30, 361, 31));
+        ongletConsultation->addTab(listeFormation, QString());
+        tab = new QWidget();
+        tab->setObjectName("tab");
+        label_2 = new QLabel(tab);
+        label_2->setObjectName("label_2");
+        label_2->setGeometry(QRect(140, 50, 361, 31));
+        tableWidget_2 = new QTableWidget(tab);
+        if (tableWidget_2->columnCount() < 3)
+            tableWidget_2->setColumnCount(3);
+        QTableWidgetItem *__qtablewidgetitem17 = new QTableWidgetItem();
+        tableWidget_2->setHorizontalHeaderItem(0, __qtablewidgetitem17);
+        QTableWidgetItem *__qtablewidgetitem18 = new QTableWidgetItem();
+        tableWidget_2->setHorizontalHeaderItem(1, __qtablewidgetitem18);
+        QTableWidgetItem *__qtablewidgetitem19 = new QTableWidgetItem();
+        tableWidget_2->setHorizontalHeaderItem(2, __qtablewidgetitem19);
+        tableWidget_2->setObjectName("tableWidget_2");
+        tableWidget_2->setGeometry(QRect(40, 120, 671, 461));
         ongletConsultation->addTab(tab, QString());
         stackedWidget->addWidget(ConsulterInfos);
         Insertion = new QWidget();
@@ -624,7 +786,8 @@ public:
         ongletInsertion = new QTabWidget(Insertion);
         ongletInsertion->setObjectName("ongletInsertion");
         ongletInsertion->setEnabled(true);
-        ongletInsertion->setGeometry(QRect(0, 0, 721, 630));
+        ongletInsertion->setGeometry(QRect(0, 0, 721, 651));
+        ongletInsertion->setFont(font);
         ongletInsertion->setTabShape(QTabWidget::Rounded);
         ongletInsertion->setElideMode(Qt::ElideNone);
         ongletInsertion->setDocumentMode(false);
@@ -636,12 +799,13 @@ public:
         inscEt_Message = new QLabel(insc_Etudiant);
         inscEt_Message->setObjectName("inscEt_Message");
         inscEt_Message->setGeometry(QRect(210, 40, 311, 31));
-        QFont font2;
-        font2.setFamilies({QString::fromUtf8("Calibri")});
-        inscEt_Message->setFont(font2);
+        QFont font4;
+        font4.setFamilies({QString::fromUtf8("Calibri")});
+        font4.setPointSize(12);
+        inscEt_Message->setFont(font4);
         formLayoutWidget_11 = new QWidget(insc_Etudiant);
         formLayoutWidget_11->setObjectName("formLayoutWidget_11");
-        formLayoutWidget_11->setGeometry(QRect(160, 100, 411, 404));
+        formLayoutWidget_11->setGeometry(QRect(160, 100, 411, 413));
         formLayout_9 = new QFormLayout(formLayoutWidget_11);
         formLayout_9->setSpacing(6);
         formLayout_9->setContentsMargins(11, 11, 11, 11);
@@ -752,6 +916,21 @@ public:
 
         inscEt_Enregistrer = new QPushButton(formLayoutWidget_11);
         inscEt_Enregistrer->setObjectName("inscEt_Enregistrer");
+        inscEt_Enregistrer->setStyleSheet(QString::fromUtf8("QPushButton\n"
+"{\n"
+"	\n"
+"	background-color: rgb(59, 203, 15);\n"
+"	font: 12pt \"Berlin Sans FB\";\n"
+"	border-radius:10px;\n"
+"	color: rgb(255, 255, 255);\n"
+"	border:none;\n"
+"}\n"
+"\n"
+"QPushButton:Hover\n"
+"{\n"
+"	\n"
+"	background-color: rgb(34, 100, 255);\n"
+"}"));
 
         formLayout_9->setWidget(11, QFormLayout::SpanningRole, inscEt_Enregistrer);
 
@@ -773,9 +952,36 @@ public:
         inscAchat_Message = new QLabel(insc_Achat);
         inscAchat_Message->setObjectName("inscAchat_Message");
         inscAchat_Message->setGeometry(QRect(10, 10, 311, 16));
-        QFont font3;
-        font3.setFamilies({QString::fromUtf8("Arial")});
-        inscAchat_Message->setFont(font3);
+        QFont font5;
+        font5.setFamilies({QString::fromUtf8("Arial")});
+        font5.setPointSize(12);
+        inscAchat_Message->setFont(font5);
+        inscAchat_commandeTableWidget = new QTableWidget(insc_Achat);
+        if (inscAchat_commandeTableWidget->columnCount() < 6)
+            inscAchat_commandeTableWidget->setColumnCount(6);
+        QTableWidgetItem *__qtablewidgetitem20 = new QTableWidgetItem();
+        inscAchat_commandeTableWidget->setHorizontalHeaderItem(0, __qtablewidgetitem20);
+        QTableWidgetItem *__qtablewidgetitem21 = new QTableWidgetItem();
+        inscAchat_commandeTableWidget->setHorizontalHeaderItem(1, __qtablewidgetitem21);
+        QTableWidgetItem *__qtablewidgetitem22 = new QTableWidgetItem();
+        inscAchat_commandeTableWidget->setHorizontalHeaderItem(2, __qtablewidgetitem22);
+        QTableWidgetItem *__qtablewidgetitem23 = new QTableWidgetItem();
+        inscAchat_commandeTableWidget->setHorizontalHeaderItem(3, __qtablewidgetitem23);
+        QTableWidgetItem *__qtablewidgetitem24 = new QTableWidgetItem();
+        inscAchat_commandeTableWidget->setHorizontalHeaderItem(4, __qtablewidgetitem24);
+        QTableWidgetItem *__qtablewidgetitem25 = new QTableWidgetItem();
+        inscAchat_commandeTableWidget->setHorizontalHeaderItem(5, __qtablewidgetitem25);
+        inscAchat_commandeTableWidget->setObjectName("inscAchat_commandeTableWidget");
+        inscAchat_commandeTableWidget->setGeometry(QRect(10, 220, 701, 311));
+        inscAchat_confirmCmdPushButton = new QPushButton(insc_Achat);
+        inscAchat_confirmCmdPushButton->setObjectName("inscAchat_confirmCmdPushButton");
+        inscAchat_confirmCmdPushButton->setGeometry(QRect(10, 540, 80, 24));
+        inscAchat_suppCmdPushButton = new QPushButton(insc_Achat);
+        inscAchat_suppCmdPushButton->setObjectName("inscAchat_suppCmdPushButton");
+        inscAchat_suppCmdPushButton->setGeometry(QRect(90, 540, 80, 24));
+        inscAchat_estPayeeCheckBox = new QCheckBox(insc_Achat);
+        inscAchat_estPayeeCheckBox->setObjectName("inscAchat_estPayeeCheckBox");
+        inscAchat_estPayeeCheckBox->setGeometry(QRect(190, 540, 131, 22));
         gridLayoutWidget = new QWidget(insc_Achat);
         gridLayoutWidget->setObjectName("gridLayoutWidget");
         gridLayoutWidget->setGeometry(QRect(80, 70, 541, 140));
@@ -791,6 +997,11 @@ public:
 
         inscAchat_formationsLabel = new QLabel(gridLayoutWidget);
         inscAchat_formationsLabel->setObjectName("inscAchat_formationsLabel");
+        QFont font6;
+        font6.setFamilies({QString::fromUtf8("Berlin Sans FB")});
+        font6.setPointSize(12);
+        font6.setBold(false);
+        inscAchat_formationsLabel->setFont(font6);
 
         gridLayout->addWidget(inscAchat_formationsLabel, 0, 0, 1, 1);
 
@@ -813,6 +1024,7 @@ public:
 
         inscAchat_servicesLabel = new QLabel(gridLayoutWidget);
         inscAchat_servicesLabel->setObjectName("inscAchat_servicesLabel");
+        inscAchat_servicesLabel->setFont(font);
 
         gridLayout->addWidget(inscAchat_servicesLabel, 0, 1, 1, 1);
 
@@ -831,35 +1043,48 @@ public:
         inscAchat_AjFormation = new QPushButton(gridLayoutWidget);
         inscAchat_AjFormation->setObjectName("inscAchat_AjFormation");
         inscAchat_AjFormation->setEnabled(false);
+        inscAchat_AjFormation->setStyleSheet(QString::fromUtf8("QPushButton\n"
+"{\n"
+"	\n"
+"	background-color: rgb(59, 203, 15);\n"
+"	font: 12pt \"Berlin Sans FB\";\n"
+"	border-radius:10px;\n"
+"	color: rgb(255, 255, 255);\n"
+"	border:none;\n"
+"}\n"
+"\n"
+"QPushButton:Hover\n"
+"{\n"
+"	\n"
+"	background-color: rgb(34, 100, 255);\n"
+"}"));
 
         gridLayout->addWidget(inscAchat_AjFormation, 4, 0, 1, 1);
 
         inscAchat_AjService = new QPushButton(gridLayoutWidget);
         inscAchat_AjService->setObjectName("inscAchat_AjService");
         inscAchat_AjService->setEnabled(false);
+        inscAchat_AjService->setStyleSheet(QString::fromUtf8("QPushButton\n"
+"{\n"
+"	\n"
+"	background-color: rgb(59, 203, 15);\n"
+"	font: 12pt \"Berlin Sans FB\";\n"
+"	border-radius:10px;\n"
+"	color: rgb(255, 255, 255);\n"
+"	border:none;\n"
+"}\n"
+"\n"
+"QPushButton:Hover\n"
+"{\n"
+"	\n"
+"	background-color: rgb(34, 100, 255);\n"
+"}"));
 
         gridLayout->addWidget(inscAchat_AjService, 4, 1, 1, 1);
 
-        inscAchat_commandeTableWidget = new QTableWidget(insc_Achat);
-        if (inscAchat_commandeTableWidget->columnCount() < 6)
-            inscAchat_commandeTableWidget->setColumnCount(6);
-        QTableWidgetItem *__qtablewidgetitem13 = new QTableWidgetItem();
-        inscAchat_commandeTableWidget->setHorizontalHeaderItem(0, __qtablewidgetitem13);
-        QTableWidgetItem *__qtablewidgetitem14 = new QTableWidgetItem();
-        inscAchat_commandeTableWidget->setHorizontalHeaderItem(1, __qtablewidgetitem14);
-        QTableWidgetItem *__qtablewidgetitem15 = new QTableWidgetItem();
-        inscAchat_commandeTableWidget->setHorizontalHeaderItem(2, __qtablewidgetitem15);
-        QTableWidgetItem *__qtablewidgetitem16 = new QTableWidgetItem();
-        inscAchat_commandeTableWidget->setHorizontalHeaderItem(3, __qtablewidgetitem16);
-        QTableWidgetItem *__qtablewidgetitem17 = new QTableWidgetItem();
-        inscAchat_commandeTableWidget->setHorizontalHeaderItem(4, __qtablewidgetitem17);
-        QTableWidgetItem *__qtablewidgetitem18 = new QTableWidgetItem();
-        inscAchat_commandeTableWidget->setHorizontalHeaderItem(5, __qtablewidgetitem18);
-        inscAchat_commandeTableWidget->setObjectName("inscAchat_commandeTableWidget");
-        inscAchat_commandeTableWidget->setGeometry(QRect(10, 220, 701, 311));
         gridLayoutWidget_3 = new QWidget(insc_Achat);
         gridLayoutWidget_3->setObjectName("gridLayoutWidget_3");
-        gridLayoutWidget_3->setGeometry(QRect(50, 30, 581, 31));
+        gridLayoutWidget_3->setGeometry(QRect(60, 30, 581, 31));
         gridLayout_2 = new QGridLayout(gridLayoutWidget_3);
         gridLayout_2->setSpacing(6);
         gridLayout_2->setContentsMargins(11, 11, 11, 11);
@@ -871,6 +1096,7 @@ public:
         gridLayout_2->addWidget(inscAchat_identifiantLabel, 0, 0, 1, 1);
 
         inscAchat_identifiantComboBox = new QComboBox(gridLayoutWidget_3);
+        inscAchat_identifiantComboBox->addItem(QString());
         inscAchat_identifiantComboBox->setObjectName("inscAchat_identifiantComboBox");
 
         gridLayout_2->addWidget(inscAchat_identifiantComboBox, 0, 1, 1, 1);
@@ -881,15 +1107,6 @@ public:
 
         gridLayout_2->addWidget(inscAchat_nomEtudiantLineEdit, 0, 2, 1, 1);
 
-        inscAchat_confirmCmdPushButton = new QPushButton(insc_Achat);
-        inscAchat_confirmCmdPushButton->setObjectName("inscAchat_confirmCmdPushButton");
-        inscAchat_confirmCmdPushButton->setGeometry(QRect(10, 540, 80, 24));
-        inscAchat_suppCmdPushButton = new QPushButton(insc_Achat);
-        inscAchat_suppCmdPushButton->setObjectName("inscAchat_suppCmdPushButton");
-        inscAchat_suppCmdPushButton->setGeometry(QRect(90, 540, 80, 24));
-        inscAchat_estPayeeCheckBox = new QCheckBox(insc_Achat);
-        inscAchat_estPayeeCheckBox->setObjectName("inscAchat_estPayeeCheckBox");
-        inscAchat_estPayeeCheckBox->setGeometry(QRect(190, 540, 131, 22));
         QIcon icon1;
         icon1.addFile(QString::fromUtf8("Assets/icons8-checklist-64.png"), QSize(), QIcon::Normal, QIcon::Off);
         ongletInsertion->addTab(insc_Achat, icon1, QString());
@@ -897,7 +1114,7 @@ public:
         insc_Form_Msrv->setObjectName("insc_Form_Msrv");
         formLayoutWidget_2 = new QWidget(insc_Form_Msrv);
         formLayoutWidget_2->setObjectName("formLayoutWidget_2");
-        formLayoutWidget_2->setGeometry(QRect(10, 90, 321, 117));
+        formLayoutWidget_2->setGeometry(QRect(10, 90, 321, 121));
         formLayout_2 = new QFormLayout(formLayoutWidget_2);
         formLayout_2->setSpacing(6);
         formLayout_2->setContentsMargins(11, 11, 11, 11);
@@ -930,6 +1147,21 @@ public:
 
         inscFM_EnregistrerF = new QPushButton(formLayoutWidget_2);
         inscFM_EnregistrerF->setObjectName("inscFM_EnregistrerF");
+        inscFM_EnregistrerF->setStyleSheet(QString::fromUtf8("QPushButton\n"
+"{\n"
+"	\n"
+"	background-color: rgb(59, 203, 15);\n"
+"	font: 12pt \"Berlin Sans FB\";\n"
+"	border-radius:10px;\n"
+"	color: rgb(255, 255, 255);\n"
+"	border:none;\n"
+"}\n"
+"\n"
+"QPushButton:Hover\n"
+"{\n"
+"	\n"
+"	background-color: rgb(34, 100, 255);\n"
+"}"));
 
         formLayout_2->setWidget(3, QFormLayout::SpanningRole, inscFM_EnregistrerF);
 
@@ -941,7 +1173,7 @@ public:
 
         formLayoutWidget_3 = new QWidget(insc_Form_Msrv);
         formLayoutWidget_3->setObjectName("formLayoutWidget_3");
-        formLayoutWidget_3->setGeometry(QRect(370, 100, 341, 87));
+        formLayoutWidget_3->setGeometry(QRect(370, 100, 341, 90));
         formLayout_3 = new QFormLayout(formLayoutWidget_3);
         formLayout_3->setSpacing(6);
         formLayout_3->setContentsMargins(11, 11, 11, 11);
@@ -964,6 +1196,21 @@ public:
 
         inscSV_EnregistrerS = new QPushButton(formLayoutWidget_3);
         inscSV_EnregistrerS->setObjectName("inscSV_EnregistrerS");
+        inscSV_EnregistrerS->setStyleSheet(QString::fromUtf8("QPushButton\n"
+"{\n"
+"	\n"
+"	background-color: rgb(59, 203, 15);\n"
+"	font: 12pt \"Berlin Sans FB\";\n"
+"	border-radius:10px;\n"
+"	color: rgb(255, 255, 255);\n"
+"	border:none;\n"
+"}\n"
+"\n"
+"QPushButton:Hover\n"
+"{\n"
+"	\n"
+"	background-color: rgb(34, 100, 255);\n"
+"}"));
 
         formLayout_3->setWidget(2, QFormLayout::SpanningRole, inscSV_EnregistrerS);
 
@@ -999,6 +1246,21 @@ public:
 
         inscMt_Enregistrer = new QPushButton(formLayoutWidget_6);
         inscMt_Enregistrer->setObjectName("inscMt_Enregistrer");
+        inscMt_Enregistrer->setStyleSheet(QString::fromUtf8("QPushButton\n"
+"{\n"
+"	\n"
+"	background-color: rgb(59, 203, 15);\n"
+"	font: 12pt \"Berlin Sans FB\";\n"
+"	border-radius:10px;\n"
+"	color: rgb(255, 255, 255);\n"
+"	border:none;\n"
+"}\n"
+"\n"
+"QPushButton:Hover\n"
+"{\n"
+"	\n"
+"	background-color: rgb(34, 100, 255);\n"
+"}"));
 
         inscMt->setWidget(2, QFormLayout::SpanningRole, inscMt_Enregistrer);
 
@@ -1015,10 +1277,10 @@ public:
         inscMt_Message = new QLabel(insc_MentionNvPrc);
         inscMt_Message->setObjectName("inscMt_Message");
         inscMt_Message->setGeometry(QRect(90, 60, 181, 31));
-        inscMt_Message->setFont(font2);
+        inscMt_Message->setFont(font4);
         formLayoutWidget_8 = new QWidget(insc_MentionNvPrc);
         formLayoutWidget_8->setObjectName("formLayoutWidget_8");
-        formLayoutWidget_8->setGeometry(QRect(360, 100, 311, 116));
+        formLayoutWidget_8->setGeometry(QRect(360, 100, 311, 120));
         inscNv = new QFormLayout(formLayoutWidget_8);
         inscNv->setSpacing(6);
         inscNv->setContentsMargins(11, 11, 11, 11);
@@ -1046,6 +1308,21 @@ public:
 
         inscNv_Enregistrer = new QPushButton(formLayoutWidget_8);
         inscNv_Enregistrer->setObjectName("inscNv_Enregistrer");
+        inscNv_Enregistrer->setStyleSheet(QString::fromUtf8("QPushButton\n"
+"{\n"
+"	\n"
+"	background-color: rgb(59, 203, 15);\n"
+"	font: 12pt \"Berlin Sans FB\";\n"
+"	border-radius:10px;\n"
+"	color: rgb(255, 255, 255);\n"
+"	border:none;\n"
+"}\n"
+"\n"
+"QPushButton:Hover\n"
+"{\n"
+"	\n"
+"	background-color: rgb(34, 100, 255);\n"
+"}"));
 
         inscNv->setWidget(3, QFormLayout::SpanningRole, inscNv_Enregistrer);
 
@@ -1079,6 +1356,21 @@ public:
 
         inscFc_Enregistrer = new QPushButton(formLayoutWidget_9);
         inscFc_Enregistrer->setObjectName("inscFc_Enregistrer");
+        inscFc_Enregistrer->setStyleSheet(QString::fromUtf8("QPushButton\n"
+"{\n"
+"	\n"
+"	background-color: rgb(59, 203, 15);\n"
+"	font: 12pt \"Berlin Sans FB\";\n"
+"	border-radius:10px;\n"
+"	color: rgb(255, 255, 255);\n"
+"	border:none;\n"
+"}\n"
+"\n"
+"QPushButton:Hover\n"
+"{\n"
+"	\n"
+"	background-color: rgb(34, 100, 255);\n"
+"}"));
 
         InscFc->setWidget(1, QFormLayout::SpanningRole, inscFc_Enregistrer);
 
@@ -1122,6 +1414,21 @@ public:
 
         inscA_enregistrer = new QPushButton(formLayoutWidget_5);
         inscA_enregistrer->setObjectName("inscA_enregistrer");
+        inscA_enregistrer->setStyleSheet(QString::fromUtf8("QPushButton\n"
+"{\n"
+"	\n"
+"	background-color: rgb(59, 203, 15);\n"
+"	font: 12pt \"Berlin Sans FB\";\n"
+"	border-radius:10px;\n"
+"	color: rgb(255, 255, 255);\n"
+"	border:none;\n"
+"}\n"
+"\n"
+"QPushButton:Hover\n"
+"{\n"
+"	\n"
+"	background-color: rgb(34, 100, 255);\n"
+"}"));
 
         formLayout_5->setWidget(3, QFormLayout::SpanningRole, inscA_enregistrer);
 
@@ -1132,8 +1439,8 @@ public:
 
         inscA_Message = new QLabel(insc_Admin);
         inscA_Message->setObjectName("inscA_Message");
-        inscA_Message->setGeometry(QRect(220, 110, 281, 61));
-        inscA_Message->setFont(font2);
+        inscA_Message->setGeometry(QRect(190, 110, 321, 61));
+        inscA_Message->setFont(font);
         QIcon icon3;
         icon3.addFile(QString::fromUtf8("Assets/icons8-add-administrator-64.png"), QSize(), QIcon::Normal, QIcon::Off);
         ongletInsertion->addTab(insc_Admin, icon3, QString());
@@ -1143,14 +1450,15 @@ public:
         ongletModification = new QTabWidget(Modifications);
         ongletModification->setObjectName("ongletModification");
         ongletModification->setEnabled(true);
-        ongletModification->setGeometry(QRect(0, 0, 731, 621));
+        ongletModification->setGeometry(QRect(0, 0, 731, 651));
+        ongletModification->setFont(font);
         ongletModification->setTabShape(QTabWidget::Rounded);
         mod_Et = new QWidget();
         mod_Et->setObjectName("mod_Et");
         modEt_Message = new QLabel(mod_Et);
         modEt_Message->setObjectName("modEt_Message");
         modEt_Message->setGeometry(QRect(190, 0, 341, 31));
-        modEt_Message->setFont(font2);
+        modEt_Message->setFont(font4);
         gridLayoutWidget_6 = new QWidget(mod_Et);
         gridLayoutWidget_6->setObjectName("gridLayoutWidget_6");
         gridLayoutWidget_6->setGeometry(QRect(60, 40, 581, 31));
@@ -1177,7 +1485,7 @@ public:
 
         formLayoutWidget_12 = new QWidget(mod_Et);
         formLayoutWidget_12->setObjectName("formLayoutWidget_12");
-        formLayoutWidget_12->setGeometry(QRect(150, 110, 411, 404));
+        formLayoutWidget_12->setGeometry(QRect(150, 110, 411, 433));
         formLayout_10 = new QFormLayout(formLayoutWidget_12);
         formLayout_10->setSpacing(6);
         formLayout_10->setContentsMargins(11, 11, 11, 11);
@@ -1208,6 +1516,14 @@ public:
 
         formLayout_10->setWidget(2, QFormLayout::LabelRole, modEt_genreLabel);
 
+        modEt_genreComboBox = new QComboBox(formLayoutWidget_12);
+        modEt_genreComboBox->addItem(QString());
+        modEt_genreComboBox->addItem(QString());
+        modEt_genreComboBox->addItem(QString());
+        modEt_genreComboBox->setObjectName("modEt_genreComboBox");
+
+        formLayout_10->setWidget(2, QFormLayout::FieldRole, modEt_genreComboBox);
+
         modEt_dateDeNaissanceLabel = new QLabel(formLayoutWidget_12);
         modEt_dateDeNaissanceLabel->setObjectName("modEt_dateDeNaissanceLabel");
 
@@ -1217,14 +1533,6 @@ public:
         modEt_dateDeNaissanceDateEdit->setObjectName("modEt_dateDeNaissanceDateEdit");
 
         formLayout_10->setWidget(3, QFormLayout::FieldRole, modEt_dateDeNaissanceDateEdit);
-
-        modEt_genreComboBox = new QComboBox(formLayoutWidget_12);
-        modEt_genreComboBox->addItem(QString());
-        modEt_genreComboBox->addItem(QString());
-        modEt_genreComboBox->addItem(QString());
-        modEt_genreComboBox->setObjectName("modEt_genreComboBox");
-
-        formLayout_10->setWidget(2, QFormLayout::FieldRole, modEt_genreComboBox);
 
         modEt_faculteLabel = new QLabel(formLayoutWidget_12);
         modEt_faculteLabel->setObjectName("modEt_faculteLabel");
@@ -1286,11 +1594,6 @@ public:
 
         formLayout_10->setWidget(9, QFormLayout::FieldRole, modEt_adresseTextEdit);
 
-        modEt_Enregistrer = new QPushButton(formLayoutWidget_12);
-        modEt_Enregistrer->setObjectName("modEt_Enregistrer");
-
-        formLayout_10->setWidget(11, QFormLayout::SpanningRole, modEt_Enregistrer);
-
         modEt_estPassantLabel = new QLabel(formLayoutWidget_12);
         modEt_estPassantLabel->setObjectName("modEt_estPassantLabel");
 
@@ -1301,22 +1604,46 @@ public:
 
         formLayout_10->setWidget(10, QFormLayout::FieldRole, modEt_estPassantCheckBox);
 
+        modEt_Enregistrer = new QPushButton(formLayoutWidget_12);
+        modEt_Enregistrer->setObjectName("modEt_Enregistrer");
+        modEt_Enregistrer->setStyleSheet(QString::fromUtf8("QPushButton\n"
+"{\n"
+"	\n"
+"	background-color: rgb(59, 203, 15);\n"
+"	font: 12pt \"Berlin Sans FB\";\n"
+"	border-radius:10px;\n"
+"	color: rgb(255, 255, 255);\n"
+"	border:none;\n"
+"}\n"
+"\n"
+"QPushButton:Hover\n"
+"{\n"
+"	\n"
+"	background-color: rgb(34, 100, 255);\n"
+"}"));
+
+        formLayout_10->setWidget(11, QFormLayout::SpanningRole, modEt_Enregistrer);
+
+        modEt_dateInscriptionDateEdit = new QDateEdit(mod_Et);
+        modEt_dateInscriptionDateEdit->setObjectName("modEt_dateInscriptionDateEdit");
+        modEt_dateInscriptionDateEdit->setGeometry(QRect(270, 550, 0, 0));
         ongletModification->addTab(mod_Et, QString());
         stackedWidget->addWidget(Modifications);
         Suppression = new QWidget();
         Suppression->setObjectName("Suppression");
         ongletSuppression = new QTabWidget(Suppression);
         ongletSuppression->setObjectName("ongletSuppression");
-        ongletSuppression->setGeometry(QRect(0, 0, 731, 621));
+        ongletSuppression->setGeometry(QRect(0, 0, 731, 651));
+        ongletSuppression->setFont(font);
         sup_Etudiants = new QWidget();
         sup_Etudiants->setObjectName("sup_Etudiants");
         supEt_Message = new QLabel(sup_Etudiants);
         supEt_Message->setObjectName("supEt_Message");
         supEt_Message->setGeometry(QRect(210, 10, 321, 31));
-        supEt_Message->setFont(font2);
+        supEt_Message->setFont(font4);
         gridLayoutWidget_7 = new QWidget(sup_Etudiants);
         gridLayoutWidget_7->setObjectName("gridLayoutWidget_7");
-        gridLayoutWidget_7->setGeometry(QRect(80, 50, 581, 56));
+        gridLayoutWidget_7->setGeometry(QRect(80, 50, 581, 58));
         gridLayout_6 = new QGridLayout(gridLayoutWidget_7);
         gridLayout_6->setSpacing(6);
         gridLayout_6->setContentsMargins(11, 11, 11, 11);
@@ -1340,6 +1667,21 @@ public:
 
         supEt_Supprimer = new QPushButton(gridLayoutWidget_7);
         supEt_Supprimer->setObjectName("supEt_Supprimer");
+        supEt_Supprimer->setStyleSheet(QString::fromUtf8("QPushButton\n"
+"{\n"
+"	\n"
+"	background-color: rgb(59, 203, 15);\n"
+"	font: 12pt \"Berlin Sans FB\";\n"
+"	border-radius:10px;\n"
+"	color: rgb(255, 255, 255);\n"
+"	border:none;\n"
+"}\n"
+"\n"
+"QPushButton:Hover\n"
+"{\n"
+"	\n"
+"	background-color: rgb(34, 100, 255);\n"
+"}"));
 
         gridLayout_6->addWidget(supEt_Supprimer, 1, 0, 1, 3);
 
@@ -1481,10 +1823,10 @@ public:
         supM_Message = new QLabel(sup_Mention);
         supM_Message->setObjectName("supM_Message");
         supM_Message->setGeometry(QRect(220, 120, 251, 41));
-        supM_Message->setFont(font2);
+        supM_Message->setFont(font4);
         formLayoutWidget_10 = new QWidget(sup_Mention);
         formLayoutWidget_10->setObjectName("formLayoutWidget_10");
-        formLayoutWidget_10->setGeometry(QRect(410, 190, 311, 116));
+        formLayoutWidget_10->setGeometry(QRect(410, 190, 311, 120));
         supNv = new QFormLayout(formLayoutWidget_10);
         supNv->setSpacing(6);
         supNv->setContentsMargins(11, 11, 11, 11);
@@ -1507,6 +1849,21 @@ public:
 
         supNv_Enregistrer = new QPushButton(formLayoutWidget_10);
         supNv_Enregistrer->setObjectName("supNv_Enregistrer");
+        supNv_Enregistrer->setStyleSheet(QString::fromUtf8("QPushButton\n"
+"{\n"
+"	\n"
+"	background-color: rgb(59, 203, 15);\n"
+"	font: 12pt \"Berlin Sans FB\";\n"
+"	border-radius:10px;\n"
+"	color: rgb(255, 255, 255);\n"
+"	border:none;\n"
+"}\n"
+"\n"
+"QPushButton:Hover\n"
+"{\n"
+"	\n"
+"	background-color: rgb(34, 100, 255);\n"
+"}"));
 
         supNv->setWidget(3, QFormLayout::SpanningRole, supNv_Enregistrer);
 
@@ -1540,6 +1897,21 @@ public:
 
         supFc_Enregistrer = new QPushButton(formLayoutWidget_13);
         supFc_Enregistrer->setObjectName("supFc_Enregistrer");
+        supFc_Enregistrer->setStyleSheet(QString::fromUtf8("QPushButton\n"
+"{\n"
+"	\n"
+"	background-color: rgb(59, 203, 15);\n"
+"	font: 12pt \"Berlin Sans FB\";\n"
+"	border-radius:10px;\n"
+"	color: rgb(255, 255, 255);\n"
+"	border:none;\n"
+"}\n"
+"\n"
+"QPushButton:Hover\n"
+"{\n"
+"	\n"
+"	background-color: rgb(34, 100, 255);\n"
+"}"));
 
         supFc->setWidget(1, QFormLayout::SpanningRole, supFc_Enregistrer);
 
@@ -1568,6 +1940,21 @@ public:
 
         supMt_Enregistrer = new QPushButton(formLayoutWidget_7);
         supMt_Enregistrer->setObjectName("supMt_Enregistrer");
+        supMt_Enregistrer->setStyleSheet(QString::fromUtf8("QPushButton\n"
+"{\n"
+"	\n"
+"	background-color: rgb(59, 203, 15);\n"
+"	font: 12pt \"Berlin Sans FB\";\n"
+"	border-radius:10px;\n"
+"	color: rgb(255, 255, 255);\n"
+"	border:none;\n"
+"}\n"
+"\n"
+"QPushButton:Hover\n"
+"{\n"
+"	\n"
+"	background-color: rgb(34, 100, 255);\n"
+"}"));
 
         supMt->setWidget(2, QFormLayout::SpanningRole, supMt_Enregistrer);
 
@@ -1600,6 +1987,21 @@ public:
         supFM_EnregistrerForm = new QPushButton(formLayoutWidget_16);
         supFM_EnregistrerForm->setObjectName("supFM_EnregistrerForm");
         supFM_EnregistrerForm->setEnabled(false);
+        supFM_EnregistrerForm->setStyleSheet(QString::fromUtf8("QPushButton\n"
+"{\n"
+"	\n"
+"	background-color: rgb(59, 203, 15);\n"
+"	font: 12pt \"Berlin Sans FB\";\n"
+"	border-radius:10px;\n"
+"	color: rgb(255, 255, 255);\n"
+"	border:none;\n"
+"}\n"
+"\n"
+"QPushButton:Hover\n"
+"{\n"
+"	\n"
+"	background-color: rgb(34, 100, 255);\n"
+"}"));
 
         formLayout_7->setWidget(1, QFormLayout::SpanningRole, supFM_EnregistrerForm);
 
@@ -1625,6 +2027,21 @@ public:
         supSV_EnregistrerSrv = new QPushButton(formLayoutWidget_4);
         supSV_EnregistrerSrv->setObjectName("supSV_EnregistrerSrv");
         supSV_EnregistrerSrv->setEnabled(false);
+        supSV_EnregistrerSrv->setStyleSheet(QString::fromUtf8("QPushButton\n"
+"{\n"
+"	\n"
+"	background-color: rgb(59, 203, 15);\n"
+"	font: 12pt \"Berlin Sans FB\";\n"
+"	border-radius:10px;\n"
+"	color: rgb(255, 255, 255);\n"
+"	border:none;\n"
+"}\n"
+"\n"
+"QPushButton:Hover\n"
+"{\n"
+"	\n"
+"	background-color: rgb(34, 100, 255);\n"
+"}"));
 
         formLayout_4->setWidget(1, QFormLayout::SpanningRole, supSV_EnregistrerSrv);
 
@@ -1636,64 +2053,179 @@ public:
 
         ongletSuppression->addTab(sup_FormOuSrv, QString());
         stackedWidget->addWidget(Suppression);
-        layoutWidget = new QWidget(ongletCentrale);
-        layoutWidget->setObjectName("layoutWidget");
-        layoutWidget->setGeometry(QRect(0, 0, 221, 631));
-        Toolbox = new QVBoxLayout(layoutWidget);
+        groupBox = new QGroupBox(ongletCentrale);
+        groupBox->setObjectName("groupBox");
+        groupBox->setGeometry(QRect(0, 0, 221, 651));
+        groupBox->setStyleSheet(QString::fromUtf8("background-color: rgb(18, 48, 41);"));
+        Toolbox = new QVBoxLayout(groupBox);
         Toolbox->setSpacing(6);
         Toolbox->setContentsMargins(11, 11, 11, 11);
         Toolbox->setObjectName("Toolbox");
-        Toolbox->setContentsMargins(0, 0, 0, 0);
-        tl_SeConnecter = new QPushButton(layoutWidget);
+        tl_SeConnecter = new QPushButton(groupBox);
         tl_SeConnecter->setObjectName("tl_SeConnecter");
         tl_SeConnecter->setMinimumSize(QSize(0, 50));
-        tl_SeConnecter->setStyleSheet(QString::fromUtf8(""));
+        tl_SeConnecter->setStyleSheet(QString::fromUtf8("QPushButton\n"
+"{\n"
+"	\n"
+"	background-color: rgb(59, 203, 15);\n"
+"	font: 12pt \"Berlin Sans FB\";\n"
+"	border-radius:10px;\n"
+"	color: rgb(255, 255, 255);\n"
+"	border:none;\n"
+"}\n"
+"\n"
+"QPushButton:Hover\n"
+"{\n"
+"	\n"
+"	background-color: rgb(34, 100, 255);\n"
+"	letter-spacing: 1px;\n"
+"}"));
+        QIcon icon4;
+        icon4.addFile(QString::fromUtf8(":/user.png"), QSize(), QIcon::Normal, QIcon::Off);
+        tl_SeConnecter->setIcon(icon4);
+        tl_SeConnecter->setIconSize(QSize(40, 40));
 
         Toolbox->addWidget(tl_SeConnecter);
 
-        tl_Lister = new QPushButton(layoutWidget);
+        tl_Lister = new QPushButton(groupBox);
         tl_Lister->setObjectName("tl_Lister");
         tl_Lister->setEnabled(false);
         tl_Lister->setMinimumSize(QSize(0, 50));
+        tl_Lister->setStyleSheet(QString::fromUtf8("QPushButton\n"
+"{\n"
+"	background-color: rgb(59, 203, 15);\n"
+"	font: 12pt \"Berlin Sans FB\";\n"
+"	border-radius:10px;\n"
+"	color: rgb(255, 255, 255);\n"
+"	border:none;\n"
+"}\n"
+"\n"
+"QPushButton:Hover\n"
+"{\n"
+"	\n"
+"	background-color: rgb(34, 100, 255);\n"
+"	letter-spacing: 1px;\n"
+"}"));
+        QIcon icon5;
+        icon5.addFile(QString::fromUtf8(":/information-button.png"), QSize(), QIcon::Normal, QIcon::Off);
+        tl_Lister->setIcon(icon5);
+        tl_Lister->setIconSize(QSize(40, 40));
 
         Toolbox->addWidget(tl_Lister);
 
-        tl_Insertion = new QPushButton(layoutWidget);
+        tl_Insertion = new QPushButton(groupBox);
         tl_Insertion->setObjectName("tl_Insertion");
         tl_Insertion->setEnabled(false);
         tl_Insertion->setMinimumSize(QSize(0, 50));
+        tl_Insertion->setStyleSheet(QString::fromUtf8("QPushButton\n"
+"{\n"
+"	\n"
+"	background-color: rgb(59, 203, 15);\n"
+"	font: 12pt \"Berlin Sans FB\";\n"
+"	border-radius:10px;\n"
+"	color: rgb(255, 255, 255);\n"
+"	border:none;\n"
+"}\n"
+"\n"
+"QPushButton:Hover\n"
+"{\n"
+"	\n"
+"	background-color: rgb(34, 100, 255);\n"
+"	letter-spacing: 1px;\n"
+"}"));
+        QIcon icon6;
+        icon6.addFile(QString::fromUtf8(":/insert.png"), QSize(), QIcon::Normal, QIcon::Off);
+        tl_Insertion->setIcon(icon6);
+        tl_Insertion->setIconSize(QSize(40, 40));
 
         Toolbox->addWidget(tl_Insertion);
 
-        tl_Modification = new QPushButton(layoutWidget);
+        tl_Modification = new QPushButton(groupBox);
         tl_Modification->setObjectName("tl_Modification");
         tl_Modification->setEnabled(false);
         tl_Modification->setMinimumSize(QSize(0, 50));
+        tl_Modification->setStyleSheet(QString::fromUtf8("QPushButton\n"
+"{\n"
+"	\n"
+"	background-color: rgb(59, 203, 15);\n"
+"	font: 12pt \"Berlin Sans FB\";\n"
+"	border-radius:10px;\n"
+"	color: rgb(255, 255, 255);\n"
+"	border:none;\n"
+"}\n"
+"\n"
+"QPushButton:Hover\n"
+"{\n"
+"	\n"
+"	background-color: rgb(34, 100, 255);\n"
+"	letter-spacing: 1px;\n"
+"}"));
+        QIcon icon7;
+        icon7.addFile(QString::fromUtf8(":/system-update (1).png"), QSize(), QIcon::Normal, QIcon::Off);
+        tl_Modification->setIcon(icon7);
+        tl_Modification->setIconSize(QSize(40, 40));
 
         Toolbox->addWidget(tl_Modification);
 
-        tl_Suppression = new QPushButton(layoutWidget);
+        tl_Suppression = new QPushButton(groupBox);
         tl_Suppression->setObjectName("tl_Suppression");
         tl_Suppression->setEnabled(false);
         tl_Suppression->setMinimumSize(QSize(0, 50));
+        tl_Suppression->setStyleSheet(QString::fromUtf8("QPushButton\n"
+"{\n"
+"	\n"
+"	background-color: rgb(59, 203, 15);\n"
+"	font: 12pt \"Berlin Sans FB\";\n"
+"	border-radius:10px;\n"
+"	color: rgb(255, 255, 255);\n"
+"	border:none;\n"
+"}\n"
+"\n"
+"QPushButton:Hover\n"
+"{\n"
+"	\n"
+"	background-color: rgb(34, 100, 255);\n"
+"	letter-spacing: 1px;\n"
+"}"));
+        QIcon icon8;
+        icon8.addFile(QString::fromUtf8(":/trash (1).png"), QSize(), QIcon::Normal, QIcon::Off);
+        tl_Suppression->setIcon(icon8);
+        tl_Suppression->setIconSize(QSize(40, 40));
 
         Toolbox->addWidget(tl_Suppression);
 
-        tl_Quitter = new QPushButton(layoutWidget);
+        tl_Quitter = new QPushButton(groupBox);
         tl_Quitter->setObjectName("tl_Quitter");
         tl_Quitter->setMinimumSize(QSize(0, 50));
+        tl_Quitter->setStyleSheet(QString::fromUtf8("QPushButton\n"
+"{\n"
+"	\n"
+"	background-color: rgb(59, 203, 15);\n"
+"	font: 12pt \"Berlin Sans FB\";\n"
+"	border-radius:10px;\n"
+"	color: rgb(255, 255, 255);\n"
+"	border:none;\n"
+"}\n"
+"\n"
+"QPushButton:Hover\n"
+"{\n"
+"	\n"
+"	background-color: rgb(34, 100, 255);\n"
+"	letter-spacing: 1px;\n"
+"}"));
+        QIcon icon9;
+        icon9.addFile(QString::fromUtf8(":/cross.png"), QSize(), QIcon::Normal, QIcon::Off);
+        tl_Quitter->setIcon(icon9);
+        tl_Quitter->setIconSize(QSize(60, 40));
 
         Toolbox->addWidget(tl_Quitter);
 
         Fenetre_Principale->setCentralWidget(ongletCentrale);
-        statusBar = new QStatusBar(Fenetre_Principale);
-        statusBar->setObjectName("statusBar");
-        Fenetre_Principale->setStatusBar(statusBar);
 
         retranslateUi(Fenetre_Principale);
 
-        stackedWidget->setCurrentIndex(2);
-        ongletConsultation->setCurrentIndex(0);
+        stackedWidget->setCurrentIndex(7);
+        ongletConsultation->setCurrentIndex(1);
         lstEt_mentionComboBox->setCurrentIndex(-1);
         lstEt_idEtudiantComboBox->setCurrentIndex(-1);
         ongletInsertion->setCurrentIndex(2);
@@ -1723,56 +2255,58 @@ public:
 "hr { height: 1px; border-width: 0; }\n"
 "li.unchecked::marker { content: \"\\2610\"; }\n"
 "li.checked::marker { content: \"\\2612\"; }\n"
-"</style></head><body style=\" font-family:'Segoe UI'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" text-decoration: underline;\">Page d'aide</span></p>\n"
-"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; text-decoration: underline;\"><br /></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-in"
-                        "dent:0px;\">	Au lancement du programme, les differents fonctionnalit\303\251s sont d\303\251sactiv\303\251s par d\303\251faut pour des questions de s\303\251curit\303\251s. Il suffit d'appuyer sur le bouton &quot;Se connecter&quot; pour d\303\251verouiller l'int\303\251gralit\303\251 du programme.</p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">1-<span style=\" text-decoration: underline;\">Se connecter</span></p>\n"
-"<p align=\"justify\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">	Pour pouvoir se connecter, il suffit de renseigner un nom et un mot de passe enregistr\303\251 dans la base de donn\303\251e dans les formulaires correspondants sur la page de connexion puis d'appuyer sur le bouton &quot;"
-                        "Se connecter&quot; en bas du formulaire. Le bouton &quot;Se d\303\251connecter&quot; permet quand \303\240 lui \303\240 fermer l'acc\303\250s de l'application, rendant les fonctionnalit\303\251s du programme inutilisables.</p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">2-<span style=\" text-decoration: underline;\">Consulter les informations</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">	Cette section est dedi\303\251 \303\240 la recherche des donn\303\251es enregistr\303\251s dans la base de donn\303\251es. Il permet notamme"
-                        "nt de rechercher un \303\251tudiant avec des filtres \303\240 disposition. et de retrouver une transaction faites par un \303\251tudiant.</p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" text-decoration: underline;\">3-Insertions</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">	Cette partie permet d'entrer de nouvelles informations dans la base de donn\303\251e. La partie insertion est reparti en plusieurs onglets diff\303\251rents qui permettent entre autre :</p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; "
-                        "margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">        - D'inscrire un \303\251tudiant avec ses informations,</p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">        - D'inscrire les des transactions faits par l'\303\251tudiant et d'en gen\303\251rer la facture.</p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">D'un autre c\303\264t\303\251, cette partie permet aussi :</p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">        - D'ajouter des choix de niveaux d'\303\251tudes,</p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">        - D'ajouter de nouveaux services ou formations au catalogue de vente,</p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; "
-                        "margin-right:0px; -qt-block-indent:0; text-indent:0px;\">        - D'ajouter un nouveau utilisateur de l'application</p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">  3/1-<span style=\" text-decoration: underline;\">Insertion d'un nouveau \303\251tudiant</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">	L'insertion d'un \303\251tudiant se fait en remplisant une formulaire renseignants ses informations qui serviront \303\240 l'identifier. Il faut faire attention \303\240 remplir la t\303\264tzlit\303\251 des champs du formulaire et de ne pas avoir de doublure dans la dans la base de donn\303\251e.</p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:"
-                        "0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"> 3/2-<span style=\" text-decoration: underline;\">Enregistrement d'achats</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">	Afin d'enregistrer une transaction, il faut tout d'abord s\303\251l\303\251ctionner l'id de l'\303\251tudiant dans le qui correspond \303\240 l'ordre d'insertion de l'\303\251tudiant dans l'application. Un champ sert d'aide et affiche le nom et le pr\303\251nom de l'\303\251tudiant pour faciliter la s\303\251lection. Une fois l'id de l'\303\251tudiant renseign\303\251, on peut ajouter des achats pouvant \303\252tre des achats de services ou de formations dans une transaction avant de confirmer en appuyant sur le bouton &quot;Confirmer&quot; tout en bas de la page. </p>\n"
-"<p style=\"-qt-paragraph-type:empty;"
-                        " margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">4-<span style=\" text-decoration: underline;\">Modifications et mises \303\240 jours</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">	 Cette partie permet de mettre \303\240 jour les informations concernant les \303\251tudiants.</p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-"
-                        "indent:0px;\"><br /></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">5-<span style=\" text-decoration: underline;\">Suppression</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">	Cette partie permet la suppression d'un \303\251tudiant et de certaines choses entr\303\251es dans la partie insertion. Mais attention, toute suppression est d\303\251finitif !</p></body></html>", nullptr));
-        sc_Message->setText(QCoreApplication::translate("Fenetre_Principale", "Authentifiez vous pour acc\303\251der \303\240 l'application", nullptr));
-        sc_Deconnexion->setText(QCoreApplication::translate("Fenetre_Principale", "Se deconnecter", nullptr));
-        sc_Connexion->setText(QCoreApplication::translate("Fenetre_Principale", "Se connecter", nullptr));
-        sc_motDePasseLabel->setText(QCoreApplication::translate("Fenetre_Principale", "Mot de passe	: ", nullptr));
-        sc_utilisateurLabel->setText(QCoreApplication::translate("Fenetre_Principale", "Utilisateur	:", nullptr));
-        sc_motDePasseLineEdit->setText(QString());
+"</style></head><body style=\" font-family:'Berlin Sans FB'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:12pt; text-decoration: underline;\">Page d'aide</span></p>\n"
+"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Segoe UI'; font-size:12pt; text-decoration: underline;\"><br /></p>\n"
+"<p style=\" margin-top:"
+                        "0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:12pt;\">	Au lancement du programme, les differents fonctionnalit\303\251s sont d\303\251sactiv\303\251s par d\303\251faut pour des questions de s\303\251curit\303\251s. Il suffit d'appuyer sur le bouton &quot;Se connecter&quot; pour d\303\251verouiller l'int\303\251gralit\303\251 du programme.</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Segoe UI'; font-size:12pt;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:12pt;\">1-</span><span style=\" font-family:'Segoe UI'; font-size:12pt; text-decoration: underline;\">Se connecter</span></p>\n"
+"<p align=\"justify\" style=\" margin-top:0px; margin-bottom:0px; ma"
+                        "rgin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:12pt;\">	Pour pouvoir se connecter, il suffit de renseigner un nom et un mot de passe enregistr\303\251 dans la base de donn\303\251e dans les formulaires correspondants sur la page de connexion puis d'appuyer sur le bouton &quot;Se connecter&quot; en bas du formulaire. Le bouton &quot;Se d\303\251connecter&quot; permet quand \303\240 lui \303\240 fermer l'acc\303\250s de l'application, rendant les fonctionnalit\303\251s du programme inutilisables.</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Segoe UI'; font-size:12pt;\"><br /></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Segoe UI'; font-size:12pt;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin"
+                        "-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:12pt;\">2-</span><span style=\" font-family:'Segoe UI'; font-size:12pt; text-decoration: underline;\">Consulter les informations</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:12pt;\">	Cette section est dedi\303\251 \303\240 la recherche des donn\303\251es enregistr\303\251s dans la base de donn\303\251es. Il permet notamment de rechercher un \303\251tudiant avec des filtres \303\240 disposition. et de retrouver une transaction faites par un \303\251tudiant.</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Segoe UI'; font-size:12pt;\"><br /></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
+                        "margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Segoe UI'; font-size:12pt;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:12pt; text-decoration: underline;\">3-Insertions</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:12pt;\">	Cette partie permet d'entrer de nouvelles informations dans la base de donn\303\251e. La partie insertion est reparti en plusieurs onglets diff\303\251rents qui permettent entre autre :</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:12pt;\">        - D'inscrire un \303\251tudiant avec ses informations,</span></p>\n"
+"<p style=\" margin-top:0px"
+                        "; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:12pt;\">        - D'inscrire les des transactions faits par l'\303\251tudiant et d'en gen\303\251rer la facture.</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:12pt;\">D'un autre c\303\264t\303\251, cette partie permet aussi :</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:12pt;\">        - D'ajouter des choix de niveaux d'\303\251tudes,</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:12pt;\">        - D'ajouter de nouveaux services ou formations au catalogue de v"
+                        "ente,</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:12pt;\">        - D'ajouter un nouveau utilisateur de l'application</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Segoe UI'; font-size:12pt;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:12pt;\">  3/1-</span><span style=\" font-family:'Segoe UI'; font-size:12pt; text-decoration: underline;\">Insertion d'un nouveau \303\251tudiant</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:12pt;\">	L'insertion d'un \303\251tudiant se fait "
+                        "en remplisant une formulaire renseignants ses informations qui serviront \303\240 l'identifier. Il faut faire attention \303\240 remplir la t\303\264talit\303\251 des champs du formulaire et de ne pas avoir de doublure dans la dans la base de donn\303\251e.</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Segoe UI'; font-size:12pt;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:12pt;\"> 3/2-</span><span style=\" font-family:'Segoe UI'; font-size:12pt; text-decoration: underline;\">Enregistrement d'achats</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:12pt;\">	Afin d'enregistrer une transaction, il faut tout d'abord s"
+                        "\303\251l\303\251ctionner l'id de l'\303\251tudiant dans le qui correspond \303\240 l'ordre d'insertion de l'\303\251tudiant dans l'application. Un champ sert d'aide et affiche le nom et le pr\303\251nom de l'\303\251tudiant pour faciliter la s\303\251lection. Une fois l'id de l'\303\251tudiant renseign\303\251, on peut ajouter des achats pouvant \303\252tre des achats de services ou de formations dans une transaction avant de confirmer en appuyant sur le bouton &quot;Confirmer&quot; tout en bas de la page. </span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Segoe UI'; font-size:12pt;\"><br /></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Segoe UI'; font-size:12pt;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-in"
+                        "dent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:12pt;\">4-</span><span style=\" font-family:'Segoe UI'; font-size:12pt; text-decoration: underline;\">Modifications et mises \303\240 jours</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:12pt;\">	 Cette partie permet de mettre \303\240 jour les informations concernant les \303\251tudiants.</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Segoe UI'; font-size:12pt;\"><br /></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Segoe UI'; font-size:12pt;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; t"
+                        "ext-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:12pt;\">5-</span><span style=\" font-family:'Segoe UI'; font-size:12pt; text-decoration: underline;\">Suppression</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Segoe UI'; font-size:12pt;\">	Cette partie permet la suppression d'un \303\251tudiant et de certaines choses entr\303\251es dans la partie insertion. Mais attention, toute suppression est d\303\251finitif !</span></p></body></html>", nullptr));
         sc_aidePushButton->setText(QCoreApplication::translate("Fenetre_Principale", "Aide", nullptr));
+        sc_utilisateurLabel->setText(QCoreApplication::translate("Fenetre_Principale", "Utilisateur	:", nullptr));
+        sc_motDePasseLabel->setText(QCoreApplication::translate("Fenetre_Principale", "Mot de passe	: ", nullptr));
+        sc_motDePasseLineEdit->setText(QString());
+        sc_Connexion->setText(QCoreApplication::translate("Fenetre_Principale", "Se connecter", nullptr));
+        sc_Deconnexion->setText(QCoreApplication::translate("Fenetre_Principale", "Se deconnecter", nullptr));
+        sc_Message->setText(QCoreApplication::translate("Fenetre_Principale", "Authentifiez vous pour acc\303\251der \303\240 l'application", nullptr));
         QTableWidgetItem *___qtablewidgetitem = lstE_listeEtudiant->horizontalHeaderItem(0);
         ___qtablewidgetitem->setText(QCoreApplication::translate("Fenetre_Principale", "Num\303\251ro", nullptr));
         QTableWidgetItem *___qtablewidgetitem1 = lstE_listeEtudiant->horizontalHeaderItem(1);
@@ -1790,21 +2324,21 @@ public:
         QTableWidgetItem *___qtablewidgetitem7 = lstE_listeEtudiant->horizontalHeaderItem(7);
         ___qtablewidgetitem7->setText(QCoreApplication::translate("Fenetre_Principale", "Adresse", nullptr));
         lstE_Message->setText(QCoreApplication::translate("Fenetre_Principale", "Entrez la classe \303\240 chercher ", nullptr));
-        lstEt_idEtudiantLabel->setText(QCoreApplication::translate("Fenetre_Principale", "ID de l'\303\251tudiant		:", nullptr));
-        lstEt_idEtudiantCheckBox->setText(QString());
-        lstEt_nomEtudiantLabel->setText(QCoreApplication::translate("Fenetre_Principale", "Nom de l'\303\251tudiant	:", nullptr));
         lstEt_mentionComboBox->setPlaceholderText(QCoreApplication::translate("Fenetre_Principale", "Entrez la mention de l'\303\251tudiant :", nullptr));
-        lstEt_nomEtudiantCheckBox->setText(QString());
-        lstEt_mentionLabel->setText(QCoreApplication::translate("Fenetre_Principale", "Mention de l'\303\251tudiant	:", nullptr));
-        lstEt_mentionCheckBox->setText(QString());
-        lstEt_niveauComboBox->setPlaceholderText(QCoreApplication::translate("Fenetre_Principale", "Renseignez le niveau de l'\303\251tudiant :", nullptr));
-        lstEt_niveauLabel->setText(QCoreApplication::translate("Fenetre_Principale", "Niveau de l'\303\251tudiant	:", nullptr));
-        lstEt_Rechercher->setText(QCoreApplication::translate("Fenetre_Principale", "Rechercher", nullptr));
-        lstEt_idEtudiantComboBox->setPlaceholderText(QCoreApplication::translate("Fenetre_Principale", "Entrez l'id de l'\303\251tudiant :", nullptr));
-        lstEt_niveauCheckBox->setText(QString());
-        lstEt_faculteLabel->setText(QCoreApplication::translate("Fenetre_Principale", "Facult\303\251 de l'\303\251tudiant	:", nullptr));
         lstEt_faculteComboBox->setPlaceholderText(QCoreApplication::translate("Fenetre_Principale", "Entrez le parcours de l'\303\251tudiant :", nullptr));
+        lstEt_nomEtudiantLabel->setText(QCoreApplication::translate("Fenetre_Principale", "Nom de l'\303\251tudiant	:", nullptr));
         lstEt_faculteCheckBox->setText(QString());
+        lstEt_nomEtudiantCheckBox->setText(QString());
+        lstEt_mentionCheckBox->setText(QString());
+        lstEt_niveauLabel->setText(QCoreApplication::translate("Fenetre_Principale", "Niveau de l'\303\251tudiant	:", nullptr));
+        lstEt_niveauComboBox->setPlaceholderText(QCoreApplication::translate("Fenetre_Principale", "Renseignez le niveau de l'\303\251tudiant :", nullptr));
+        lstEt_niveauCheckBox->setText(QString());
+        lstEt_idEtudiantLabel->setText(QCoreApplication::translate("Fenetre_Principale", "ID de l'\303\251tudiant		:", nullptr));
+        lstEt_faculteLabel->setText(QCoreApplication::translate("Fenetre_Principale", "Facult\303\251 de l'\303\251tudiant	:", nullptr));
+        lstEt_idEtudiantCheckBox->setText(QString());
+        lstEt_idEtudiantComboBox->setPlaceholderText(QCoreApplication::translate("Fenetre_Principale", "Entrez l'id de l'\303\251tudiant :", nullptr));
+        lstEt_mentionLabel->setText(QCoreApplication::translate("Fenetre_Principale", "Mention de l'\303\251tudiant	:", nullptr));
+        lstEt_Rechercher->setText(QCoreApplication::translate("Fenetre_Principale", "Rechercher", nullptr));
         ongletConsultation->setTabText(ongletConsultation->indexOf(listeEleve), QCoreApplication::translate("Fenetre_Principale", "Liste des \303\251l\303\250ves", nullptr));
         QTableWidgetItem *___qtablewidgetitem8 = lstT_commandeTableWidget->horizontalHeaderItem(0);
         ___qtablewidgetitem8->setText(QCoreApplication::translate("Fenetre_Principale", "Type", nullptr));
@@ -1822,7 +2356,25 @@ public:
         lstT_identifiantComboBox->setPlaceholderText(QCoreApplication::translate("Fenetre_Principale", "Entrez l'identifiant de l'\303\251tudiant :", nullptr));
         lstT_vPaiementPushButton->setText(QCoreApplication::translate("Fenetre_Principale", "D\303\251finir comme \303\251tant pay\303\251", nullptr));
         lstT_imprimerFacturePushButton->setText(QCoreApplication::translate("Fenetre_Principale", "Imprimer la facture", nullptr));
-        ongletConsultation->setTabText(ongletConsultation->indexOf(tab), QCoreApplication::translate("Fenetre_Principale", "Liste de transactions", nullptr));
+        ongletConsultation->setTabText(ongletConsultation->indexOf(listeTransation), QCoreApplication::translate("Fenetre_Principale", "Liste de transactions", nullptr));
+        QTableWidgetItem *___qtablewidgetitem13 = tableWidget->horizontalHeaderItem(0);
+        ___qtablewidgetitem13->setText(QCoreApplication::translate("Fenetre_Principale", "ID", nullptr));
+        QTableWidgetItem *___qtablewidgetitem14 = tableWidget->horizontalHeaderItem(1);
+        ___qtablewidgetitem14->setText(QCoreApplication::translate("Fenetre_Principale", "Nom", nullptr));
+        QTableWidgetItem *___qtablewidgetitem15 = tableWidget->horizontalHeaderItem(2);
+        ___qtablewidgetitem15->setText(QCoreApplication::translate("Fenetre_Principale", "Prix", nullptr));
+        QTableWidgetItem *___qtablewidgetitem16 = tableWidget->horizontalHeaderItem(3);
+        ___qtablewidgetitem16->setText(QCoreApplication::translate("Fenetre_Principale", "Dur\303\251e", nullptr));
+        label->setText(QCoreApplication::translate("Fenetre_Principale", "Liste de tous les formations enregistr\303\251s", nullptr));
+        ongletConsultation->setTabText(ongletConsultation->indexOf(listeFormation), QCoreApplication::translate("Fenetre_Principale", "Formations", nullptr));
+        label_2->setText(QCoreApplication::translate("Fenetre_Principale", "Liste de tous les services enregistr\303\251s", nullptr));
+        QTableWidgetItem *___qtablewidgetitem17 = tableWidget_2->horizontalHeaderItem(0);
+        ___qtablewidgetitem17->setText(QCoreApplication::translate("Fenetre_Principale", "ID", nullptr));
+        QTableWidgetItem *___qtablewidgetitem18 = tableWidget_2->horizontalHeaderItem(1);
+        ___qtablewidgetitem18->setText(QCoreApplication::translate("Fenetre_Principale", "Nom", nullptr));
+        QTableWidgetItem *___qtablewidgetitem19 = tableWidget_2->horizontalHeaderItem(2);
+        ___qtablewidgetitem19->setText(QCoreApplication::translate("Fenetre_Principale", "Prix", nullptr));
+        ongletConsultation->setTabText(ongletConsultation->indexOf(tab), QCoreApplication::translate("Fenetre_Principale", "Page", nullptr));
         inscEt_Message->setText(QCoreApplication::translate("Fenetre_Principale", "Entrez les informations du nouveau/nouvelle \303\251tudiant(e)", nullptr));
         inscEt_nomLabel->setText(QCoreApplication::translate("Fenetre_Principale", "Nom		 :", nullptr));
         inscEt_prenomLabel->setText(QCoreApplication::translate("Fenetre_Principale", "Prenom		 :", nullptr));
@@ -1846,25 +2398,26 @@ public:
         inscEt_estPassantCheckBox->setText(QCoreApplication::translate("Fenetre_Principale", "Oui cauch\303\251 / Non par d\303\251faut", nullptr));
         ongletInsertion->setTabText(ongletInsertion->indexOf(insc_Etudiant), QCoreApplication::translate("Fenetre_Principale", "Nouveau/lle \303\251tudiant", nullptr));
         inscAchat_Message->setText(QCoreApplication::translate("Fenetre_Principale", "Enregistrement d'un achat", nullptr));
+        QTableWidgetItem *___qtablewidgetitem20 = inscAchat_commandeTableWidget->horizontalHeaderItem(0);
+        ___qtablewidgetitem20->setText(QCoreApplication::translate("Fenetre_Principale", "Type", nullptr));
+        QTableWidgetItem *___qtablewidgetitem21 = inscAchat_commandeTableWidget->horizontalHeaderItem(1);
+        ___qtablewidgetitem21->setText(QCoreApplication::translate("Fenetre_Principale", "Designation", nullptr));
+        QTableWidgetItem *___qtablewidgetitem22 = inscAchat_commandeTableWidget->horizontalHeaderItem(2);
+        ___qtablewidgetitem22->setText(QCoreApplication::translate("Fenetre_Principale", "Quantit\303\251", nullptr));
+        QTableWidgetItem *___qtablewidgetitem23 = inscAchat_commandeTableWidget->horizontalHeaderItem(3);
+        ___qtablewidgetitem23->setText(QCoreApplication::translate("Fenetre_Principale", "Prix", nullptr));
+        QTableWidgetItem *___qtablewidgetitem24 = inscAchat_commandeTableWidget->horizontalHeaderItem(4);
+        ___qtablewidgetitem24->setText(QCoreApplication::translate("Fenetre_Principale", "Montant", nullptr));
+        inscAchat_confirmCmdPushButton->setText(QCoreApplication::translate("Fenetre_Principale", "Confirmer", nullptr));
+        inscAchat_suppCmdPushButton->setText(QCoreApplication::translate("Fenetre_Principale", "Effacer", nullptr));
+        inscAchat_estPayeeCheckBox->setText(QCoreApplication::translate("Fenetre_Principale", "Transaction pay\303\251e ?", nullptr));
         inscAchat_formationsLabel->setText(QCoreApplication::translate("Fenetre_Principale", "Nos formations :", nullptr));
         inscAchat_servicesLabel->setText(QCoreApplication::translate("Fenetre_Principale", "Les services disponibles :", nullptr));
         inscAchat_AjFormation->setText(QCoreApplication::translate("Fenetre_Principale", "Ajouter", nullptr));
         inscAchat_AjService->setText(QCoreApplication::translate("Fenetre_Principale", "Ajouter", nullptr));
-        QTableWidgetItem *___qtablewidgetitem13 = inscAchat_commandeTableWidget->horizontalHeaderItem(0);
-        ___qtablewidgetitem13->setText(QCoreApplication::translate("Fenetre_Principale", "Type", nullptr));
-        QTableWidgetItem *___qtablewidgetitem14 = inscAchat_commandeTableWidget->horizontalHeaderItem(1);
-        ___qtablewidgetitem14->setText(QCoreApplication::translate("Fenetre_Principale", "Designation", nullptr));
-        QTableWidgetItem *___qtablewidgetitem15 = inscAchat_commandeTableWidget->horizontalHeaderItem(2);
-        ___qtablewidgetitem15->setText(QCoreApplication::translate("Fenetre_Principale", "Quantit\303\251", nullptr));
-        QTableWidgetItem *___qtablewidgetitem16 = inscAchat_commandeTableWidget->horizontalHeaderItem(3);
-        ___qtablewidgetitem16->setText(QCoreApplication::translate("Fenetre_Principale", "Prix", nullptr));
-        QTableWidgetItem *___qtablewidgetitem17 = inscAchat_commandeTableWidget->horizontalHeaderItem(4);
-        ___qtablewidgetitem17->setText(QCoreApplication::translate("Fenetre_Principale", "Montant", nullptr));
         inscAchat_identifiantLabel->setText(QCoreApplication::translate("Fenetre_Principale", "Identifiant de l'\303\251tudiant	:", nullptr));
-        inscAchat_identifiantComboBox->setPlaceholderText(QCoreApplication::translate("Fenetre_Principale", "Entrez l'identifiant de l'\303\251tudiant :", nullptr));
-        inscAchat_confirmCmdPushButton->setText(QCoreApplication::translate("Fenetre_Principale", "Confirmer", nullptr));
-        inscAchat_suppCmdPushButton->setText(QCoreApplication::translate("Fenetre_Principale", "Effacer", nullptr));
-        inscAchat_estPayeeCheckBox->setText(QCoreApplication::translate("Fenetre_Principale", "Transaction pay\303\251e ?", nullptr));
+        inscAchat_identifiantComboBox->setItemText(0, QCoreApplication::translate("Fenetre_Principale", "Entrez l'identifiant de l'\303\251tudiant :", nullptr));
+
         ongletInsertion->setTabText(ongletInsertion->indexOf(insc_Achat), QCoreApplication::translate("Fenetre_Principale", "Achats", nullptr));
         inscFM_nomFormLabel->setText(QCoreApplication::translate("Fenetre_Principale", "Nom de la formation	:", nullptr));
         inscFM_prixFormLabel->setText(QCoreApplication::translate("Fenetre_Principale", "Prix de la formation	:", nullptr));
@@ -1902,11 +2455,11 @@ public:
         modEt_nomLabel->setText(QCoreApplication::translate("Fenetre_Principale", "Nom		 :", nullptr));
         modEt_prenomLabel->setText(QCoreApplication::translate("Fenetre_Principale", "Prenom		 :", nullptr));
         modEt_genreLabel->setText(QCoreApplication::translate("Fenetre_Principale", "Genre		 :", nullptr));
-        modEt_dateDeNaissanceLabel->setText(QCoreApplication::translate("Fenetre_Principale", "Date de naissance	 :", nullptr));
         modEt_genreComboBox->setItemText(0, QCoreApplication::translate("Fenetre_Principale", "- Non sp\303\251cifi\303\251 -", nullptr));
         modEt_genreComboBox->setItemText(1, QCoreApplication::translate("Fenetre_Principale", "Homme", nullptr));
         modEt_genreComboBox->setItemText(2, QCoreApplication::translate("Fenetre_Principale", "Femme", nullptr));
 
+        modEt_dateDeNaissanceLabel->setText(QCoreApplication::translate("Fenetre_Principale", "Date de naissance	 :", nullptr));
         modEt_faculteLabel->setText(QCoreApplication::translate("Fenetre_Principale", "Facult\303\251		 :", nullptr));
         modEt_faculteComboBox->setPlaceholderText(QCoreApplication::translate("Fenetre_Principale", "- Non sp\303\251cifi\303\251 -", nullptr));
         modEt_mentionLabel->setText(QCoreApplication::translate("Fenetre_Principale", "Mention		 :", nullptr));
@@ -1916,9 +2469,9 @@ public:
         modEt_codageLabel->setText(QCoreApplication::translate("Fenetre_Principale", "Codage		 :", nullptr));
         modEt_telephonePhoneLabel->setText(QCoreApplication::translate("Fenetre_Principale", "T\303\251l\303\251phone	 :", nullptr));
         modEt_adresseLabel->setText(QCoreApplication::translate("Fenetre_Principale", "Adresse 		 :", nullptr));
-        modEt_Enregistrer->setText(QCoreApplication::translate("Fenetre_Principale", "Enregistrer", nullptr));
         modEt_estPassantLabel->setText(QCoreApplication::translate("Fenetre_Principale", "Est passant	 :", nullptr));
         modEt_estPassantCheckBox->setText(QCoreApplication::translate("Fenetre_Principale", "Oui cauch\303\251 / Non par d\303\251faut", nullptr));
+        modEt_Enregistrer->setText(QCoreApplication::translate("Fenetre_Principale", "Enregistrer", nullptr));
         ongletModification->setTabText(ongletModification->indexOf(mod_Et), QCoreApplication::translate("Fenetre_Principale", "Modier les information d'un \303\251tudiant", nullptr));
         supEt_Message->setText(QCoreApplication::translate("Fenetre_Principale", "Veuillez renseigner les informations de l'\303\251l\303\250ve a effacer", nullptr));
         supEt_identifiantComboBox->setPlaceholderText(QCoreApplication::translate("Fenetre_Principale", "Entrez l'identifiant de l'\303\251tudiant :", nullptr));
@@ -1962,10 +2515,10 @@ public:
         supSV_EnregistrerSrv->setText(QCoreApplication::translate("Fenetre_Principale", "Supprimer", nullptr));
         ongletSuppression->setTabText(ongletSuppression->indexOf(sup_FormOuSrv), QCoreApplication::translate("Fenetre_Principale", "Supprimer un service ou une formation", nullptr));
         tl_SeConnecter->setText(QCoreApplication::translate("Fenetre_Principale", "Se connecter", nullptr));
-        tl_Lister->setText(QCoreApplication::translate("Fenetre_Principale", "Consulter les informations", nullptr));
+        tl_Lister->setText(QCoreApplication::translate("Fenetre_Principale", "Consulter les info", nullptr));
         tl_Insertion->setText(QCoreApplication::translate("Fenetre_Principale", "Insertions", nullptr));
-        tl_Modification->setText(QCoreApplication::translate("Fenetre_Principale", "Modifications et mise \303\240 jour", nullptr));
-        tl_Suppression->setText(QCoreApplication::translate("Fenetre_Principale", "Suppression d'une entr\303\251e", nullptr));
+        tl_Modification->setText(QCoreApplication::translate("Fenetre_Principale", "Modifications ", nullptr));
+        tl_Suppression->setText(QCoreApplication::translate("Fenetre_Principale", "Suppression ", nullptr));
         tl_Quitter->setText(QCoreApplication::translate("Fenetre_Principale", "Quitter", nullptr));
     } // retranslateUi
 

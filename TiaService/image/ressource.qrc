@@ -1,0 +1,33 @@
+<RCC>
+    <qresource prefix="/">
+        <file>422016971_349569661241935_639992504429374502_n.jpg</file>
+        <file>button (1).png</file>
+        <file>button.png</file>
+        <file>edit (1).png</file>
+        <file>edit.png</file>
+        <file>help-web-button (1).png</file>
+        <file>help-web-button (2).png</file>
+        <file>help-web-button.png</file>
+        <file>info.png</file>
+        <file>information (1).png</file>
+        <file>information.png</file>
+        <file>information-button.png</file>
+        <file>insert (1).png</file>
+        <file>insert.png</file>
+        <file>logout (1).png</file>
+        <file>logout.png</file>
+        <file>pencil (1).png</file>
+        <file>pencil.png</file>
+        <file>ressource.qrc</file>
+        <file>system-update (1).png</file>
+        <file>system-update.png</file>
+        <file>trash (1).png</file>
+        <file>trash.png</file>
+        <file>user (1).png</file>
+        <file>user.png</file>
+        <file>cross.png</file>
+        <file>account.png</file>
+        <file>check-mark.png</file>
+        <file>add-group.png</file>
+    </qresource>
+</RCC>

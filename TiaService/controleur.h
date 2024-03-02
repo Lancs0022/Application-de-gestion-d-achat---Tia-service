@@ -22,8 +22,8 @@ public:
 
     bool rqtInscEt(int idEtudiant, QString& nom, QString& prenom, QString& genre,
                    QDate& dateDeNaissance, QString& faculte,
-                   QString& mention, QString& niveau,
-                   QString& codage, bool& passant, QString& telephone, QString& adresse);
+                   QString& mention, QString& niveau, QString& codage,
+                   bool& passant, QString& telephone, QString& adresse, QDate dateActuelle);
     double getPrixU(const QString& choix, const QString& type);
     QString nomsEtByid(int& etId);
     bool isDuplicated(QString& nom, QString& prenom, int& idFaculte, int& idMention,

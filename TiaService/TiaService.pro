@@ -32,3 +32,7 @@ FORMS    += fenetreprincipale.ui \
 
 DISTFILES += \
     TIA SERVICE.MDB
+
+RESOURCES += \
+    font/police.qrc \
+    image/images.qrc
